@@ -7,32 +7,47 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+    //@IBOutlet weak var mapVier:MKMapView!
+    
+    var locationManager:CLLocationManager?
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestWhenInUseAuthorization()
         
+
+        view.backgroundColor = .gray
     }
    
-
-    
-    
-    @IBOutlet  var mapVier:MKMapView!
-
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            mapVier.setRegion(region, animated: true)
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+                if CLLocationManager.isRangingAvailable() {
+                    print ("good")
+                }
+            }
         }
     }
- 
+    
+    
 
+    
+    
+    
+    
+ 
+/*
     @IBAction func  didTaputton(){
         let vc = UIViewController()
          
@@ -40,6 +55,7 @@ class ViewController: UIViewController {
         
         navigationController?.pushViewController(vc, animated: true)
     }
+    */
     
 }
 
