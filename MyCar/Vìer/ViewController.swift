@@ -10,35 +10,17 @@ import MapKit
 import CoreLocation
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
-    
-    //@IBOutlet weak var mapVier:MKMapView!
-    
-    var locationManager:CLLocationManager?
+class ViewController: UIViewController {
     
     
-    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.requestWhenInUseAuthorization()
         
-
-        view.backgroundColor = .gray
     }
    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-                if CLLocationManager.isRangingAvailable() {
-                    print ("good")
-                }
-            }
-        }
-    }
     
     
 
