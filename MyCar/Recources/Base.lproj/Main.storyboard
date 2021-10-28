@@ -69,7 +69,7 @@
         <!--Home-->
         <scene sceneID="g9w-hW-4ob">
             <objects>
-                <viewController id="lTe-US-Nko" sceneMemberID="viewController">
+                <viewController id="lTe-US-Nko" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFS-wz-FbE" customClass="HomeView" customModule="MyCar" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,7 +203,7 @@
         <!--Profile-->
         <scene sceneID="8eV-4a-W9b">
             <objects>
-                <viewController id="y7r-HI-flc" sceneMemberID="viewController">
+                <viewController id="y7r-HI-flc" customClass="ProfileViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eSD-uX-vbe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,7 +219,7 @@
         <!--Support-->
         <scene sceneID="gJb-bB-qAH">
             <objects>
-                <viewController id="Snf-el-zPA" sceneMemberID="viewController">
+                <viewController id="Snf-el-zPA" customClass="SupportViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iUI-ru-EyM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,14 +239,23 @@
                     <view key="view" contentMode="scaleToFill" id="IXD-Gr-c4j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FhF-0u-FbO">
+                                <rect key="frame" x="0.0" y="114" width="414" height="724"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wxl-Ju-97b"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                     </view>
                     <navigationItem key="navigationItem" title="car" id="Yzz-nC-EBG"/>
+                    <connections>
+                        <outlet property="mapView" destination="FhF-0u-FbO" id="HlB-UK-odL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JfG-pt-rZU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-404" y="808"/>
+            <point key="canvasLocation" x="-404.34782608695656" y="807.58928571428567"/>
         </scene>
         <!--map-->
         <scene sceneID="zn4-22-mbW">
@@ -279,6 +288,17 @@
                                 <buttonConfiguration key="configuration" style="plain" title="AddPoint"/>
                                 <connections>
                                     <action selector="AddPoint:" destination="DWg-Db-BQe" eventType="touchUpInside" id="iLt-tV-RZl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rov-Ir-nMA">
+                                <rect key="frame" x="232" y="124" width="102" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="AddRoad"/>
+                                <connections>
+                                    <action selector="AddRoad:" destination="DWg-Db-BQe" eventType="touchUpInside" id="hey-uA-fiU"/>
                                 </connections>
                             </button>
                         </subviews>
