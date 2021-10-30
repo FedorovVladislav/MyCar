@@ -11,7 +11,7 @@
 
         
         @IBOutlet weak var mapView: MKMapView!
-        //@IBOutlet weak var mapView: MKMapView!
+        
       override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +36,7 @@
         
         if let location = sourcePlacemark.location {
           sourceAnnotation.coordinate = location.coordinate
+            
         }
         
         

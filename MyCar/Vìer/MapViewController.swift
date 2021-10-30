@@ -9,58 +9,21 @@ import UIKit
 import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
    
+    @IBOutlet weak var distanceRoad: UILabel!
     @IBOutlet weak var MKMapView: MKMapView!
+    // var adress: String = ""
+    var alertTextField: UITextField?
+    var arrAdress = [CLLocationCoordinate2D]()
+    var distans : Double = 0 {
+        didSet {
+            distanceRoad.text = "\(distans) km"
+        }
+    }
     
-   override func viewDidLoad() {
-       super.viewDidLoad()
-       
-       self.MKMapView.delegate = self
-       
-       let sourcePlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 55.752578 , longitude: 37.623104))
-       let destinationPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 55.756776 , longitude: 37.594700))
-
-       let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
-       let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
-
-       let sourceAnnotation = MKPointAnnotation()
-
-       if let location = sourcePlacemark.location {
-           sourceAnnotation.coordinate = location.coordinate
-       }
-       let destinationAnnotation = MKPointAnnotation()
-       if let location = destinationPlacemark.location {
-           destinationAnnotation.coordinate = location.coordinate
-       }
-       self.MKMapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
-       
-   let directionRequest = MKDirections.Request()
-       directionRequest.source = sourceMapItem
-       directionRequest.destination = destinationMapItem
-       directionRequest.transportType = .automobile
-
-       // Calculate the direction
-       let directions = MKDirections(request: directionRequest)
-
-       directions.calculate {
-           (response, error) -> Void in
-
-           guard let response = response else {
-               if let error = error {
-                   print("Error: \(error)")
-               }
-               print("Error: 2")
-               return
-           }
-
-           let route = response.routes[0]
-           self.MKMapView.addOverlay(route.polyline, level: .aboveRoads)
-           let rect = route.polyline.boundingMapRect
-           self.MKMapView.setRegion(MKCoordinateRegion(rect), animated: true)
-       }
-   }
+  // override func viewDidLoad() {
+  //     super.viewDidLoad()
+   // }
     
-
-   
     func mapView(_ mapView: MKMapView, rendererFor
                    overlay: MKOverlay) -> MKOverlayRenderer {
 
@@ -73,26 +36,65 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                return renderer
            }
        
-        
-   
-
-    var adress: String = ""
-    var alertTextField: UITextField?
     
     @IBAction func AddRoad(_ sender: UIButton) {
-        print("ButtonPrestd")
+        print(self.arrAdress.count)
        
-        
-        
+        if self.arrAdress.count >= 2 {
+            for i in 0...(self.arrAdress.count - 2)  {
+                print (i)
+                addRoadOnMap( source: self.arrAdress[i], destenation: self.arrAdress[i+1])
+            }
+        }
     }
     @IBAction func AddAdress(_ sender: UIButton) {
         AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
     }
-    @IBAction func AddPoint(_ sender: UIButton) {
-        addNewPointOnMap (adress: self.adress)
-    }
+
+    func addRoadOnMap(source: CLLocationCoordinate2D, destenation: CLLocationCoordinate2D){
+        
+        self.MKMapView.delegate = self
+    
+        let sourcePlacemark = MKPlacemark(coordinate:source)
+        
+        let destinationPlacemark = MKPlacemark(coordinate: destenation)
+
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
 
     
+        
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = destinationMapItem
+        directionRequest.transportType = .automobile
+
+        
+        
+        // Calculate the direction
+        let directions = MKDirections(request: directionRequest)
+        directions.calculate(completionHandler:  {
+            (response, error) -> Void in
+
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                }
+                print("Error: 2")
+                return
+            }
+
+            let route = response.routes[0]
+            self.distans = route.distance/1000
+            print ("Distance:\(self.distans)\n")
+            self.MKMapView.addOverlay(route.polyline, level: .aboveRoads)
+            
+            let rect = route.polyline.boundingMapRect
+            self.MKMapView.setRegion(MKCoordinateRegion(rect), animated: true)
+            
+        })
+        
+    }
 
     func AlertWithTextFieldAnd2Button(titleAlert: String, messageAlert: String, titleButton: String){
         var alertTextField: UITextField?
@@ -104,7 +106,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         alertView.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         alertView.addAction(UIAlertAction(title: titleButton, style: UIAlertAction.Style.default, handler: { ACTION -> Void in
                 if let tempText = alertTextField?.text {
-                    self.adress  = tempText
+                    self.addNewPointOnMap(adress: tempText)
                 }
         }))
         self.present(alertView, animated: true, completion: nil)
@@ -122,21 +124,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 print ("Error request")
                 return
             }
+    
             for item in response.mapItems {
                 if let name = item.name,
                     let location = item.placemark.location {
                     print("\(name): \(location.coordinate.latitude),\(location.coordinate.longitude)")
-                    var CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                  
+                    self.arrAdress.append(CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                     let annotation = MKPointAnnotation()
-                        annotation.coordinate = CLLocationCoordinate2D
+                        annotation.coordinate = self.arrAdress[self.arrAdress.count-1]
                     self.MKMapView.addAnnotation(annotation)
+            
                     return
                     
                 }
             }
         }
     }
-    // MARK: - showRouteOnMap
-    // MARK: - MKMapViewDelegate
-   
 }
