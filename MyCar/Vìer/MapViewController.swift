@@ -1,64 +1,39 @@
 //
 //  MapViewController.swift
 //  MyCar
-//
-//  Created by Елизавета Федорова on 27.10.2021.
-//
+
 
 import UIKit
 import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
-   
+    
+// MARK: -UIItem
+    
     @IBOutlet weak var distanceRoad: UILabel!
     @IBOutlet weak var MKMapView: MKMapView!
-    // var adress: String = ""
+    
+    @IBAction func AddRoad(_ sender: UIButton) {
+        addRoadOnMapCall()
+    }
+    @IBAction func AddAdress(_ sender: UIButton) {
+        AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
+    }
+    
+// MARK: -Variable
+    
+    var  MapModel = mapModel()
     var alertTextField: UITextField?
-    var arrAdress = [CLLocationCoordinate2D]()
     var distans : Double = 0 {
         didSet {
             distanceRoad.text = "\(distans) km"
         }
     }
-   var  MapModel = mapModel()
+
+ //override func viewDidLoad() {
+  //    super.viewDidLoad()
+//}
     
- override func viewDidLoad() {
-      super.viewDidLoad()
-     MapModel.findAdress { MapPoint in
-         let annotation = MKPointAnnotation()
-         annotation.coordinate = MapPoint
-         self.MKMapView.addAnnotation(annotation)
-         
-     }
-         
-}
-    
-    func mapView(_ mapView: MKMapView, rendererFor
-                   overlay: MKOverlay) -> MKOverlayRenderer {
-
-               let renderer = MKPolylineRenderer(overlay: overlay)
-
-               renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
-
-               renderer.lineWidth = 5.0
-
-               return renderer
-    }
-       
-    
-    @IBAction func AddRoad(_ sender: UIButton) {
-        print(self.arrAdress.count)
-       
-        if self.arrAdress.count >= 2 {
-            for i in 0...(self.arrAdress.count - 2)  {
-                print (i)
-                addRoadOnMap( source: self.arrAdress[i], destenation: self.arrAdress[i+1])
-            }
-        }
-    }
-    @IBAction func AddAdress(_ sender: UIButton) {
-        AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
-    }
-
+// MARK: -Function
     func addRoadOnMap(source: CLLocationCoordinate2D, destenation: CLLocationCoordinate2D){
         
         self.MKMapView.delegate = self
@@ -114,48 +89,44 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         alertView.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         alertView.addAction(UIAlertAction(title: titleButton, style: UIAlertAction.Style.default, handler: { ACTION -> Void in
                 if let tempText = alertTextField?.text {
-                    self.addNewPointOnMap(adress: tempText)
-                    //self.searchAdress(adress: tempText)
+                    self.addAnotationOnMap(adress: tempText)
                 }
         }))
         self.present(alertView, animated: true, completion: nil)
     }
     
-    func searchAdress(adress: String){
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = adress
-
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { (response, error) in
-            guard let response = response else {
-                // Handle the error.
-                return
+    func addAnotationOnMap(adress: String ) {
+        MapModel.adressToFind = adress
+        
+        MapModel.findAdress { MapPoint in
+            if let tempMapPoint = MapPoint {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = tempMapPoint
+                self.MKMapView.addAnnotation(annotation)
+            } else {
+                print("Return Nil")
             }
-            
-            for item in response.mapItems {
-                if let name = item.name,
-                    let location = item.placemark.location {
-                    print("\(name): \(location.coordinate.latitude),\(location.coordinate.longitude)")
-                    self.arrAdress.append(CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                    self.MKMapView.addAnnotation(annotation)
-                    return
+        }
+    }
+    func addRoadOnMapCall(){
+        
+        if MapModel.getCountAdress() >= 2 {
+            for i in 0...(MapModel.getCountAdress() - 2)  {
+                print (i)
+                if let source = MapModel.getLastAdress(index: i),
+                   let destenation = MapModel.getLastAdress(index: i+1){
+                    addRoadOnMap( source: source, destenation: destenation)
                 }
             }
         }
     }
-
     
-    func addNewPointOnMap(adress: String){
-        //MapModel.findAdress(adress: adress)
-        let annotation = MKPointAnnotation()
-        
-        let tempCLLocation2d = MapModel.getLastAdress() 
-        print ("lattitude:\(tempCLLocation2d.latitude)\n")
-        print ("longitude:\(tempCLLocation2d.longitude)\n")
-        
-        annotation.coordinate = tempCLLocation2d
-        self.MKMapView.addAnnotation(annotation)
+    
+    func mapView(_ mapView: MKMapView, rendererFor
+                   overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
+        renderer.lineWidth = 5.0
+        return renderer
     }
 }

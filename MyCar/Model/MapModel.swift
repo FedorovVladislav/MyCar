@@ -10,39 +10,41 @@ import MapKit
 
 class mapModel {
     
-    var arrAdress = [CLLocationCoordinate2D]()
-    func getLastAdress ()->CLLocationCoordinate2D  {
-        if !self.arrAdress.isEmpty {
-            print("return norm")
-            return self.arrAdress[0]
-        }else {
-            print("return error ")
-            return CLLocationCoordinate2D(latitude: 51, longitude: 51)
-        }
+    
+    var adressToFind: String = ""
+    var arrPointOnMap = [CLLocationCoordinate2D]()
+    
+    
+    func getCountAdress()-> Int{
+        return arrPointOnMap.count
+    }
+    func getLastAdress (index: Int)-> CLLocationCoordinate2D?  {
+        if (index >= 0) && (index <= (arrPointOnMap.count - 1)) {
+            return arrPointOnMap[index]
+        } else { return nil }
         
     }
     
-    func  findAdress(completion: @escaping (CLLocationCoordinate2D) -> Void) {
-        let adress = "Moscow"
+    func  findAdress(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
+        
         let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = adress
+        searchRequest.naturalLanguageQuery = self.adressToFind
 
         let search = MKLocalSearch(request: searchRequest)
         search.start { (response, error) in
             guard let response = response else {
                 // Handle the error.
-                completion(CLLocationCoordinate2D(latitude: 50, longitude: 51))
+                completion(nil)
                 return
             }
-            
-            for item in response.mapItems {
-                if let name = item.name,
-                    let location = item.placemark.location {
-                    print("\(name): \(location.coordinate.latitude),\(location.coordinate.longitude)")
+            if let name = response.mapItems[0].name,
+               let location = response.mapItems[0].placemark.location {
+                print("\(name): \(location.coordinate.latitude),\(location.coordinate.longitude)")
+                    self.arrPointOnMap.append(CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                     completion (CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                     return
                 }
             }
         }
     }
-}
+
