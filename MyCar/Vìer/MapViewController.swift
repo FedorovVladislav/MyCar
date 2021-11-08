@@ -1,5 +1,5 @@
 //
-//  MapViewController.swift
+//   MapViewController.swift
 //  MyCar
 
 
@@ -37,47 +37,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func addRoadOnMap(source: CLLocationCoordinate2D, destenation: CLLocationCoordinate2D){
         
         self.MKMapView.delegate = self
-    
-        let sourcePlacemark = MKPlacemark(coordinate:source)
-        
-        let destinationPlacemark = MKPlacemark(coordinate: destenation)
-
-        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
-        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
-
-    
-        
-        let directionRequest = MKDirections.Request()
-        directionRequest.source = sourceMapItem
-        directionRequest.destination = destinationMapItem
-        directionRequest.transportType = .automobile
-
-        
-        
-        // Calculate the direction
-        let directions = MKDirections(request: directionRequest)
-        directions.calculate(completionHandler:  {
-            (response, error) -> Void in
-
-            guard let response = response else {
-                if let error = error {
-                    print("Error: \(error)")
-                }
-                print("Error: 2")
-                return
+        self.MapModel.source = source
+        self.MapModel.destenation = destenation
+        self.MapModel.findRoad { route, distance in
+            if let tempRoute = route{
+                self.distans = distance!/1000
+                print ("Distance:\(self.distans)\n")
+                self.MKMapView.addOverlay(tempRoute.polyline, level: .aboveRoads)
+            
+                let rect = tempRoute.polyline.boundingMapRect
+                self.MKMapView.setRegion(MKCoordinateRegion(rect), animated: true)
             }
-
-            let route = response.routes[0]
-            self.distans = route.distance/1000
-            print ("Distance:\(self.distans)\n")
-            self.MKMapView.addOverlay(route.polyline, level: .aboveRoads)
-            
-            let rect = route.polyline.boundingMapRect
-            self.MKMapView.setRegion(MKCoordinateRegion(rect), animated: true)
-            
-        })
-        
+        }
     }
+        
 
     func AlertWithTextFieldAnd2Button(titleAlert: String, messageAlert: String, titleButton: String){
         var alertTextField: UITextField?
@@ -108,6 +81,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
     func addRoadOnMapCall(){
         
         if MapModel.getCountAdress() >= 2 {
@@ -120,7 +94,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
     
     func mapView(_ mapView: MKMapView, rendererFor
                    overlay: MKOverlay) -> MKOverlayRenderer {
