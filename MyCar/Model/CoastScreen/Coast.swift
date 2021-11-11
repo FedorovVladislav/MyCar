@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct coast {
+struct Coast {
     var name : String
-    var odometr : Int
-    var price : Int
+    var odometr : String
+    var price : String
     var descriotion : String?
     
 }

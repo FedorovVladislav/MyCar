@@ -196,12 +196,12 @@
                         <color key="barTintColor" systemColor="opaqueSeparatorColor"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Snf-el-zPA" kind="relationship" relationship="rootViewController" id="Ghk-BA-GR1"/>
+                        <segue destination="XHB-QY-HfH" kind="relationship" relationship="rootViewController" id="Daf-RV-xpc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFk-wg-B3a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="242" y="124"/>
+            <point key="canvasLocation" x="264" y="124"/>
         </scene>
         <!--Profile-->
         <scene sceneID="8eV-4a-W9b">
@@ -224,11 +224,11 @@
             <objects>
                 <viewController id="McW-EP-bpd" customClass="AddNewCoastViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAg-vP-Dzy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XON-XH-39F" userLabel="Name Stack View">
-                                <rect key="frame" x="20" y="113" width="374" height="69.5"/>
+                                <rect key="frame" x="20" y="25" width="374" height="69.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fu2-QY-UEM">
                                         <rect key="frame" x="148.5" y="0.0" width="77.5" height="20.5"/>
@@ -247,7 +247,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vZe-L3-Xga" userLabel="Odometr Stack View">
-                                <rect key="frame" x="15" y="207.5" width="384" height="69.5"/>
+                                <rect key="frame" x="15" y="119.5" width="384" height="69.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Одометр" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p0-nS-hBr">
                                         <rect key="frame" x="156" y="0.0" width="72" height="20.5"/>
@@ -266,7 +266,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3TN-Kh-eES" userLabel="Coast Stack View">
-                                <rect key="frame" x="15" y="302" width="384" height="69.5"/>
+                                <rect key="frame" x="15" y="214" width="384" height="69.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9Y-Ht-bNP">
                                         <rect key="frame" x="172.5" y="0.0" width="39" height="20.5"/>
@@ -286,14 +286,18 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlU-zH-HTu">
-                                <rect key="frame" x="70" y="715" width="274" height="31"/>
+                                <rect key="frame" x="70" y="661" width="274" height="31"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveCoast:" destination="McW-EP-bpd" eventType="touchUpInside" id="cLl-ga-dJf"/>
+                                    <segue destination="XHB-QY-HfH" kind="show" id="8OF-AE-EpL"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="a0Y-cg-ihn" userLabel="Coast Stack View">
-                                <rect key="frame" x="15" y="396.5" width="384" height="250"/>
+                                <rect key="frame" x="15" y="308.5" width="384" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fni-DI-Td1">
                                         <rect key="frame" x="148.5" y="0.0" width="87.5" height="20.5"/>
@@ -335,72 +339,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rGS-sG-Ro6"/>
+                    <connections>
+                        <outlet property="SaveButton" destination="nlU-zH-HTu" id="fy4-xj-O7x"/>
+                        <outlet property="nameTextField" destination="SAf-do-ll0" id="WJ2-7h-18G"/>
+                        <outlet property="odometrTextField" destination="t2i-rg-42f" id="d0J-eM-Hwg"/>
+                        <outlet property="priceTextField" destination="MKt-fQ-SKF" id="LNj-gz-Xxg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KoJ-Wy-RMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176.81159420289856" y="1495.9821428571429"/>
-        </scene>
-        <!--Rashodi-->
-        <scene sceneID="gJb-bB-qAH">
-            <objects>
-                <viewController id="Snf-el-zPA" customClass="CostsViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iUI-ru-EyM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ou6-8R-Px9">
-                                <rect key="frame" x="0.0" y="88" width="414" height="676"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifocator" textLabel="FnU-Vi-Y7Q" style="IBUITableViewCellStyleDefault" id="svc-Sn-HJy">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="svc-Sn-HJy" id="aFg-Dz-2nP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FnU-Vi-Y7Q">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Snf-el-zPA" id="ebe-H8-cSX"/>
-                                    <outlet property="delegate" destination="Snf-el-zPA" id="24B-E0-24a"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="LEF-Mc-efd"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                        <constraints>
-                            <constraint firstItem="Ou6-8R-Px9" firstAttribute="trailing" secondItem="LEF-Mc-efd" secondAttribute="trailing" id="2BE-6d-XI7"/>
-                            <constraint firstItem="Ou6-8R-Px9" firstAttribute="top" secondItem="LEF-Mc-efd" secondAttribute="top" id="ALu-02-7FI"/>
-                            <constraint firstItem="LEF-Mc-efd" firstAttribute="bottom" secondItem="Ou6-8R-Px9" secondAttribute="bottom" id="HsM-hB-HL5"/>
-                            <constraint firstItem="Ou6-8R-Px9" firstAttribute="leading" secondItem="LEF-Mc-efd" secondAttribute="leading" id="IYa-7h-FRJ"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Rashodi" id="QFG-61-9TP">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="RAC-Bm-DDW">
-                            <connections>
-                                <segue destination="McW-EP-bpd" kind="show" id="9Iq-eE-4rs"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="tableView" destination="Ou6-8R-Px9" id="pvz-Yz-9Xy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tC6-F5-LWB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="240.57971014492756" y="807.58928571428567"/>
+            <point key="canvasLocation" x="264" y="1507"/>
         </scene>
         <!--car-->
         <scene sceneID="KJC-XX-Fj5">
@@ -417,6 +365,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JfG-pt-rZU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-404.34782608695656" y="807.58928571428567"/>
+        </scene>
+        <!--Coast View Controller-->
+        <scene sceneID="4Dg-Zq-gtO">
+            <objects>
+                <tableViewController id="XHB-QY-HfH" customClass="CoastViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="RCu-1g-Kw5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Zjr-c1-d3Y">
+                            <rect key="frame" x="0.0" y="110.5" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <connections>
+                                <action selector="update:" destination="XHB-QY-HfH" eventType="touchUpInside" id="0Uf-do-Ix6"/>
+                            </connections>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellsIdenteficator" id="3TF-LY-iIY">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3TF-LY-iIY" id="vFV-TG-RAD">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XHB-QY-HfH" id="wS3-qK-u5Y"/>
+                            <outlet property="delegate" destination="XHB-QY-HfH" id="odC-K0-0nR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fCK-fx-74Y">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="C3N-rC-oI1">
+                            <connections>
+                                <segue destination="McW-EP-bpd" kind="show" id="YPL-qK-c4D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fTT-u4-OfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265" y="816"/>
         </scene>
         <!--map-->
         <scene sceneID="zn4-22-mbW">
@@ -480,6 +472,10 @@
             <point key="canvasLocation" x="-1042.0289855072465" y="807.58928571428567"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YPL-qK-c4D"/>
+        <segue reference="8OF-AE-EpL"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Car.com" width="446" height="850"/>
         <systemColor name="labelColor">
