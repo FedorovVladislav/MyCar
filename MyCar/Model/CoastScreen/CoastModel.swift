@@ -10,21 +10,9 @@ import Foundation
 class CoastsData {
     
     //massiv with coasts
-    private var coasts = [Coast]()
-    private var pricePerKilometr : Double?
-    
-
-    
-    
-    init(name: String , odometr: Double, price: Double){
-        let coast = Coast(name: name, odometr: odometr, price: price)
-        self.coasts.append(coast)
-        calProcePerKilometr()
-    }
-
-    
-    func calProcePerKilometr(){
-        
+    private var coasts : [Coast] = [Coast (name: "FirstTO", odometr: 15000 , price: 15000.0)]
+    private var pricePerKilometr : Double  {
+        get {
         var odometrs = Set <Double>()
         var prices : Double = 0
         
@@ -33,14 +21,14 @@ class CoastsData {
         
         let distance = odometrs.max()! - odometrs.min()!
         
-        if distance > 0{
-            self.pricePerKilometr = (prices / distance)
-            print ( "pricePerKilometr:\(self.pricePerKilometr)")
-        } else{ self.pricePerKilometr = 0
-            print ( "pricePerKilometr:\(self.pricePerKilometr)")
+        if distance > 0 {
+           return (prices / distance)
+        } else { return 0 }
         }
     }
-    
+    func getPricePerKilometr()->Double{
+        return self.pricePerKilometr
+    }
     
     func getCountCoasts() -> Int {
         return self.coasts.count
@@ -55,24 +43,20 @@ class CoastsData {
             return nil
         }
     }
+    
     func getPricePerKilometrs()-> Double {
-        return self.pricePerKilometr!
+        return self.pricePerKilometr
     }
     
     func addCoast(newCoast: Coast){
-        print (newCoast.name)
-        print (newCoast.odometr)
-        print (newCoast.price)
+        print("Add New Coast:\(newCoast.name) , \(newCoast.odometr), \(newCoast.price)")
         self.coasts.append(newCoast)
-        calProcePerKilometr()
-        
     }
     
     func removeCoast(at index:Int) {
         if index <= getCountCoasts() - 1 {
             print("Remove coast at index: \(index)")
             self.coasts.remove(at: index)
-            calProcePerKilometr()
         } else { print("Invalid index: \(index)") }
     }
 }
