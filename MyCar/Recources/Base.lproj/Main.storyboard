@@ -409,6 +409,7 @@
                         <outlet property="nameTextField" destination="shk-oX-Uta" id="TtT-5k-zLr"/>
                         <outlet property="odometrTextField" destination="Nsv-f1-fqb" id="cp0-Vd-EV5"/>
                         <outlet property="priceTextField" destination="CQm-44-vKC" id="zdN-Xs-NAm"/>
+                        <outlet property="scrolView" destination="aZO-Mu-JcU" id="35u-uS-OzO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KoJ-Wy-RMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -439,23 +440,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Zjr-c1-d3Y">
-                            <rect key="frame" x="0.0" y="110.5" width="414" height="44"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ES0-hB-zEI">
+                            <rect key="frame" x="0.0" y="127" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            <connections>
-                                <action selector="update:" destination="XHB-QY-HfH" eventType="touchUpInside" id="0Uf-do-Ix6"/>
-                            </connections>
-                        </button>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellsIdenteficator" id="3TF-LY-iIY">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellsIdenteficator" rowHeight="60" id="3TF-LY-iIY" customClass="CoastTableViewCell" customModule="MyCar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3TF-LY-iIY" id="vFV-TG-RAD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC4-xc-aXq">
+                                            <rect key="frame" x="20" y="5" width="48.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUE-zG-oho">
+                                            <rect key="frame" x="348" y="34" width="39" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odometr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZU-Uq-6pc">
+                                            <rect key="frame" x="20" y="36" width="58" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ZZU-Uq-6pc" firstAttribute="leading" secondItem="vFV-TG-RAD" secondAttribute="leading" constant="20" symbolic="YES" id="168-vw-6G2"/>
+                                        <constraint firstItem="MC4-xc-aXq" firstAttribute="top" secondItem="vFV-TG-RAD" secondAttribute="top" constant="5" id="6jD-06-5nL"/>
+                                        <constraint firstAttribute="bottom" secondItem="PUE-zG-oho" secondAttribute="bottom" constant="5" id="JLl-Qm-D6H"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZZU-Uq-6pc" secondAttribute="bottom" constant="7" id="Qtd-Cw-Qge"/>
+                                        <constraint firstItem="MC4-xc-aXq" firstAttribute="leading" secondItem="vFV-TG-RAD" secondAttribute="leading" constant="20" id="Vrt-zh-F8b"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PUE-zG-oho" secondAttribute="trailing" constant="7" id="geA-2U-7wY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="NameUILable" destination="MC4-xc-aXq" id="9eI-bb-48b"/>
+                                    <outlet property="odometrUILable" destination="ZZU-Uq-6pc" id="Tlt-jd-M9d"/>
+                                    <outlet property="priceUILable" destination="PUE-zG-oho" id="EHe-od-J8b"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -470,6 +502,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pricePerKilometr" destination="ES0-hB-zEI" id="UXM-ic-pgg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTT-u4-OfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
