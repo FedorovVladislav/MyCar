@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "77E144B7-6D23-403C-88FB-DBC952FEBB40"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A3B6866E-A0CB-48BD-8518-B550DA899043"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyCar/Vi&#x300;er/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "MapViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E895F4B8-29B3-49E9-905B-83138BAC7DC5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyCar/Vi&#x300;er/CoastsScreen/AddNewCoastViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyCar/Vi&#x300;er/CoastsScreen/CoastViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "CoastViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - d8d0e372fa64cf25"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyCar.CoastViewController.__allocating_init(style: __C.UITableViewStyle) -&gt; MyCar.CoastViewController"
+                  moduleName = "MyCar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - c03c57c1f092cf96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyCar.CoastViewController.init(style: __C.UITableViewStyle) -&gt; MyCar.CoastViewController"
+                  moduleName = "MyCar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - 3bfe3488d661728f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyCar.CoastViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MyCar.CoastViewController"
+                  moduleName = "MyCar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - 5d050e81fab2f26f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyCar.CoastViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MyCar.CoastViewController"
+                  moduleName = "MyCar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "143">
+               </Location>
+               <Location
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - a3b53a3b7ad47230"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyCar.CoastViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MyCar.CoastViewController&gt;"
+                  moduleName = "MyCar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - b1c39741e4281dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyCar.CoastViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MyCar.CoastViewController&gt;"
+                  moduleName = "MyCar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - 898127d6cddad5e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyCar.CoastViewController.__deallocating_deinit"
+                  moduleName = "MyCar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
