@@ -236,7 +236,7 @@
         <!--Add New Coast View Controller-->
         <scene sceneID="8Zu-es-mdZ">
             <objects>
-                <viewController id="McW-EP-bpd" customClass="AddNewCoastViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="yourVcName" id="McW-EP-bpd" customClass="AddNewCoastViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ikD-5i-aPX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -440,13 +440,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ES0-hB-zEI">
+                        <stackView key="tableFooterView" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="kzZ-YG-ieW">
                             <rect key="frame" x="0.0" y="127" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="726" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2D-mC-Hk3">
+                                    <rect key="frame" x="0.0" y="0.0" width="207" height="44"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTy-Ym-2OY">
+                                    <rect key="frame" x="207" y="0.0" width="207" height="44"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellsIdenteficator" rowHeight="60" id="3TF-LY-iIY" customClass="CoastTableViewCell" customModule="MyCar" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
@@ -456,19 +467,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC4-xc-aXq">
-                                            <rect key="frame" x="20" y="5" width="48.5" height="21"/>
+                                            <rect key="frame" x="20" y="5" width="48.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUE-zG-oho">
-                                            <rect key="frame" x="348" y="34" width="39" height="21"/>
+                                            <rect key="frame" x="348" y="34.5" width="39" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odometr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZU-Uq-6pc">
-                                            <rect key="frame" x="20" y="36" width="58" height="17"/>
+                                            <rect key="frame" x="20" y="36" width="57.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -496,14 +507,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="fCK-fx-74Y">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="C3N-rC-oI1">
+                        <barButtonItem key="rightBarButtonItem" title="add" id="C3N-rC-oI1">
                             <connections>
                                 <segue destination="McW-EP-bpd" kind="show" id="YPL-qK-c4D"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="pricePerKilometr" destination="ES0-hB-zEI" id="UXM-ic-pgg"/>
+                        <outlet property="pricePerKilometr" destination="pTy-Ym-2OY" id="cKy-gO-QjK"/>
+                        <outlet property="totalDistance" destination="A2D-mC-Hk3" id="Nzs-Du-Wlq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTT-u4-OfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

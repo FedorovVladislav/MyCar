@@ -20,6 +20,7 @@ class WheatherData {
                 
                 return
             }
+            
             guard let data = data else { return}
             print(String(data: data, encoding: .utf8))
             do {
