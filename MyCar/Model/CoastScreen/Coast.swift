@@ -11,6 +11,6 @@ struct Coast {
     var name : String
     var odometr : Double
     var price : Double
-    var descriotion : String?
+    var userDescription : String?
     
 }

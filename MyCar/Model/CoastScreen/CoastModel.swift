@@ -6,8 +6,14 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 class CoastsData {
+    
+    init(){
+        getDataFromModel()
+    }
     
     //massiv with coasts
     private var coasts : [Coast] = [Coast (name: "FirstTO", odometr: 15000 , price: 15000.0)]
@@ -70,6 +76,49 @@ class CoastsData {
         if index <= getCountCoasts() - 1 {
             self.coasts[index] = newCoast
         } else { print("Invalid index: \(index)") }
+    }
+    
+    
+    func addNewCoast(newCoast coast: Coast) {
+       
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "CoreCoasts", in: context) else {return}
+        
+        let taskOject = CoreCoasts (entity: entity, insertInto: context)
+        
+        taskOject.name = coast.name
+        taskOject.price = coast.price
+        taskOject.odometr = coast.odometr
+        
+        if let userDescription = coast.userDescription {
+        taskOject.userDescription = userDescription
+        } else { taskOject.userDescription = "" }
+        
+        do {
+            try context.save()
+        }
+        catch let error as NSError{
+            print ("Core error2:\(error.localizedDescription)")
+        }
+    }
+    
+    func getDataFromModel() {
+        print ("printWork")
+        
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest <CoreCoasts>(entityName: "CoreCoasts")
+
+        do{
+            let result  =  try context.fetch(fetchRequest)
+            for res in result {
+                self.coasts.append(Coast(name: res.name!, odometr: res.odometr, price: res.price, userDescription: res.userDescription))
+            }
+        }catch let error as NSError {
+           print("Core error1:\(error.localizedDescription)")
+        }
     }
 }
 

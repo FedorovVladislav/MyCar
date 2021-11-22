@@ -40,7 +40,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyCar/Vi&#x300;er/CoastsScreen/CoastViewController.swift"
@@ -67,7 +67,7 @@
                   offsetFromSymbolStart = "23">
                </Location>
                <Location
-                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - c03c57c1f092cf96"
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - c03c57c1f092ce75"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -77,8 +77,8 @@
                   urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
                   offsetFromSymbolStart = "86">
                </Location>
                <Location
@@ -97,7 +97,7 @@
                   offsetFromSymbolStart = "31">
                </Location>
                <Location
-                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - 5d050e81fab2f26f"
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - 5d050e81fab2f38c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -107,8 +107,8 @@
                   urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
                   offsetFromSymbolStart = "143">
                </Location>
                <Location
@@ -127,7 +127,7 @@
                   offsetFromSymbolStart = "23">
                </Location>
                <Location
-                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - b1c39741e4281dc"
+                  uuid = "962D24DA-2598-4181-8CE3-3A61F7A0A7C2 - b1c39741e42803f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -137,8 +137,8 @@
                   urlString = "file:///Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Vi%CC%80er/CoastsScreen/CoastViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
                   offsetFromSymbolStart = "100">
                </Location>
                <Location

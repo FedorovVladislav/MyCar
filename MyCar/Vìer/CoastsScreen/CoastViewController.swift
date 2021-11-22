@@ -19,12 +19,12 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         setDataLables()
     }
     
+
     // MARK: - переменные
     @IBOutlet weak var pricePerKilometr: UILabel!
-    @IBOutlet weak var totalDistance: UILabel!
-    
+    @IBOutlet weak var totalDistance: UILabel!    
     var coastData = CoastsData()
-    
+
     // MARK: - обработка действий с моделью
     func recidveCoast(new coastFromView: Coast, index : Int?) {
         // add new item in model
