@@ -38,6 +38,27 @@ class ProfileViewController: UIViewController {
             print ("Core error2:\(error.localizedDescription)")
         }
     }
+    @IBAction func deleteLast(_ sender: UIButton) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let  fetchRequest = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
+        do{
+            let results = try context.fetch(fetchRequest)
+            let last = results.count - 1
+            context.delete(results[last])
+            do{
+                try context.save()
+                print ("Delete goof")
+            }catch let error as NSError {
+                print("Core error save :\(error.localizedDescription)")
+             }
+            
+        }catch let error as NSError {
+                print("Core error delete :\(error.localizedDescription)")
+             }
+        }
+    
     
     @IBAction func printelement(_ sender: UIButton) {
         print ("printWork")
@@ -60,6 +81,7 @@ class ProfileViewController: UIViewController {
            print("Core error1:\(error.localizedDescription)")
         }
          
+        
     }
 }
 

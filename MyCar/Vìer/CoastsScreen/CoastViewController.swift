@@ -8,7 +8,7 @@
 import UIKit
 
 protocol coastDataDelegate{
-    func recidveCoast(new coastFromView: Coast,index: Int?)
+    func recidveCoast(new coastFromView: Coast, index: Int?)
 }
 
 class CoastViewController: UITableViewController, coastDataDelegate {
@@ -19,7 +19,6 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         setDataLables()
     }
     
-
     // MARK: - переменные
     @IBOutlet weak var pricePerKilometr: UILabel!
     @IBOutlet weak var totalDistance: UILabel!    
@@ -41,13 +40,13 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     
     func addNewItemIntoModel(newCoast: Coast){
         
-        coastData.addCoast(newCoast: newCoast)
+        coastData.addNewCoast(newCoast: newCoast)
         tableView.reloadData()
     }
     
     func changeItemInModel(new coastFromView: Coast, index : Int){
-        
-        coastData.changeCurentCoast(at: index, newCoast: coastFromView)
+        print ("CallMetod")
+        coastData.changeExistCoast (at: index, newCoast: coastFromView)
         tableView.reloadData()
     }
     
@@ -106,7 +105,8 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            coastData.removeCoast(at: indexPath.row)
+            coastData.deleteDromModel(at: indexPath.row)
+            //coastData.removeCoast(at: indexPath.row)
             tableView.reloadData()
         }
     }

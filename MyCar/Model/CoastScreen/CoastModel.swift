@@ -10,13 +10,13 @@ import UIKit
 import CoreData
 
 class CoastsData {
-    
+    // MARK: - Иницалзация
     init(){
         getDataFromModel()
     }
     
-    //massiv with coasts
-    private var coasts : [Coast] = [Coast (name: "FirstTO", odometr: 15000 , price: 15000.0)]
+    // MARK: - Переменные
+    private var coasts : [Coast] = []
     private var pricePerKilometr : Int  {
         get {
         var odometrs = Set <Double>()
@@ -40,13 +40,15 @@ class CoastsData {
             }
     }
                                
-    
+    // MARK: - Геттеры
     func getCountCoasts() -> Int {
         return self.coasts.count
     }
+    
     func getTotalDistance()->Int{
         return  self.totalDistance
     }
+    
     func getCoast(at index: Int) -> Coast? {
         if index <= getCountCoasts() - 1 {
             print("Return coast at index: \(index)")
@@ -61,26 +63,11 @@ class CoastsData {
         return self.pricePerKilometr
     }
     
-    func addCoast(newCoast: Coast){
-        print("Add New Coast:\(newCoast.name) , \(newCoast.odometr), \(newCoast.price)")
-        self.coasts.append(newCoast)
-    }
-    
-    func removeCoast(at index:Int) {
-        if index <= getCountCoasts() - 1 {
-            print("Remove coast at index: \(index)")
-            self.coasts.remove(at: index)
-        } else { print("Invalid index: \(index)") }
-    }
-    func changeCurentCoast(at index: Int, newCoast: Coast) {
-        if index <= getCountCoasts() - 1 {
-            self.coasts[index] = newCoast
-        } else { print("Invalid index: \(index)") }
-    }
-    
+    // MARK: - Сеттеры
     
     func addNewCoast(newCoast coast: Coast) {
-       
+        print ("addNewCoast")
+        
         let appDelegate = UIApplication.shared.delegate  as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
@@ -98,14 +85,88 @@ class CoastsData {
         
         do {
             try context.save()
+            addCoast(newCoast: coast)
         }
-        catch let error as NSError{
-            print ("Core error2:\(error.localizedDescription)")
-        }
+        catch let error as NSError { print ("addNewCoast Core Error:\(error.localizedDescription)") }
     }
     
-    func getDataFromModel() {
-        print ("printWork")
+    func changeExistCoast(at index : Int, newCoast: Coast){
+        print ("changeExistCoast at \(index)")
+        
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        let context  = appDelegate.persistentContainer.viewContext
+        
+        let fetcht = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
+        
+        do{
+            let results = try context.fetch(fetcht)
+            
+            if index <= results.count - 1 {
+                results[index].name = newCoast.name
+                results[index].price = newCoast.price
+                results[index].odometr = newCoast.odometr
+            
+                if let userDescription = newCoast.userDescription {
+                    results[index].userDescription = userDescription
+                } else { results[index].userDescription = "" }
+            
+                do{
+                    try context.save()
+                    changeCurentCoast(at: index, newCoast: newCoast)
+                }catch let error as NSError { print("changeExistCoast Save Core error:\(error.localizedDescription)") }
+            } else { print("Invalid index: \(index)") }
+        }catch let error as NSError { print("changeExistCoast Core error:\(error.localizedDescription)") }
+    }
+    
+    func deleteDromModel(at index: Int ){
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let  fetchRequest = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
+        do{
+            let results = try context.fetch(fetchRequest)
+            
+            if index <= results.count - 1 {
+                print("Remove coast at index: \(index)")
+                context.delete(results[index])
+                do{
+                    try context.save()
+                    removeCoast(at: index)
+                    
+                }catch let error as NSError { print("Core error save :\(error.localizedDescription)") }
+                
+            } else { print("Invalid index: \(index)") }
+            
+            
+        }catch let error as NSError { print("deleteDromModel Core error:\(error.localizedDescription)") }
+    }
+    
+    // MARK: - Работас массивом
+    
+    private func  addCoast(newCoast: Coast){
+    print("Add New Coast:\(newCoast.name) , \(newCoast.odometr), \(newCoast.price)")
+    self.coasts.append(newCoast)
+    }
+    
+    private func removeCoast(at index:Int) {
+        if index <= getCountCoasts() - 1 {
+            print("Remove coast at index: \(index)")
+            self.coasts.remove(at: index)
+        } else { print("Invalid index: \(index)") }
+    }
+    
+    private  func changeCurentCoast(at index: Int, newCoast: Coast) {
+        if index <= getCountCoasts() - 1 {
+            self.coasts[index] = newCoast
+        } else { print("Invalid index: \(index)") }
+    }
+    
+    
+    // MARK: - Работас с моделью
+    
+    private func getDataFromModel() {
+        print ("getDataFromModel")
         
         let appDelegate = UIApplication.shared.delegate  as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -114,12 +175,11 @@ class CoastsData {
         do{
             let result  =  try context.fetch(fetchRequest)
             for res in result {
+                print ("AddFromCoreToClass")
                 self.coasts.append(Coast(name: res.name!, odometr: res.odometr, price: res.price, userDescription: res.userDescription))
             }
-        }catch let error as NSError {
-           print("Core error1:\(error.localizedDescription)")
-        }
+            
+        }catch let error as NSError { print("getDataFromModel CoreData Error:\(error.localizedDescription)") }
     }
+    
 }
-
-
