@@ -30,6 +30,7 @@ class AddNewCoastViewController: UIViewController, UITextFieldDelegate {
         delegatedata?.recidveCoast(new:newCoast, index: self.coastIndex)
         //alert and  Return Back to tableview
         alertSaveNewCoast(newCoast: newCoast)
+      
     }
     
     

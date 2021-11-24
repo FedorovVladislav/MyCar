@@ -1,37 +1,38 @@
-//
-//   MapViewController.swift
-//  MyCar
-
-
 import UIKit
 import MapKit
+
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-// MARK: -UIItem
-    
-    @IBOutlet weak var distanceRoad: UILabel!
-    @IBOutlet weak var MKMapView: MKMapView!
-    
+    // MARK: - кнопки
     @IBAction func AddRoad(_ sender: UIButton) {
         addRoadOnMapCall()
     }
+    
+    @IBAction func testBUTTON(_ sender: UIButton) {
+        print ("Print data: \(coastData.getCountCoasts())")
+    }
+    
     @IBAction func AddAdress(_ sender: UIButton) {
         AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
     }
     
 // MARK: -Variable
-    
+
     var  MapModel = mapModel()
-    var alertTextField: UITextField?
+    
+    var coastData = CoastsData.shared
+    
     var distans : Double = 0 {
         didSet {
             distanceRoad.text = "\(distans) km"
         }
     }
-
- //override func viewDidLoad() {
-  //    super.viewDidLoad()
-//}
+    
+    var alertTextField: UITextField?
+    
+    @IBOutlet weak var distanceRoad: UILabel!
+    
+    @IBOutlet weak var MKMapView: MKMapView!
     
 // MARK: -Function
     func addRoadOnMap(source: CLLocationCoordinate2D, destenation: CLLocationCoordinate2D){
@@ -50,7 +51,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-        
 
     func AlertWithTextFieldAnd2Button(titleAlert: String, messageAlert: String, titleButton: String){
         var alertTextField: UITextField?
@@ -95,11 +95,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapView(_ mapView: MKMapView, rendererFor
-                   overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
         renderer.lineWidth = 5.0
         return renderer
     }
+    
 }

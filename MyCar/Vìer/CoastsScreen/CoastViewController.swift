@@ -22,15 +22,16 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     // MARK: - переменные
     @IBOutlet weak var pricePerKilometr: UILabel!
     @IBOutlet weak var totalDistance: UILabel!    
-    var coastData = CoastsData()
+    var coastData = CoastsData.shared
+    
 
     // MARK: - обработка действий с моделью
     func recidveCoast(new coastFromView: Coast, index : Int?) {
-        // add new item in model
+
         if let index = index{
             changeItemInModel(new: coastFromView, index: index)
         } else {
-            addNewItemIntoModel(newCoast: coastFromView)
+            addNewItemIntoModel(exist: coastFromView)
         }
         //update Table
         tableView.reloadData()
@@ -38,14 +39,14 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         setDataLables()
     }
     
-    func addNewItemIntoModel(newCoast: Coast){
+    func addNewItemIntoModel(exist coastFromView: Coast){
         
-        coastData.addNewCoast(newCoast: newCoast)
+        coastData.addNewCoast(newCoast: coastFromView)
         tableView.reloadData()
     }
     
     func changeItemInModel(new coastFromView: Coast, index : Int){
-        print ("CallMetod")
+
         coastData.changeExistCoast (at: index, newCoast: coastFromView)
         tableView.reloadData()
     }
@@ -59,12 +60,21 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         let valuepricePerKilometr = coastData.getPricePerKilometrs()
         pricePerKilometr.text = "\(valuepricePerKilometr) ₽/km"
     }
-
-    func edingCoastScreen(currentCoast: Coast, index : Int) {
+    
+    @IBAction func addNewCoast(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        if let addNewCoastViewController = mainStoryboard.instantiateViewController(withIdentifier: "yourVcName") as? AddNewCoastViewController {
+            addNewCoastViewController.delegatedata=self
+            show(addNewCoastViewController, sender: nil)
+        }
+    }
+    
+    func edingCoastScreen(index : Int) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let addNewCoastViewController = mainStoryboard.instantiateViewController(withIdentifier: "yourVcName") as? AddNewCoastViewController {
             addNewCoastViewController.changeCoast = coastData.getCoast(at: index)
             addNewCoastViewController.coastIndex = index
+            addNewCoastViewController.delegatedata=self
             show(addNewCoastViewController, sender: nil)
         }
     }
@@ -88,18 +98,18 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         return cell
     }
     //подготовка к делииигрованию
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc2 = segue.destination as? AddNewCoastViewController {
-            vc2.delegatedata = self
-        }
-    }
+    //   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // if let vc2 = segue.destination as? AddNewCoastViewController {
+    //    vc2.delegatedata = self
+    //}
+    //}
    
     // MARK: - редактирование ячеек
     
     // окно для редактрования текущего расхода
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         guard let currentCoast = coastData.getCoast(at: indexPath.row) else { return  print ("Invalid index")}
-        edingCoastScreen(currentCoast: currentCoast, index: indexPath.row)
+        edingCoastScreen(index: indexPath.row)
     }
     // удаление записи
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

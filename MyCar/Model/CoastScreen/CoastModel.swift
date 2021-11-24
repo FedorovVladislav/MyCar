@@ -16,6 +16,7 @@ class CoastsData {
     }
     
     // MARK: - Переменные
+    static let shared = CoastsData()
     private var coasts : [Coast] = []
     private var pricePerKilometr : Int  {
         get {
@@ -39,7 +40,9 @@ class CoastsData {
             return Int((distance.max()!-distance.min()!).rounded())
             }
     }
-                               
+   
+    
+    
     // MARK: - Геттеры
     func getCountCoasts() -> Int {
         return self.coasts.count
@@ -62,6 +65,8 @@ class CoastsData {
     func getPricePerKilometrs()-> Int {
         return self.pricePerKilometr
     }
+    
+    
     
     // MARK: - Сеттеры
     
@@ -182,4 +187,11 @@ class CoastsData {
         }catch let error as NSError { print("getDataFromModel CoreData Error:\(error.localizedDescription)") }
     }
     
+}
+private enum typeCoast: String {
+    case repair = "Repair"
+    case tuning = "Tuning"
+    case to = "TO"
+    case paidRoad = "Paid Road"
+    case insurance = "Insurance"
 }
