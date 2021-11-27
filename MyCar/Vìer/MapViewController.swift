@@ -4,17 +4,19 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - кнопки
-    @IBAction func AddRoad(_ sender: UIButton) {
-        addRoadOnMapCall()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.MKMapView.delegate = self
+    }
+
+    @IBAction func AddPoint(_ sender: UIBarButtonItem) {
+        AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
     }
     
     @IBAction func testBUTTON(_ sender: UIButton) {
         print ("Print data: \(coastData.getCountCoasts())")
     }
     
-    @IBAction func AddAdress(_ sender: UIButton) {
-        AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
-    }
     
 // MARK: -Variable
 
@@ -35,14 +37,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var MKMapView: MKMapView!
     
 // MARK: -Function
-    func addRoadOnMap(source: CLLocationCoordinate2D, destenation: CLLocationCoordinate2D){
+    func addRoadOnMap(){
         
-        self.MKMapView.delegate = self
-        self.MapModel.source = source
-        self.MapModel.destenation = destenation
-        self.MapModel.findRoad { route, distance in
+        self.MapModel.findRoad { route, distance, time  in
             if let tempRoute = route{
                 self.distans = distance!/1000
+                print ("Price Trip : \(self.coastData.getPriceTrip(distance: distance!/1000))P")
+                print ("time \(time!/3600)")
                 print ("Distance:\(self.distans)\n")
                 self.MKMapView.addOverlay(tempRoute.polyline, level: .aboveRoads)
             
@@ -53,47 +54,37 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
 
     func AlertWithTextFieldAnd2Button(titleAlert: String, messageAlert: String, titleButton: String){
-        var alertTextField: UITextField?
         
         let alertView = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: UIAlertController.Style.alert)
-        alertView.addTextField(configurationHandler: { textField -> Void in
-            alertTextField = textField
-        })
+        
+        alertView.addTextField()
         alertView.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         alertView.addAction(UIAlertAction(title: titleButton, style: UIAlertAction.Style.default, handler: { ACTION -> Void in
-                if let tempText = alertTextField?.text {
-                    self.addAnotationOnMap(adress: tempText)
-                }
+            guard  let tempText = alertView.textFields?.first?.text else { return }
+            self.addAnotationOnMap(adress: tempText)
         }))
+        
         self.present(alertView, animated: true, completion: nil)
     }
     
     func addAnotationOnMap(adress: String ) {
+        
         MapModel.adressToFind = adress
         
         MapModel.findAdress { MapPoint in
-            if let tempMapPoint = MapPoint {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = tempMapPoint
-                self.MKMapView.addAnnotation(annotation)
-            } else {
-                print("Return Nil")
-            }
+            guard let tempMapPoint = MapPoint else { return }
+                
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = tempMapPoint
+            self.MKMapView.addAnnotation(annotation)
+            self.MKMapView.setRegion(MKCoordinateRegion(center: MapPoint!, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)), animated: true)
+                
+            if self.MapModel.destenation != nil {
+                    self.addRoadOnMap()
+                }
         }
     }
     
-    func addRoadOnMapCall(){
-        
-        if MapModel.getCountAdress() >= 2 {
-            for i in 0...(MapModel.getCountAdress() - 2)  {
-                print (i)
-                if let source = MapModel.getLastAdress(index: i),
-                   let destenation = MapModel.getLastAdress(index: i+1){
-                    addRoadOnMap( source: source, destenation: destenation)
-                }
-            }
-        }
-    }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)

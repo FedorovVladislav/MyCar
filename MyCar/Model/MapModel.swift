@@ -12,23 +12,13 @@ class mapModel {
     
     
     var adressToFind: String = ""
-    var arrPointOnMap = [CLLocationCoordinate2D]()
-    
+   
     var source: CLLocationCoordinate2D?
     var destenation: CLLocationCoordinate2D?
     
-    
-    func getCountAdress()-> Int{
-        return arrPointOnMap.count
-    }
-    
-    func getLastAdress (index: Int)-> CLLocationCoordinate2D?  {
-        if (index >= 0) && (index <= (arrPointOnMap.count - 1)) {
-            return arrPointOnMap[index]
-        } else { return nil }
+
         
-    }
-    
+
     func  findAdress(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
         
         let searchRequest = MKLocalSearch.Request()
@@ -43,16 +33,22 @@ class mapModel {
             }
             if let name = response.mapItems[0].name,
                let location = response.mapItems[0].placemark.location {
-                print("\(name): \(location.coordinate.latitude),\(location.coordinate.longitude)")
-                    self.arrPointOnMap.append(CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+                    print("\(name): \(location.coordinate.latitude),\(location.coordinate.longitude)")
+                if self.source == nil {
+                    self.source = (CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                     completion (CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
                     return
+                } else {
+                    self.destenation = (CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+                    completion (CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+                    return
+                    }
                 }
             }
         }
     
     
-func findRoad (completion : @escaping (MKRoute?, Double?) -> Void ){
+    func findRoad (completion : @escaping (MKRoute?, Double?, TimeInterval?) -> Void ){
    
     guard let source = self.source else { return }
     guard let destenation = self.destenation else { return }
@@ -66,15 +62,13 @@ func findRoad (completion : @escaping (MKRoute?, Double?) -> Void ){
     let directions = MKDirections(request: directionRequest)
     directions.calculate(completionHandler:  { (response, error) -> Void in
         guard let response = response else {
-            if let error = error {
-                print("Error: \(error)")
-                completion(nil, nil)
-            }
-            print("Error: 2")
-            completion(nil, nil)
+            if let error = error { print("Error: \(error)") }
+            completion(nil, nil,nil)
             return
         }
-        completion(response.routes[0], response.routes[0].distance)
+        self.source = nil
+        self.destenation = nil
+        completion(response.routes[0], response.routes[0].distance, response.routes[0].expectedTravelTime)
         })
     }
 }

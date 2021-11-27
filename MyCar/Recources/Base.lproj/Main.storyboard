@@ -210,47 +210,6 @@
                     <view key="view" contentMode="scaleToFill" id="eSD-uX-vbe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-z1-PLb">
-                                <rect key="frame" x="159" y="126" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C1A-Ze-hQi">
-                                <rect key="frame" x="159" y="729" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2r-Hg-o32">
-                                <rect key="frame" x="181" y="293" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="add"/>
-                                <connections>
-                                    <action selector="das:" destination="y7r-HI-flc" eventType="touchUpInside" id="Cuu-gN-C8Y"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E42-Ia-5k3">
-                                <rect key="frame" x="181" y="424" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="print"/>
-                                <connections>
-                                    <action selector="printelement:" destination="y7r-HI-flc" eventType="touchUpInside" id="uKo-MQ-dKH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXR-Lt-dg0">
-                                <rect key="frame" x="163" y="521" width="93" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Delete last"/>
-                                <connections>
-                                    <action selector="deleteLast:" destination="y7r-HI-flc" eventType="touchUpInside" id="dT4-fJ-pYi"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rD2-Av-VE3"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                     </view>
@@ -472,21 +431,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="726" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2D-mC-Hk3">
-                                    <rect key="frame" x="0.0" y="0.0" width="138" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="207" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYd-68-cU1">
-                                    <rect key="frame" x="138" y="0.0" width="138" height="44"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    <connections>
-                                        <action selector="temp:" destination="XHB-QY-HfH" eventType="touchUpInside" id="aFt-FA-EUH"/>
-                                    </connections>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTy-Ym-2OY">
-                                    <rect key="frame" x="276" y="0.0" width="138" height="44"/>
+                                    <rect key="frame" x="207" y="0.0" width="207" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -557,7 +508,7 @@
             </objects>
             <point key="canvasLocation" x="265" y="816"/>
         </scene>
-        <!--map-->
+        <!--Title-->
         <scene sceneID="zn4-22-mbW">
             <objects>
                 <viewController storyboardIdentifier="mapView" id="DWg-Db-BQe" customClass="MapViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
@@ -568,28 +519,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iLE-4J-Y9Z">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSh-W5-U6N">
-                                <rect key="frame" x="6" y="124" width="108" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="AddAdress"/>
-                                <connections>
-                                    <action selector="AddAdress:" destination="DWg-Db-BQe" eventType="touchUpInside" id="hMk-tK-pRh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rov-Ir-nMA">
-                                <rect key="frame" x="232" y="124" width="102" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="AddRoad"/>
-                                <connections>
-                                    <action selector="AddRoad:" destination="DWg-Db-BQe" eventType="touchUpInside" id="hey-uA-fiU"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhY-58-yfv">
                                 <rect key="frame" x="20" y="169" width="164" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -597,15 +526,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzj-xN-Zb0">
-                                <rect key="frame" x="232" y="397" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
-                                <connections>
-                                    <action selector="testBUTTON:" destination="DWg-Db-BQe" eventType="touchUpInside" id="fQE-uF-5Hj"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u09-Mw-DNC"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -617,7 +537,14 @@
                             <constraint firstItem="iLE-4J-Y9Z" firstAttribute="leading" secondItem="u09-Mw-DNC" secondAttribute="leading" id="vr9-cp-Qay"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="map" id="hyk-vv-ewf"/>
+                    <navigationItem key="navigationItem" title="Title" id="9av-Hz-JKn">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="point.topleft.down.curvedto.point.bottomright.up.fill" catalog="system" id="7ch-ws-MUe"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fx4-Zv-xTW">
+                            <connections>
+                                <action selector="AddPoint:" destination="DWg-Db-BQe" id="T44-Nh-PeF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="MKMapView" destination="iLE-4J-Y9Z" id="PZj-Hd-t0C"/>
                         <outlet property="distanceRoad" destination="fhY-58-yfv" id="VyR-E8-zvy"/>
@@ -630,6 +557,7 @@
     </scenes>
     <resources>
         <image name="Car.com" width="446" height="850"/>
+        <image name="point.topleft.down.curvedto.point.bottomright.up.fill" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

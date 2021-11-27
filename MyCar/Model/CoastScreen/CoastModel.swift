@@ -18,6 +18,8 @@ class CoastsData {
     // MARK: - Переменные
     static let shared = CoastsData()
     private var coasts : [Coast] = []
+    private var distanceTrip : Double = 0
+    private var fuelPrice : Double = 50
     private var pricePerKilometr : Int  {
         get {
         var odometrs = Set <Double>()
@@ -40,7 +42,10 @@ class CoastsData {
             return Int((distance.max()!-distance.min()!).rounded())
             }
     }
-   
+    private var priceTrip : Double {
+        return self.distanceTrip * Double(self.pricePerKilometr) + self.distanceTrip/100*7*fuelPrice
+    }
+    
     
     
     // MARK: - Геттеры
@@ -66,6 +71,10 @@ class CoastsData {
         return self.pricePerKilometr
     }
     
+    func getPriceTrip(distance: Double) ->Double {
+        self.distanceTrip = distance
+        return priceTrip
+    }
     
     
     // MARK: - Сеттеры

@@ -83,7 +83,6 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     
     // количество строк
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return coastData.getCountCoasts()
     }
     //подготовка ячейки
@@ -97,12 +96,6 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         cell.priceUILable.text = "\(coast.price) ₽"
         return cell
     }
-    //подготовка к делииигрованию
-    //   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // if let vc2 = segue.destination as? AddNewCoastViewController {
-    //    vc2.delegatedata = self
-    //}
-    //}
    
     // MARK: - редактирование ячеек
     
