@@ -3,56 +3,63 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    // MARK: - кнопки
     override func viewDidLoad() {
         super.viewDidLoad()
         self.MKMapView.delegate = self
     }
+    
+    // MARK: - кнопки
 
     @IBAction func AddPoint(_ sender: UIBarButtonItem) {
         AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
     }
     
-    @IBAction func testBUTTON(_ sender: UIButton) {
-        print ("Print data: \(coastData.getCountCoasts())")
+    @IBAction func removeRote(_ sender: UIBarButtonItem) {
+        removeRoute()
     }
+   
+    // MARK: - надписи
     
+    @IBOutlet weak var distanceUILable: UILabel!
     
-// MARK: -Variable
-
-    var  MapModel = mapModel()
+    @IBOutlet weak var timeRouteUILable: UILabel!
+    
+    @IBOutlet weak var coastRoadUILale: UILabel!
+    
+    // MARK: -Variable
+    
+    var annotationMap : [MKAnnotation]?
+    
+    var route : MKOverlay?
+    
+    var MapModel = mapModel()
     
     var coastData = CoastsData.shared
     
-    var distans : Double = 0 {
+    var distansRoute : Double = 0 {
         didSet {
-            distanceRoad.text = "\(distans) km"
+            distanceUILable.text = "Distance: \(distansRoute)km"
+        }
+    }
+    
+    var timeRoute : Double = 0 {
+        didSet {
+            timeRouteUILable.text = "Time: \(timeRoute)h"
+        }
+    }
+    
+    var coastRoute : Double = 0 {
+        didSet {
+            coastRoadUILale.text = "Coast: \(coastRoute)P"
         }
     }
     
     var alertTextField: UITextField?
     
-    @IBOutlet weak var distanceRoad: UILabel!
-    
     @IBOutlet weak var MKMapView: MKMapView!
     
 // MARK: -Function
-    func addRoadOnMap(){
-        
-        self.MapModel.findRoad { route, distance, time  in
-            if let tempRoute = route{
-                self.distans = distance!/1000
-                print ("Price Trip : \(self.coastData.getPriceTrip(distance: distance!/1000))P")
-                print ("time \(time!/3600)")
-                print ("Distance:\(self.distans)\n")
-                self.MKMapView.addOverlay(tempRoute.polyline, level: .aboveRoads)
-            
-                let rect = tempRoute.polyline.boundingMapRect
-                self.MKMapView.setRegion(MKCoordinateRegion(rect), animated: true)
-            }
-        }
-    }
-
+    
     func AlertWithTextFieldAnd2Button(titleAlert: String, messageAlert: String, titleButton: String){
         
         let alertView = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: UIAlertController.Style.alert)
@@ -67,6 +74,32 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.present(alertView, animated: true, completion: nil)
     }
     
+    func removeRoute(){
+        guard let annotationMap = annotationMap else { return }
+        self.MKMapView.removeAnnotations(annotationMap)
+        
+        guard let route = route else { return }
+        self.MKMapView.removeOverlay(route)
+    }
+    
+    func addRoadOnMap(){
+        
+        self.MapModel.findRoad { route, distance, time  in
+            if let tempRoute = route {
+                
+                self.distansRoute = distance!/1000
+                self.coastRoute =  self.coastData.getPriceTrip(distance: distance!/1000)
+                self.timeRoute = Double(time!/3600)
+
+                
+                self.MKMapView.addOverlay(tempRoute.polyline, level: .aboveRoads)
+                self.route = tempRoute.polyline
+                let rect = tempRoute.polyline.boundingMapRect
+                self.MKMapView.setRegion(MKCoordinateRegion(rect), animated: true)
+            }
+        }
+    }
+
     func addAnotationOnMap(adress: String ) {
         
         MapModel.adressToFind = adress
@@ -76,6 +109,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
             let annotation = MKPointAnnotation()
             annotation.coordinate = tempMapPoint
+            self.annotationMap?.append(annotation)
             self.MKMapView.addAnnotation(annotation)
             self.MKMapView.setRegion(MKCoordinateRegion(center: MapPoint!, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)), animated: true)
                 
@@ -84,7 +118,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
         }
     }
-    
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)

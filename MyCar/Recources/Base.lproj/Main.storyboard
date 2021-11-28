@@ -36,7 +36,7 @@
         <scene sceneID="ouM-Mo-6Uk">
             <objects>
                 <navigationController id="4aw-yx-9eZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="ca5-NT-cwb"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="car" catalog="system" id="ca5-NT-cwb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hdY-Co-Mnj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -53,7 +53,7 @@
         <scene sceneID="mtC-d5-2T8">
             <objects>
                 <navigationController id="XIE-MP-BPc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="tLw-8n-trZ"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="point.topleft.down.curvedto.point.bottomright.up.fill" catalog="system" id="tLw-8n-trZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1D0-WX-cAx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -189,7 +189,7 @@
         <scene sceneID="ZH2-do-msk">
             <objects>
                 <navigationController id="Nxf-gW-q8A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Support" id="n6c-nl-bu1"/>
+                    <tabBarItem key="tabBarItem" title="Support" image="dollarsign.circle" catalog="system" id="n6c-nl-bu1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YsL-kc-OTn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -516,8 +516,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iLE-4J-Y9Z">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iLE-4J-Y9Z">
+                                <rect key="frame" x="0.0" y="88" width="414" height="681"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="664" id="zPr-Uf-G5f"/>
+                                </constraints>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhY-58-yfv">
                                 <rect key="frame" x="20" y="169" width="164" height="32"/>
@@ -526,19 +529,51 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="145" translatesAutoresizingMaskIntoConstraints="NO" id="wNh-G8-BmZ">
+                                <rect key="frame" x="0.0" y="777" width="601" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-ob-bft">
+                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzV-pr-IWB">
+                                        <rect key="frame" x="186.5" y="0.0" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xzg-2F-dy4">
+                                        <rect key="frame" x="373" y="0.0" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TeK-6P-Ate">
+                                        <rect key="frame" x="559.5" y="0.0" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u09-Mw-DNC"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <accessibility key="accessibilityConfiguration" label="qqqaaaqQ"/>
                         <constraints>
-                            <constraint firstItem="u09-Mw-DNC" firstAttribute="bottom" secondItem="iLE-4J-Y9Z" secondAttribute="bottom" id="KML-f1-ycf"/>
-                            <constraint firstItem="iLE-4J-Y9Z" firstAttribute="top" secondItem="u09-Mw-DNC" secondAttribute="top" id="uaz-qz-Onu"/>
-                            <constraint firstItem="u09-Mw-DNC" firstAttribute="trailing" secondItem="iLE-4J-Y9Z" secondAttribute="trailing" id="v4q-nf-1W3"/>
-                            <constraint firstItem="iLE-4J-Y9Z" firstAttribute="leading" secondItem="u09-Mw-DNC" secondAttribute="leading" id="vr9-cp-Qay"/>
+                            <constraint firstItem="iLE-4J-Y9Z" firstAttribute="trailing" secondItem="u09-Mw-DNC" secondAttribute="trailing" id="75g-JU-w7r"/>
+                            <constraint firstItem="iLE-4J-Y9Z" firstAttribute="top" secondItem="u09-Mw-DNC" secondAttribute="top" id="VaQ-em-rRH"/>
+                            <constraint firstItem="iLE-4J-Y9Z" firstAttribute="leading" secondItem="u09-Mw-DNC" secondAttribute="leading" id="xfu-GB-MoP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="9av-Hz-JKn">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="point.topleft.down.curvedto.point.bottomright.up.fill" catalog="system" id="7ch-ws-MUe"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="trash" catalog="system" id="7ch-ws-MUe">
+                            <connections>
+                                <action selector="removeRote:" destination="DWg-Db-BQe" id="OQ4-i8-Y8A"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fx4-Zv-xTW">
                             <connections>
                                 <action selector="AddPoint:" destination="DWg-Db-BQe" id="T44-Nh-PeF"/>
@@ -547,7 +582,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="MKMapView" destination="iLE-4J-Y9Z" id="PZj-Hd-t0C"/>
+                        <outlet property="coastRoadUILale" destination="Xzg-2F-dy4" id="JeF-HG-2uZ"/>
                         <outlet property="distanceRoad" destination="fhY-58-yfv" id="VyR-E8-zvy"/>
+                        <outlet property="distanceUILable" destination="ZCr-ob-bft" id="dn4-gY-Ooy"/>
+                        <outlet property="timeRouteUILable" destination="JzV-pr-IWB" id="rwE-IU-0j1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n3W-OL-eLk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -557,7 +595,10 @@
     </scenes>
     <resources>
         <image name="Car.com" width="446" height="850"/>
+        <image name="car" catalog="system" width="128" height="93"/>
+        <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="point.topleft.down.curvedto.point.bottomright.up.fill" catalog="system" width="121" height="128"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
