@@ -6,6 +6,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.MKMapView.delegate = self
+        self.roadInformationUIStackView.isHidden = true
     }
     
     // MARK: - кнопки
@@ -26,6 +27,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var coastRoadUILale: UILabel!
     
+    @IBOutlet weak var roadInformationUIStackView: UIStackView!
+    
     // MARK: -Variable
     
     var annotationMap : [MKAnnotation]?
@@ -38,18 +41,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var distansRoute : Double = 0 {
         didSet {
-            distanceUILable.text = "Distance: \(distansRoute)km"
+             let rounded = Double(round(10*distansRoute)/10)
+             distanceUILable.text = "Distance: \(rounded)km"
         }
     }
     
     var timeRoute : Double = 0 {
         didSet {
-            timeRouteUILable.text = "Time: \(timeRoute)h"
+            let rounded = Double(round(10*timeRoute)/10)
+             timeRouteUILable.text = "Time: \(rounded)h"
         }
     }
     
     var coastRoute : Double = 0 {
         didSet {
+            let rounded = Double(round(10*timeRoute)/10)
             coastRoadUILale.text = "Coast: \(coastRoute)P"
         }
     }
@@ -75,11 +81,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func removeRoute(){
+        self.roadInformationUIStackView.isHidden = true
+        
         guard let annotationMap = annotationMap else { return }
         self.MKMapView.removeAnnotations(annotationMap)
         
         guard let route = route else { return }
         self.MKMapView.removeOverlay(route)
+        
+        
     }
     
     func addRoadOnMap(){
@@ -96,6 +106,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.route = tempRoute.polyline
                 let rect = tempRoute.polyline.boundingMapRect
                 self.MKMapView.setRegion(MKCoordinateRegion(rect), animated: true)
+                self.roadInformationUIStackView.isHidden = false
             }
         }
     }
@@ -109,13 +120,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
             let annotation = MKPointAnnotation()
             annotation.coordinate = tempMapPoint
-            self.annotationMap?.append(annotation)
+            
             self.MKMapView.addAnnotation(annotation)
             self.MKMapView.setRegion(MKCoordinateRegion(center: MapPoint!, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)), animated: true)
                 
             if self.MapModel.destenation != nil {
                     self.addRoadOnMap()
-                }
+            }else {
+                //self.annotationMap![0] = annotation
+            }
         }
     }
     
