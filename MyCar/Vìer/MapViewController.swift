@@ -1,12 +1,15 @@
 import UIKit
 import MapKit
+import CoreLocation
+
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.MKMapView.delegate = self
+        
         self.roadInformationUIStackView.isHidden = true
+        startLocationManager()
     }
     
     // MARK: - кнопки
@@ -30,6 +33,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var roadInformationUIStackView: UIStackView!
     
     // MARK: -Variable
+    let locationManager = CLLocationManager()
     
     var annotationMap : [MKAnnotation]?
     
@@ -55,8 +59,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var coastRoute : Double = 0 {
         didSet {
-            let rounded = Double(round(10*timeRoute)/10)
-            coastRoadUILale.text = "Coast: \(coastRoute)P"
+            let rounded = Double(round(10*coastRoute)/10)
+            coastRoadUILale.text = "Coast: \(rounded)P"
         }
     }
     
@@ -139,4 +143,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return renderer
     }
     
+    func startLocationManager(){
+        self.MKMapView.delegate = self
+        
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.pausesLocationUpdatesAutomatically  = false
+            locationManager.startUpdatingLocation()
+            self.MKMapView.showsUserLocation = true
+        }
+    }
+    
+   
 }
+
+extension MapViewController : CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard  let lastLocatin = locations.last else  { return }
+        let region = MKCoordinateRegion.init(center: lastLocatin.coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)
+            MKMapView.setRegion(region, animated: true)
+            self.MapModel.source  = lastLocatin.coordinate 
+    }
+}
+
