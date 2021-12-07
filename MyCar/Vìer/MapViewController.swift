@@ -50,10 +50,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    var timeRoute : Double = 0 {
+    var timeRoute : TimeInterval = 0 {
         didSet {
-            let rounded = Double(round(10*timeRoute)/10)
-             timeRouteUILable.text = "Time: \(rounded)h"
+            let formate  = DateComponentsFormatter()
+            formate.allowedUnits = [.hour, .minute]
+            //let rounded = Double(round(10*timeRoute)/10)
+            guard let time = formate.string(from:  self.timeRoute) else { return }
+            timeRouteUILable.text = "Time: \(time)h"
         }
     }
     
@@ -71,7 +74,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 // MARK: -Function
     
     func AlertWithTextFieldAnd2Button(titleAlert: String, messageAlert: String, titleButton: String){
-        
         let alertView = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: UIAlertController.Style.alert)
         
         alertView.addTextField()
@@ -85,67 +87,80 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func removeRoute(){
-        self.roadInformationUIStackView.isHidden = true
         
+        // delete annotation
         guard let annotationMap = annotationMap else { return }
         self.MKMapView.removeAnnotations(annotationMap)
-        
+        // delete route
         guard let route = route else { return }
         self.MKMapView.removeOverlay(route)
-        
+        // tabble route
+        self.roadInformationUIStackView.isHidden = true
         
     }
     
     func addRoadOnMap(){
-        
+
         self.MapModel.findRoad { route, distance, time  in
             if let tempRoute = route {
-                
+
                 self.distansRoute = distance!/1000
                 self.coastRoute =  self.coastData.getPriceTrip(distance: distance!/1000)
-                self.timeRoute = Double(time!/3600)
-
-                
+                self.timeRoute = time!
+                print("ComplitionHanlde")
+               
                 self.MKMapView.addOverlay(tempRoute.polyline, level: .aboveRoads)
-                self.route = tempRoute.polyline
-                let rect = tempRoute.polyline.boundingMapRect
-                self.MKMapView.setRegion(MKCoordinateRegion(rect), animated: true)
+                
+                let padding: CGFloat = 8
+                
+                self.MKMapView.setVisibleMapRect(
+                    self.MKMapView.visibleMapRect.union(
+                    tempRoute.polyline.boundingMapRect),
+                    edgePadding: UIEdgeInsets(top: 0, left: padding, bottom: padding,right: padding),
+                animated: true
+                )
+                
                 self.roadInformationUIStackView.isHidden = false
             }
         }
     }
 
     func addAnotationOnMap(adress: String ) {
-        
+
         MapModel.adressToFind = adress
-        
-        MapModel.findAdress { MapPoint in
+
+        MapModel.findAdress{ MapPoint in
             guard let tempMapPoint = MapPoint else { return }
-                
+
             let annotation = MKPointAnnotation()
             annotation.coordinate = tempMapPoint
-            
+
             self.MKMapView.addAnnotation(annotation)
+            if  self.annotationMap == nil {
+                self.annotationMap = [annotation]
+            } else {
+                self.annotationMap?.append(annotation)
+            }
+            
             self.MKMapView.setRegion(MKCoordinateRegion(center: MapPoint!, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)), animated: true)
-                
+
             if self.MapModel.destenation != nil {
-                    self.addRoadOnMap()
-            }else {
-                //self.annotationMap![0] = annotation
+                self.addRoadOnMap()
             }
         }
     }
-    
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
         renderer.lineWidth = 5.0
         return renderer
     }
-    
+
     func startLocationManager(){
-        self.MKMapView.delegate = self
         
+        self.MKMapView.delegate = self
+
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -155,17 +170,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.MKMapView.showsUserLocation = true
         }
     }
-    
-   
+
+
 }
 
 extension MapViewController : CLLocationManagerDelegate {
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard  let lastLocatin = locations.last else  { return }
         let region = MKCoordinateRegion.init(center: lastLocatin.coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)
             MKMapView.setRegion(region, animated: true)
-            self.MapModel.source  = lastLocatin.coordinate 
+            self.MapModel.source  = lastLocatin.coordinate
+            self.MapModel.mapRegion = region
     }
 }
 

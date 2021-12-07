@@ -15,17 +15,25 @@ class mapModel {
    
     var source: CLLocationCoordinate2D?
     var destenation: CLLocationCoordinate2D?
+    var mapRegion : MKCoordinateRegion? 
     
 
         
 
     func  findAdress(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
         
+        guard let mapRegion = mapRegion else { return }
+
         let searchRequest = MKLocalSearch.Request()
+        
         searchRequest.naturalLanguageQuery = self.adressToFind
+        searchRequest.region = mapRegion
 
         let search = MKLocalSearch(request: searchRequest)
         search.start { (response, error) in
+            
+            if let error = error { print("Error search:\(error)") }
+            
             guard let response = response else { return }
             
             if let name = response.mapItems[0].name, let location = response.mapItems[0].placemark.location {
@@ -53,7 +61,7 @@ class mapModel {
     
     // Calculate the direction
     let directions = MKDirections(request: directionRequest)
-    directions.calculate(completionHandler:  { (response, error) -> Void in
+    directions.calculate{ (response, error) -> Void in
         guard let response = response else {
             if let error = error { print("Error: \(error)") }
             return
@@ -61,7 +69,7 @@ class mapModel {
         self.source = nil
         self.destenation = nil
         completion(response.routes[0], response.routes[0].distance, response.routes[0].expectedTravelTime)
-        })
+        }
     }
 }
 
