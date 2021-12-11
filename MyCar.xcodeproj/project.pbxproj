@@ -15,6 +15,7 @@
 		4404343A273AE427007BFF42 /* CoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44043439273AE427007BFF42 /* CoastViewController.swift */; };
 		4404343C273AE796007BFF42 /* CoastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404343B273AE796007BFF42 /* CoastModel.swift */; };
 		44103DEB27417E59008CD918 /* CoastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44103DEA27417E59008CD918 /* CoastTableViewCell.swift */; };
+		444ADBD72764C53400B62E93 /* Speedometr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444ADBD62764C53400B62E93 /* Speedometr.swift */; };
 		445D77E4272079DE00A7F565 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D77E3272079DE00A7F565 /* SceneDelegate.swift */; };
 		445D77E6272079DE00A7F565 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D77E5272079DE00A7F565 /* HomeViewController.swift */; };
 		445D77E9272079DE00A7F565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445D77E7272079DE00A7F565 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		44043439273AE427007BFF42 /* CoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastViewController.swift; sourceTree = "<group>"; };
 		4404343B273AE796007BFF42 /* CoastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastModel.swift; sourceTree = "<group>"; };
 		44103DEA27417E59008CD918 /* CoastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastTableViewCell.swift; sourceTree = "<group>"; };
+		444ADBD62764C53400B62E93 /* Speedometr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speedometr.swift; sourceTree = "<group>"; };
 		445D77DE272079DE00A7F565 /* MyCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		445D77E3272079DE00A7F565 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		445D77E5272079DE00A7F565 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				448D78CA2729C90400193E55 /* CarViewController.swift */,
 				448D78CC2729C96900193E55 /* MapViewController.swift */,
 				448D78D0272AEBC600193E55 /* ProfileViewController.swift */,
+				444ADBD62764C53400B62E93 /* Speedometr.swift */,
 			);
 			name = "Vìew";
 			path = "Vìer";
@@ -242,6 +245,7 @@
 				445D77E4272079DE00A7F565 /* SceneDelegate.swift in Sources */,
 				448D78CD2729C96900193E55 /* MapViewController.swift in Sources */,
 				4404343C273AE796007BFF42 /* CoastModel.swift in Sources */,
+				444ADBD72764C53400B62E93 /* Speedometr.swift in Sources */,
 				448D78D1272AEBC600193E55 /* ProfileViewController.swift in Sources */,
 				44AE9F2C274AB31700BBA781 /* MyCarModel.xcdatamodeld in Sources */,
 				4404343527368A5B007BFF42 /* AddNewCoastViewController.swift in Sources */,
