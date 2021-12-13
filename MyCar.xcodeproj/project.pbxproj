@@ -28,6 +28,7 @@
 		448D78D1272AEBC600193E55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D78D0272AEBC600193E55 /* ProfileViewController.swift */; };
 		44AE9F2C274AB31700BBA781 /* MyCarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44AE9F2A274AB31700BBA781 /* MyCarModel.xcdatamodeld */; };
 		44AE9F2E274C194400BBA781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE9F2D274C194400BBA781 /* AppDelegate.swift */; };
+		44DDC3132767B2D1006D72A9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDC3122767B2D1006D72A9 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		448D78D0272AEBC600193E55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		44AE9F2B274AB31700BBA781 /* MyCar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyCar.xcdatamodel; sourceTree = "<group>"; };
 		44AE9F2D274C194400BBA781 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		44DDC3122767B2D1006D72A9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				448D78852724042A00193E55 /* Vìew */,
 				448D7884272403B500193E55 /* Recources */,
 				44AE9F2A274AB31700BBA781 /* MyCarModel.xcdatamodeld */,
+				44DDC3122767B2D1006D72A9 /* Settings.swift */,
 			);
 			path = MyCar;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				440434382739A79B007BFF42 /* Coast.swift in Sources */,
 				445D77E6272079DE00A7F565 /* HomeViewController.swift in Sources */,
 				4404343327343F86007BFF42 /* HomeScreen.swift in Sources */,
+				44DDC3132767B2D1006D72A9 /* Settings.swift in Sources */,
 				44103DEB27417E59008CD918 /* CoastTableViewCell.swift in Sources */,
 				4404343027331E11007BFF42 /* wheather.swift in Sources */,
 				44AE9F2E274C194400BBA781 /* AppDelegate.swift in Sources */,

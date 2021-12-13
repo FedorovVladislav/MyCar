@@ -24,11 +24,13 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var OutsideTemperature: UILabel!
     
-    var outsideTemp = 2.0{
+    var outsideTemp = 2.0 {
         didSet{
+            let roundedSpeed = Double(round(10 * outsideTemp)/10)
             DispatchQueue.main.async {
-                self.OutsideTemperature.text = "Outside temp: \(self.outsideTemp) C "
+                self.OutsideTemperature.text = "Outside: \(roundedSpeed) C "
             }
+            
         }
     }
     
@@ -36,11 +38,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        print("Init HomeScreen")
+    
         wheatherData.getWeather { wheatherOut, temperature in
-            print(wheatherOut!)
-            self.outsideTemp = temperature!
+            
+            guard let temperature = temperature else {return }
+            self.outsideTemp = temperature
         }
     }
     

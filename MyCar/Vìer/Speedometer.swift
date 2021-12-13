@@ -6,7 +6,7 @@ class Speedometer: UIView {
     
     var currentSpeed : Double = 0 {
         didSet{
-            if currentSpeed >=  10{
+            if currentSpeed >=  0 {
                 if currentSpeed < 10 {
                     let roundedSpeed = Double(round(10 * currentSpeed)/10)
                     speedTittle.text = "\(roundedSpeed)"
@@ -50,15 +50,25 @@ class Speedometer: UIView {
         
         let centerPoint = CGPoint (x: self.bounds.width/2, y: self.bounds.width/2)
         let circleRadius : CGFloat = self.bounds.width/2
-        let circlePath = UIBezierPath( arcCenter: centerPoint, radius: circleRadius, startAngle: 3 * CGFloat.pi / 4, endAngle: CGFloat.pi / 4, clockwise: true)
+        let circleProgressPath = UIBezierPath( arcCenter: centerPoint, radius: circleRadius, startAngle: 3 * CGFloat.pi / 4, endAngle: CGFloat.pi / 4, clockwise: true)
         
-        progressCircle.path = circlePath.cgPath
+        
+        progressCircle.path = circleProgressPath.cgPath
         progressCircle.strokeColor = UIColor.green.cgColor
         progressCircle.fillColor = UIColor.clear.cgColor
-        progressCircle.borderColor = UIColor.black.cgColor
-        progressCircle.borderWidth = 10
-        progressCircle.lineWidth = 15
+        progressCircle.lineWidth = 4
+        progressCircle.strokeEnd = 0
         
+        let borderCircle = CAShapeLayer()
+        let circleBorderPath = UIBezierPath( arcCenter: centerPoint, radius: circleRadius + progressCircle.lineWidth / 2, startAngle: 3 * CGFloat.pi / 4, endAngle: CGFloat.pi / 4, clockwise: true)
+        
+        
+        borderCircle.path = circleBorderPath.cgPath
+        borderCircle.strokeColor = UIColor.black.cgColor
+        borderCircle.fillColor = UIColor.clear.cgColor
+        borderCircle.lineWidth = 0.5
+        
+        self.layer.addSublayer(borderCircle)
         self.layer.addSublayer(progressCircle)
     }
     

@@ -17,6 +17,7 @@ class CoastsData {
     
     // MARK: - Переменные
     static let shared = CoastsData()
+    
     private var coasts : [Coast] = []
     private var distanceTrip : Double = 0
     private var fuelPrice : Double = 50

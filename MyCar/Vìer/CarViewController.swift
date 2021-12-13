@@ -36,7 +36,7 @@ extension CarViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             
         guard  let newLocation = locations.last else  { return }
-        self.speedCurcleUIView.currentSpeed = newLocation.speed
+        self.speedCurcleUIView.currentSpeed = newLocation.speed 
             
         guard let previerLocation = self.lastLocation else {
             self.lastLocation = newLocation
