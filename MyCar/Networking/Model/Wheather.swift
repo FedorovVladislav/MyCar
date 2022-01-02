@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct wheather : Decodable {
+struct Wheather : Decodable {
         var coord: Coord?
         var weather: [Weather]?
         //var base: String?

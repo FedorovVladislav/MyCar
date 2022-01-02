@@ -23,25 +23,31 @@ class CoastsData {
     private var fuelPrice : Double = 50
     private var pricePerKilometr : Int  {
         get {
-        var odometrs = Set <Double>()
-        var prices : Double = 0
+            var distance = Set <Double> ()
+            var prices : Double = 0
         
-        for coast in coasts { odometrs.insert(coast.odometr) }
-        for coast in coasts { prices = prices + coast.price }
+            for coast in coasts { distance.insert(coast.odometr) }
+            for coast in coasts { prices = prices + coast.price }
+            
+            guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
+            
+            let changeDistance = maxDistance - minDistance
         
-        let distance = odometrs.max()! - odometrs.min()!
-        
-        if distance > 0 {
-            return (Int((prices / distance).rounded()))
-        } else { return 0 }
+            if changeDistance > 0 {
+                return (Int((prices / changeDistance).rounded()))
+            } else { return 0 }
         }
     }
+    
     private var totalDistance : Int {
-        get {
+        get{
             var distance = Set <Double>()
             for coast in coasts { distance.insert(coast.odometr) }
-            return Int((distance.max()!-distance.min()!).rounded())
-            }
+            
+            guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
+            
+            return Int((maxDistance - minDistance).rounded())
+        }
     }
     private var priceTrip : Double {
         return self.distanceTrip * Double(self.pricePerKilometr) + self.distanceTrip/100*7*fuelPrice

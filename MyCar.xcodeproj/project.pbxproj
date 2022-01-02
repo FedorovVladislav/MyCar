@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		4404342E272E9C45007BFF42 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404342D272E9C45007BFF42 /* MapModel.swift */; };
-		4404343027331E11007BFF42 /* wheather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404342F27331E10007BFF42 /* wheather.swift */; };
+		4404343027331E11007BFF42 /* Wheather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404342F27331E10007BFF42 /* Wheather.swift */; };
 		4404343327343F86007BFF42 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404343227343F86007BFF42 /* HomeScreen.swift */; };
 		4404343527368A5B007BFF42 /* AddNewCoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404343427368A5B007BFF42 /* AddNewCoastViewController.swift */; };
 		440434382739A79B007BFF42 /* Coast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440434372739A79B007BFF42 /* Coast.swift */; };
 		4404343A273AE427007BFF42 /* CoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44043439273AE427007BFF42 /* CoastViewController.swift */; };
 		4404343C273AE796007BFF42 /* CoastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404343B273AE796007BFF42 /* CoastModel.swift */; };
 		44103DEB27417E59008CD918 /* CoastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44103DEA27417E59008CD918 /* CoastTableViewCell.swift */; };
+		4446F48E2781E82A00D4ED91 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446F48D2781E82A00D4ED91 /* NetworkManager.swift */; };
+		4446F491278209E000D4ED91 /* CarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446F490278209E000D4ED91 /* CarData.swift */; };
+		4446F4952782201F00D4ED91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445D77EC272079E500A7F565 /* LaunchScreen.storyboard */; };
+		4446F4962782202300D4ED91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445D77E7272079DE00A7F565 /* Main.storyboard */; };
+		4446F4972782202800D4ED91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445D77EA272079E500A7F565 /* Assets.xcassets */; };
 		444ADBD72764C53400B62E93 /* Speedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444ADBD62764C53400B62E93 /* Speedometer.swift */; };
 		445D77E4272079DE00A7F565 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D77E3272079DE00A7F565 /* SceneDelegate.swift */; };
 		445D77E6272079DE00A7F565 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D77E5272079DE00A7F565 /* HomeViewController.swift */; };
-		445D77E9272079DE00A7F565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445D77E7272079DE00A7F565 /* Main.storyboard */; };
-		445D77EB272079E500A7F565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445D77EA272079E500A7F565 /* Assets.xcassets */; };
-		445D77EE272079E500A7F565 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445D77EC272079E500A7F565 /* LaunchScreen.storyboard */; };
-		44636F3A2723295F0087D18C /* CarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44636F392723295F0087D18C /* CarData.swift */; };
-		448D78A92728490E00193E55 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 448D78A82728490E00193E55 /* Map.storyboard */; };
-		448D78CB2729C90400193E55 /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D78CA2729C90400193E55 /* CarViewController.swift */; };
+		448D78CB2729C90400193E55 /* SpeedometrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D78CA2729C90400193E55 /* SpeedometrViewController.swift */; };
 		448D78CD2729C96900193E55 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D78CC2729C96900193E55 /* MapViewController.swift */; };
 		448D78D1272AEBC600193E55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D78D0272AEBC600193E55 /* ProfileViewController.swift */; };
 		44AE9F2C274AB31700BBA781 /* MyCarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44AE9F2A274AB31700BBA781 /* MyCarModel.xcdatamodeld */; };
@@ -33,13 +33,15 @@
 
 /* Begin PBXFileReference section */
 		4404342D272E9C45007BFF42 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
-		4404342F27331E10007BFF42 /* wheather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wheather.swift; sourceTree = "<group>"; };
+		4404342F27331E10007BFF42 /* Wheather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheather.swift; sourceTree = "<group>"; };
 		4404343227343F86007BFF42 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		4404343427368A5B007BFF42 /* AddNewCoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCoastViewController.swift; sourceTree = "<group>"; };
 		440434372739A79B007BFF42 /* Coast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coast.swift; sourceTree = "<group>"; };
 		44043439273AE427007BFF42 /* CoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastViewController.swift; sourceTree = "<group>"; };
 		4404343B273AE796007BFF42 /* CoastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastModel.swift; sourceTree = "<group>"; };
 		44103DEA27417E59008CD918 /* CoastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastTableViewCell.swift; sourceTree = "<group>"; };
+		4446F48D2781E82A00D4ED91 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4446F490278209E000D4ED91 /* CarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarData.swift; sourceTree = "<group>"; };
 		444ADBD62764C53400B62E93 /* Speedometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speedometer.swift; sourceTree = "<group>"; };
 		445D77DE272079DE00A7F565 /* MyCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		445D77E3272079DE00A7F565 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,9 +50,7 @@
 		445D77EA272079E500A7F565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		445D77ED272079E500A7F565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		445D77EF272079E500A7F565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44636F392723295F0087D18C /* CarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarData.swift; sourceTree = "<group>"; };
-		448D78A82728490E00193E55 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
-		448D78CA2729C90400193E55 /* CarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewController.swift; sourceTree = "<group>"; };
+		448D78CA2729C90400193E55 /* SpeedometrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedometrViewController.swift; sourceTree = "<group>"; };
 		448D78CC2729C96900193E55 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		448D78D0272AEBC600193E55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		44AE9F2B274AB31700BBA781 /* MyCar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyCar.xcdatamodel; sourceTree = "<group>"; };
@@ -69,32 +69,145 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4404343127343F69007BFF42 /* HomeScreen */ = {
+		4404343127343F69007BFF42 /* HomeScreenModel */ = {
 			isa = PBXGroup;
 			children = (
-				4404342F27331E10007BFF42 /* wheather.swift */,
 				4404343227343F86007BFF42 /* HomeScreen.swift */,
 			);
-			path = HomeScreen;
+			path = HomeScreenModel;
 			sourceTree = "<group>";
 		};
-		440434362739A751007BFF42 /* CoastScreen */ = {
+		440434362739A751007BFF42 /* CoastScreenModel */ = {
 			isa = PBXGroup;
 			children = (
 				440434372739A79B007BFF42 /* Coast.swift */,
 				4404343B273AE796007BFF42 /* CoastModel.swift */,
 				44103DEA27417E59008CD918 /* CoastTableViewCell.swift */,
 			);
-			path = CoastScreen;
+			path = CoastScreenModel;
 			sourceTree = "<group>";
 		};
-		4404343D273AE91C007BFF42 /* CoastsScreen */ = {
+		4404343D273AE91C007BFF42 /* CoastsScreenVC */ = {
 			isa = PBXGroup;
 			children = (
 				44043439273AE427007BFF42 /* CoastViewController.swift */,
 				4404343427368A5B007BFF42 /* AddNewCoastViewController.swift */,
 			);
-			path = CoastsScreen;
+			path = CoastsScreenVC;
+			sourceTree = "<group>";
+		};
+		4446F48C2781E7EA00D4ED91 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4446F48F278209BF00D4ED91 /* Model */,
+				4446F48D2781E82A00D4ED91 /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		4446F48F278209BF00D4ED91 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4446F490278209E000D4ED91 /* CarData.swift */,
+				4404342F27331E10007BFF42 /* Wheather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4446F49227820A9000D4ED91 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				44AE9F2D274C194400BBA781 /* AppDelegate.swift */,
+				445D77E3272079DE00A7F565 /* SceneDelegate.swift */,
+				44DDC3122767B2D1006D72A9 /* Settings.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		4446F49327820ABB00D4ED91 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4446F4A02782399400D4ED91 /* ViewController */,
+				4446F49A278222D500D4ED91 /* View */,
+				445D77F527208A4C00A7F565 /* Model */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4446F4992782217300D4ED91 /* MapScreenVC */ = {
+			isa = PBXGroup;
+			children = (
+				448D78CC2729C96900193E55 /* MapViewController.swift */,
+			);
+			path = MapScreenVC;
+			sourceTree = "<group>";
+		};
+		4446F49A278222D500D4ED91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				445D77E7272079DE00A7F565 /* Main.storyboard */,
+				444ADBD62764C53400B62E93 /* Speedometer.swift */,
+			);
+			name = View;
+			path = /Users/elizafedorova/Desktop/Swift/LessionOne/MyCar/MyCar/Core/View;
+			sourceTree = "<absolute>";
+		};
+		4446F49B2782242300D4ED91 /* SpeedometrVC */ = {
+			isa = PBXGroup;
+			children = (
+				448D78CA2729C90400193E55 /* SpeedometrViewController.swift */,
+			);
+			path = SpeedometrVC;
+			sourceTree = "<group>";
+		};
+		4446F49C2782246800D4ED91 /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				448D78D0272AEBC600193E55 /* ProfileViewController.swift */,
+			);
+			path = ProfileVC;
+			sourceTree = "<group>";
+		};
+		4446F49D278224E500D4ED91 /* SpeedometrModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SpeedometrModel;
+			sourceTree = "<group>";
+		};
+		4446F49E278224F600D4ED91 /* ProfileScreenModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileScreenModel;
+			sourceTree = "<group>";
+		};
+		4446F49F2782250700D4ED91 /* MapScreenModel */ = {
+			isa = PBXGroup;
+			children = (
+				4404342D272E9C45007BFF42 /* MapModel.swift */,
+			);
+			path = MapScreenModel;
+			sourceTree = "<group>";
+		};
+		4446F4A02782399400D4ED91 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4446F4A1278239DA00D4ED91 /* HomeScreenVC */,
+				4446F4992782217300D4ED91 /* MapScreenVC */,
+				4446F49B2782242300D4ED91 /* SpeedometrVC */,
+				4404343D273AE91C007BFF42 /* CoastsScreenVC */,
+				4446F49C2782246800D4ED91 /* ProfileVC */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4446F4A1278239DA00D4ED91 /* HomeScreenVC */ = {
+			isa = PBXGroup;
+			children = (
+				445D77E5272079DE00A7F565 /* HomeViewController.swift */,
+			);
+			path = HomeScreenVC;
 			sourceTree = "<group>";
 		};
 		445D77D5272079DE00A7F565 = {
@@ -116,14 +229,12 @@
 		445D77E0272079DE00A7F565 /* MyCar */ = {
 			isa = PBXGroup;
 			children = (
-				445D77E3272079DE00A7F565 /* SceneDelegate.swift */,
-				44AE9F2D274C194400BBA781 /* AppDelegate.swift */,
+				4446F49227820A9000D4ED91 /* Application */,
+				4446F49327820ABB00D4ED91 /* Core */,
+				4446F48C2781E7EA00D4ED91 /* Networking */,
+				448D7884272403B500193E55 /* Resources */,
 				445D77EF272079E500A7F565 /* Info.plist */,
-				445D77F527208A4C00A7F565 /* Model */,
-				448D78852724042A00193E55 /* Vìew */,
-				448D7884272403B500193E55 /* Recources */,
 				44AE9F2A274AB31700BBA781 /* MyCarModel.xcdatamodeld */,
-				44DDC3122767B2D1006D72A9 /* Settings.swift */,
 			);
 			path = MyCar;
 			sourceTree = "<group>";
@@ -131,37 +242,22 @@
 		445D77F527208A4C00A7F565 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				440434362739A751007BFF42 /* CoastScreen */,
-				4404343127343F69007BFF42 /* HomeScreen */,
-				44636F392723295F0087D18C /* CarData.swift */,
-				4404342D272E9C45007BFF42 /* MapModel.swift */,
+				4404343127343F69007BFF42 /* HomeScreenModel */,
+				4446F49F2782250700D4ED91 /* MapScreenModel */,
+				4446F49D278224E500D4ED91 /* SpeedometrModel */,
+				440434362739A751007BFF42 /* CoastScreenModel */,
+				4446F49E278224F600D4ED91 /* ProfileScreenModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		448D7884272403B500193E55 /* Recources */ = {
+		448D7884272403B500193E55 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				445D77E7272079DE00A7F565 /* Main.storyboard */,
 				445D77EA272079E500A7F565 /* Assets.xcassets */,
 				445D77EC272079E500A7F565 /* LaunchScreen.storyboard */,
-				448D78A82728490E00193E55 /* Map.storyboard */,
 			);
-			path = Recources;
-			sourceTree = "<group>";
-		};
-		448D78852724042A00193E55 /* Vìew */ = {
-			isa = PBXGroup;
-			children = (
-				4404343D273AE91C007BFF42 /* CoastsScreen */,
-				445D77E5272079DE00A7F565 /* HomeViewController.swift */,
-				448D78CA2729C90400193E55 /* CarViewController.swift */,
-				448D78CC2729C96900193E55 /* MapViewController.swift */,
-				448D78D0272AEBC600193E55 /* ProfileViewController.swift */,
-				444ADBD62764C53400B62E93 /* Speedometer.swift */,
-			);
-			name = "Vìew";
-			path = "Vìer";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,10 +318,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445D77EE272079E500A7F565 /* LaunchScreen.storyboard in Resources */,
-				445D77EB272079E500A7F565 /* Assets.xcassets in Resources */,
-				445D77E9272079DE00A7F565 /* Main.storyboard in Resources */,
-				448D78A92728490E00193E55 /* Map.storyboard in Resources */,
+				4446F4972782202800D4ED91 /* Assets.xcassets in Resources */,
+				4446F4962782202300D4ED91 /* Main.storyboard in Resources */,
+				4446F4952782201F00D4ED91 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,22 +331,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44636F3A2723295F0087D18C /* CarData.swift in Sources */,
 				4404342E272E9C45007BFF42 /* MapModel.swift in Sources */,
-				448D78CB2729C90400193E55 /* CarViewController.swift in Sources */,
+				448D78CB2729C90400193E55 /* SpeedometrViewController.swift in Sources */,
 				440434382739A79B007BFF42 /* Coast.swift in Sources */,
 				445D77E6272079DE00A7F565 /* HomeViewController.swift in Sources */,
 				4404343327343F86007BFF42 /* HomeScreen.swift in Sources */,
 				44DDC3132767B2D1006D72A9 /* Settings.swift in Sources */,
 				44103DEB27417E59008CD918 /* CoastTableViewCell.swift in Sources */,
-				4404343027331E11007BFF42 /* wheather.swift in Sources */,
+				4404343027331E11007BFF42 /* Wheather.swift in Sources */,
 				44AE9F2E274C194400BBA781 /* AppDelegate.swift in Sources */,
 				445D77E4272079DE00A7F565 /* SceneDelegate.swift in Sources */,
 				448D78CD2729C96900193E55 /* MapViewController.swift in Sources */,
+				4446F48E2781E82A00D4ED91 /* NetworkManager.swift in Sources */,
 				4404343C273AE796007BFF42 /* CoastModel.swift in Sources */,
 				444ADBD72764C53400B62E93 /* Speedometer.swift in Sources */,
 				448D78D1272AEBC600193E55 /* ProfileViewController.swift in Sources */,
 				44AE9F2C274AB31700BBA781 /* MyCarModel.xcdatamodeld in Sources */,
+				4446F491278209E000D4ED91 /* CarData.swift in Sources */,
 				4404343527368A5B007BFF42 /* AddNewCoastViewController.swift in Sources */,
 				4404343A273AE427007BFF42 /* CoastViewController.swift in Sources */,
 			);
