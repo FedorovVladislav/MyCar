@@ -9,12 +9,12 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NetworkManager.getCarStateData{ carData in
-            
-            for elementData in carData {
-                print ("id: \(elementData.id),param: \(elementData.param)\n")
-            }
-        }
+//        NetworkManager.getCarStateData{ carData in
+//
+//            for elementData in carData {
+//                print ("id: \(elementData.id),param: \(elementData.param)\n")
+//            }
+//        }
     }
     
     @IBAction func setThree(_ sender: UIButton) {
@@ -24,11 +24,11 @@ class ProfileViewController: UIViewController {
         NetworkManager.setCarStateData(id: 1, value: 5)
     }
     @IBAction func getRequest(_ sender: UIButton) {
-        NetworkManager.getCarStateData {carData in
-            
-            for elementData in carData {
-                print ("id: \(elementData.id),param: \(elementData.param)\n")
-            }
-        }
+//        NetworkManager.getCarStateData {carData in
+//
+//            for elementData in carData {
+//                print ("id: \(elementData.id),param: \(elementData.param)\n")
+//            }
+//        }
     }
 }

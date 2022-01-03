@@ -64,7 +64,7 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     @IBAction func addNewCoast(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let addNewCoastViewController = mainStoryboard.instantiateViewController(withIdentifier: "yourVcName") as? AddNewCoastViewController {
-            addNewCoastViewController.delegatedata=self
+            addNewCoastViewController.delegatedata = self
             show(addNewCoastViewController, sender: nil)
         }
     }

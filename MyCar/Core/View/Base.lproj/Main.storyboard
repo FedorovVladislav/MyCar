@@ -155,6 +155,9 @@
                     <navigationItem key="navigationItem" title="Home" id="e3o-ZJ-7cU"/>
                     <connections>
                         <outlet property="OutsideTemperature" destination="Ls4-e0-fLi" id="PCM-1u-BCk"/>
+                        <outlet property="fanCar" destination="soi-gk-6NB" id="SZ0-fh-6Di"/>
+                        <outlet property="lockCar" destination="mAz-o2-j2g" id="Tkw-1a-OVA"/>
+                        <outlet property="startEngien" destination="yWb-O5-WaM" id="yvZ-bl-sh5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQB-xX-03w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -31,9 +31,16 @@ class NetworkManager {
         }.resume()
     }
     
-    static func getCarStateData(complition: @escaping ([CarData]) -> Void) {
+    static func CarStateData(id:Int?, value: Int?, complition: @escaping ([CarData]) -> Void) {
         
-        guard let url = URL(string: "http://q95114zj.bget.ru/defpass.php?m=changeInt") else { return }
+        var urlString: String
+        
+        if let id = id , let value = value {
+            urlString = "http://q95114zj.bget.ru/defpass.php?m=changeInt&id=\(id)&param=\(value)"
+            
+        } else { urlString = "http://q95114zj.bget.ru/defpass.php?m=changeInt" }
+        
+        guard let url = URL(string: urlString) else { return }
         
         let request = NSMutableURLRequest(url: url)
         
@@ -60,8 +67,9 @@ class NetworkManager {
         }.resume()
     }
     
-    static func setCarStateData(id:Int, value: Int){
+    static func setCarStateData(id:Int?, value: Int?){
         
+        print ("http://q95114zj.bget.ru/defpass.php?m=changeInt&id=\(id)&param=\(value)")
         guard  let url = URL(string: "http://q95114zj.bget.ru/defpass.php?m=changeInt&id=\(id)&param=\(value)") else { return }
         
         let request = NSMutableURLRequest(url: url)
