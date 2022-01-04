@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -82,30 +83,31 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-O5-WaM">
                                                 <rect key="frame" x="0.0" y="0.0" width="116" height="31"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="116" id="WrU-4M-q1m"/>
                                                 </constraints>
+                                                <color key="tintColor" name="AccentColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Start"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Stop Eng"/>
                                                 <connections>
                                                     <action selector="startMotorUIButton:" destination="lTe-US-Nko" eventType="touchUpInside" id="qLB-fb-1hZ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soi-gk-6NB">
                                                 <rect key="frame" x="0.0" y="81" width="116" height="31"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Fan"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Stop Fan"/>
                                                 <connections>
                                                     <action selector="fanUIButton:" destination="lTe-US-Nko" eventType="touchUpInside" id="E5n-LV-uzc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAz-o2-j2g">
                                                 <rect key="frame" x="0.0" y="162" width="116" height="31"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Lock"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Unlocked"/>
                                                 <connections>
                                                     <action selector="lockUIButton:" destination="lTe-US-Nko" eventType="touchUpInside" id="mwK-e3-Jsz"/>
                                                 </connections>
@@ -132,7 +134,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range 520 rkm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWu-dS-FHF">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range: 520 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWu-dS-FHF">
                                         <rect key="frame" x="0.0" y="65" width="184.5" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
@@ -157,6 +159,7 @@
                         <outlet property="OutsideTemperature" destination="Ls4-e0-fLi" id="PCM-1u-BCk"/>
                         <outlet property="fanCar" destination="soi-gk-6NB" id="SZ0-fh-6Di"/>
                         <outlet property="lockCar" destination="mAz-o2-j2g" id="Tkw-1a-OVA"/>
+                        <outlet property="rangeFuel" destination="GWu-dS-FHF" id="wMo-Lc-lMo"/>
                         <outlet property="startEngien" destination="yWb-O5-WaM" id="yvZ-bl-sh5"/>
                     </connections>
                 </viewController>
@@ -645,6 +648,9 @@
         <image name="point.topleft.down.curvedto.point.bottomright.up.fill" catalog="system" width="121" height="128"/>
         <image name="speedometer" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="121" height="128"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

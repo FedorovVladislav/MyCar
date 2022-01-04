@@ -31,12 +31,18 @@ class StateCar {
             self.delegate?.onOffFan(isFanCar: (Int(carData[2].param))!.boolValue)
         }
     }
+    func getStateCar(){
+        NetworkManager.CarStateData(id: nil, value: nil){ carData in
+            self.delegate?.stateCar(carData: carData)
+        }
+    }
 }
 
 protocol changeStateCar {
     func startStopCar(isStartEngien: Bool)
     func lockUnlockCar(isLockCar:Bool)
     func onOffFan(isFanCar:Bool)
+    func stateCar(carData: [CarData])
 }
 extension Bool {
     var intValue: Int {

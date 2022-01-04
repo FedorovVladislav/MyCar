@@ -9,6 +9,21 @@ import UIKit
 
 
 class HomeViewController: UIViewController, changeStateCar {
+    func stateCar(carData: [CarData]) {
+        isStartEngien = (Int(carData[0].param))!.boolValue
+        isLockCar = (Int(carData[1].param))!.boolValue
+        isFanCar = (Int(carData[2].param))!.boolValue
+        rangeFuelText = Int(carData[3].param)!
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        stateCar.delegate = self
+        getWheatherData()
+        stateCar.getStateCar()
+        
+    }
     
     func startStopCar(isStartEngien: Bool) {
         self.isStartEngien = isStartEngien
@@ -22,13 +37,24 @@ class HomeViewController: UIViewController, changeStateCar {
         self.isFanCar = isFanCar
     }
     
+    func getWheatherData(){
+        NetworkManager.getWeatherData { wheatherOut, temperature in
+            
+            guard let temperature = temperature else {return }
+            self.outsideTemp = temperature
+        }
+    }
+    
     var isStartEngien = false {
         didSet{
             DispatchQueue.main.sync{
                 if isStartEngien {
-                    startEngien.tintColor = .green
+                    
+                    startEngien.backgroundColor =  .systemGreen
+                    startEngien.setTitle("Start Eng", for: .normal)
                 } else {
-                    startEngien.tintColor = .gray
+                    startEngien.backgroundColor = .lightGray
+                    startEngien.setTitle("Stop Eng", for: .normal)
                 }
             }
         }
@@ -38,9 +64,12 @@ class HomeViewController: UIViewController, changeStateCar {
         didSet{
             DispatchQueue.main.sync{
                 if isLockCar {
-                    lockCar.tintColor = .green
+                    lockCar.backgroundColor =  .systemGreen
+                    lockCar.setTitle("Locked", for: .normal)
                 } else {
-                    lockCar.tintColor = .gray
+                    lockCar.backgroundColor = .lightGray
+                    lockCar.setTitle("Unlocked", for: .normal)
+                   
                 }
             }
         }
@@ -50,21 +79,39 @@ class HomeViewController: UIViewController, changeStateCar {
         didSet{
             DispatchQueue.main.sync{
                 if isFanCar {
-                    fanCar.tintColor = .green
+                    fanCar.backgroundColor =  .systemGreen
+                    fanCar.setTitle("Start Fan", for: .normal)
                 } else{
-                    fanCar.tintColor = .gray
+                    fanCar.backgroundColor = .lightGray
+                    fanCar.setTitle("Stop Fan", for: .normal)
                 }
             }
         }
     }
     
     var stateCar = StateCar()
- 
+    
+    var outsideTemp = 0.0 {
+        didSet{
+            let roundedSpeed = Double(round(10 * outsideTemp)/10)
+            DispatchQueue.main.async {
+                self.OutsideTemperature.text = "Outside: \(roundedSpeed) C "
+            }
+        }
+    }
+    
+    var rangeFuelText: Int = 0 {
+        didSet{
+            DispatchQueue.main.async {
+                self.rangeFuel.text = "Range: \(self.rangeFuelText) km"
+            }
+        }
+    }
+    
+    
     @IBOutlet weak var startEngien: UIButton!
     @IBOutlet weak var fanCar: UIButton!
     @IBOutlet weak var lockCar: UIButton!
-    
-     
     
     @IBAction func lockUIButton(_ sender: Any) {
         stateCar.lockCar(mode: !isLockCar)
@@ -78,25 +125,9 @@ class HomeViewController: UIViewController, changeStateCar {
     
     @IBOutlet weak var OutsideTemperature: UILabel!
     
-    var outsideTemp = 2.0 {
-        didSet{
-            let roundedSpeed = Double(round(10 * outsideTemp)/10)
-            DispatchQueue.main.async {
-                self.OutsideTemperature.text = "Outside: \(roundedSpeed) C "
-            }
-        }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        stateCar.delegate = self
-        
-        NetworkManager.getWeatherData { wheatherOut, temperature in
-            
-            guard let temperature = temperature else {return }
-            self.outsideTemp = temperature
-        }
-    }
+    @IBOutlet weak var rangeFuel: UILabel!
+    
+    
 }
 
 
