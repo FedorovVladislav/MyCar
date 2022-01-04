@@ -11,7 +11,9 @@ import Foundation
 class StateCar {
     
     var delegate: changeStateCar?
-   
+    
+    // MARK: - methods
+    
     func startEngienCar(mode : Bool){
 
         NetworkManager.CarStateData(id: 1, value: mode.intValue) { carData in
@@ -31,6 +33,7 @@ class StateCar {
             self.delegate?.onOffFan(isFanCar: (Int(carData[2].param))!.boolValue)
         }
     }
+    
     func getStateCar(){
         NetworkManager.CarStateData(id: nil, value: nil){ carData in
             self.delegate?.stateCar(carData: carData)

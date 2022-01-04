@@ -9,20 +9,22 @@ import UIKit
 
 
 class HomeViewController: UIViewController, changeStateCar {
-    func stateCar(carData: [CarData]) {
-        isStartEngien = (Int(carData[0].param))!.boolValue
-        isLockCar = (Int(carData[1].param))!.boolValue
-        isFanCar = (Int(carData[2].param))!.boolValue
-        rangeFuelText = Int(carData[3].param)!
-    }
-    
-    
+   
+
     override func viewDidLoad() {
         super.viewDidLoad()
         stateCar.delegate = self
         getWheatherData()
         stateCar.getStateCar()
         
+    }
+    
+    // MARK: -  delegate
+    func stateCar(carData: [CarData]) {
+        isStartEngien = (Int(carData[0].param))!.boolValue
+        isLockCar = (Int(carData[1].param))!.boolValue
+        isFanCar = (Int(carData[2].param))!.boolValue
+        rangeFuelText = Int(carData[3].param)!
     }
     
     func startStopCar(isStartEngien: Bool) {
@@ -37,6 +39,7 @@ class HomeViewController: UIViewController, changeStateCar {
         self.isFanCar = isFanCar
     }
     
+    // MARK: - method
     func getWheatherData(){
         NetworkManager.getWeatherData { wheatherOut, temperature in
             
@@ -44,6 +47,8 @@ class HomeViewController: UIViewController, changeStateCar {
             self.outsideTemp = temperature
         }
     }
+    
+    // MARK: -  Variable
     
     var isStartEngien = false {
         didSet{
@@ -108,7 +113,7 @@ class HomeViewController: UIViewController, changeStateCar {
         }
     }
     
-    
+    // MARK: - Storyboard element
     @IBOutlet weak var startEngien: UIButton!
     @IBOutlet weak var fanCar: UIButton!
     @IBOutlet weak var lockCar: UIButton!
