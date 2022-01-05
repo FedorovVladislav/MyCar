@@ -24,6 +24,7 @@
 		444ADBD72764C53400B62E93 /* Speedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444ADBD62764C53400B62E93 /* Speedometer.swift */; };
 		445D77E4272079DE00A7F565 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D77E3272079DE00A7F565 /* SceneDelegate.swift */; };
 		445D77E6272079DE00A7F565 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D77E5272079DE00A7F565 /* HomeViewController.swift */; };
+		446388DA278610A30068B0C9 /* PhoneStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446388D9278610A30068B0C9 /* PhoneStorageManager.swift */; };
 		448D78CB2729C90400193E55 /* SpeedometrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D78CA2729C90400193E55 /* SpeedometrViewController.swift */; };
 		448D78CD2729C96900193E55 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D78CC2729C96900193E55 /* MapViewController.swift */; };
 		448D78D1272AEBC600193E55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448D78D0272AEBC600193E55 /* ProfileViewController.swift */; };
@@ -52,6 +53,7 @@
 		445D77EA272079E500A7F565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		445D77ED272079E500A7F565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		445D77EF272079E500A7F565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		446388D9278610A30068B0C9 /* PhoneStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneStorageManager.swift; sourceTree = "<group>"; };
 		448D78CA2729C90400193E55 /* SpeedometrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedometrViewController.swift; sourceTree = "<group>"; };
 		448D78CC2729C96900193E55 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		448D78D0272AEBC600193E55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				440434372739A79B007BFF42 /* Coast.swift */,
 				4404343B273AE796007BFF42 /* CoastModel.swift */,
 				44103DEA27417E59008CD918 /* CoastTableViewCell.swift */,
+				446388D9278610A30068B0C9 /* PhoneStorageManager.swift */,
 			);
 			path = CoastScreenModel;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				4446F48E2781E82A00D4ED91 /* NetworkManager.swift in Sources */,
 				4404343C273AE796007BFF42 /* CoastModel.swift in Sources */,
 				444ADBD72764C53400B62E93 /* Speedometer.swift in Sources */,
+				446388DA278610A30068B0C9 /* PhoneStorageManager.swift in Sources */,
 				448D78D1272AEBC600193E55 /* ProfileViewController.swift in Sources */,
 				44AE9F2C274AB31700BBA781 /* MyCarModel.xcdatamodeld in Sources */,
 				4446F491278209E000D4ED91 /* CarData.swift in Sources */,

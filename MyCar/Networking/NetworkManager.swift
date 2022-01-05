@@ -52,7 +52,7 @@ class NetworkManager {
         URLSession.shared.dataTask(with: request as URLRequest) { data, responce, error in
         
             
-        guard let data = data, let responce  = responce else { print("Error data"); return }
+        guard let data = data  else { print("Error data"); return }
             
         let stringData = String(data: data, encoding: .utf8)
         print(stringData!)
@@ -67,28 +67,28 @@ class NetworkManager {
         }.resume()
     }
     
-    static func setCarStateData(id:Int?, value: Int?){
-        
-        print ("http://q95114zj.bget.ru/defpass.php?m=changeInt&id=\(id)&param=\(value)")
-        guard  let url = URL(string: "http://q95114zj.bget.ru/defpass.php?m=changeInt&id=\(id)&param=\(value)") else { return }
-        
-        let request = NSMutableURLRequest(url: url)
-        
-        request.httpMethod = "GET"
-        
-        let userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15"
-        request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
-        
-        URLSession.shared.dataTask(with: request as URLRequest) { data, responce, error in
-        
-            
-        guard let data = data, let responce  = responce else { print("Error data"); return }
-            
-        let stringData = String(data: data, encoding: .utf8)
-        print(stringData!)
-            
-        }.resume()
-    }
+//    static func setCarStateData(id:Int?, value: Int?){
+//
+//        print ("http://q95114zj.bget.ru/defpass.php?m=changeInt&id=\(id)&param=\(value)")
+//        guard  let url = URL(string: "http://q95114zj.bget.ru/defpass.php?m=changeInt&id=\(id)&param=\(value)") else { return }
+//
+//        let request = NSMutableURLRequest(url: url)
+//
+//        request.httpMethod = "GET"
+//
+//        let userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15"
+//        request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
+//
+//        URLSession.shared.dataTask(with: request as URLRequest) { data, responce, error in
+//
+//
+//        guard let data = data, let responce  = responce else { print("Error data"); return }
+//
+//        let stringData = String(data: data, encoding: .utf8)
+//        print(stringData!)
+//
+//        }.resume()
+//    }
 }
 
 

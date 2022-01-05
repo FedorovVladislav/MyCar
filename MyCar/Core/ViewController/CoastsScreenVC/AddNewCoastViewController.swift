@@ -26,11 +26,9 @@ class AddNewCoastViewController: UIViewController, UITextFieldDelegate {
         guard let odometr = Double (odometrTextField.text!) else {return}
         guard let price = Double (priceTextField.text!) else {return}
         let newCoast = Coast(name: name, odometr: odometr, price: price)
+        self.navigationController?.popViewController(animated: true)
         //send new coast to our model
         delegatedata?.recidveCoast(new:newCoast, index: self.coastIndex)
-        //alert and  Return Back to tableview
-        alertSaveNewCoast(newCoast: newCoast)
-      
     }
     
     
@@ -96,14 +94,6 @@ class AddNewCoastViewController: UIViewController, UITextFieldDelegate {
     @objc func closeKeyboard(sender: UITapGestureRecognizer){
         view.endEditing(true)
         scrolView.contentOffset = CGPoint(x: 0, y: 0)
-    }
-
-    func alertSaveNewCoast(newCoast: Coast){
-        let alertView = UIAlertController(title:"Add New Coast", message:"Name: \(newCoast.name)\n Odometr: \(newCoast.odometr)\n Price: \(newCoast.price)", preferredStyle: UIAlertController.Style.alert)
-            alertView.addAction(UIAlertAction(title: "Okey", style: UIAlertAction.Style.default, handler: { ACTION -> Void in
-                self.navigationController?.popViewController(animated: true)
-            }))
-            self.present(alertView, animated: true, completion: nil)
     }
 }
 

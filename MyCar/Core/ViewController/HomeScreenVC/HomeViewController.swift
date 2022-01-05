@@ -40,7 +40,7 @@ class HomeViewController: UIViewController, changeStateCar {
     }
     
     // MARK: - method
-    func getWheatherData(){
+    private func getWheatherData(){
         NetworkManager.getWeatherData { wheatherOut, temperature in
             
             guard let temperature = temperature else {return }
@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, changeStateCar {
     
     // MARK: -  Variable
     
-    var isStartEngien = false {
+    private var isStartEngien = false {
         didSet{
             DispatchQueue.main.sync{
                 if isStartEngien {
@@ -65,7 +65,7 @@ class HomeViewController: UIViewController, changeStateCar {
         }
     }
     
-    var isLockCar = false {
+    private var isLockCar = false {
         didSet{
             DispatchQueue.main.sync{
                 if isLockCar {
@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, changeStateCar {
         }
     }
    
-    var isFanCar = false{
+    private var isFanCar = false{
         didSet{
             DispatchQueue.main.sync{
                 if isFanCar {
@@ -94,9 +94,9 @@ class HomeViewController: UIViewController, changeStateCar {
         }
     }
     
-    var stateCar = StateCar()
+    private var stateCar = StateCar()
     
-    var outsideTemp = 0.0 {
+    private var outsideTemp = 0.0 {
         didSet{
             let roundedSpeed = Double(round(10 * outsideTemp)/10)
             DispatchQueue.main.async {
@@ -105,7 +105,7 @@ class HomeViewController: UIViewController, changeStateCar {
         }
     }
     
-    var rangeFuelText: Int = 0 {
+    private var rangeFuelText: Int = 0 {
         didSet{
             DispatchQueue.main.async {
                 self.rangeFuel.text = "Range: \(self.rangeFuelText) km"

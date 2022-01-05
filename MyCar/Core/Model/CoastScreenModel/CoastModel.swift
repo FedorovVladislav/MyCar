@@ -17,7 +17,7 @@ class CoastsData {
     
     // MARK: - Переменные
     static let shared = CoastsData()
-    
+    private let phoneStorageManager = PhoneStorageManager()
     private var coasts : [Coast] = []
     private var distanceTrip : Double = 0
     private var fuelPrice : Double = 50
@@ -86,57 +86,20 @@ class CoastsData {
     
     // MARK: - Сеттеры
     
-    func addNewCoast(newCoast coast: Coast) {
-        print ("addNewCoast")
-        
-        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        guard let entity = NSEntityDescription.entity(forEntityName: "CoreCoasts", in: context) else {return}
-        
-        let taskOject = CoreCoasts (entity: entity, insertInto: context)
-        
-        taskOject.name = coast.name
-        taskOject.price = coast.price
-        taskOject.odometr = coast.odometr
-        
-        if let userDescription = coast.userDescription {
-        taskOject.userDescription = userDescription
-        } else { taskOject.userDescription = "" }
-        
-        do {
-            try context.save()
+    func addNewCoast(newCoast coast: Coast) -> Bool {
+        if phoneStorageManager.addItemToStorage(newCoast: coast){
             addCoast(newCoast: coast)
+            return true
+        } else {
+            return false
         }
-        catch let error as NSError { print ("addNewCoast Core Error:\(error.localizedDescription)") }
     }
     
-    func changeExistCoast(at index : Int, newCoast: Coast){
-        print ("changeExistCoast at \(index)")
-        
-        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-        let context  = appDelegate.persistentContainer.viewContext
-        
-        let fetcht = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
-        
-        do{
-            let results = try context.fetch(fetcht)
-            
-            if index <= results.count - 1 {
-                results[index].name = newCoast.name
-                results[index].price = newCoast.price
-                results[index].odometr = newCoast.odometr
-            
-                if let userDescription = newCoast.userDescription {
-                    results[index].userDescription = userDescription
-                } else { results[index].userDescription = "" }
-            
-                do{
-                    try context.save()
-                    changeCurentCoast(at: index, newCoast: newCoast)
-                }catch let error as NSError { print("changeExistCoast Save Core error:\(error.localizedDescription)") }
-            } else { print("Invalid index: \(index)") }
-        }catch let error as NSError { print("changeExistCoast Core error:\(error.localizedDescription)") }
+    func changeExistCoast(at index : Int, newCoast: Coast) -> Bool {
+        if phoneStorageManager.changeExistCoast(at: index, newCoast: newCoast) {
+            changeCurentCoast(at: index, newCoast: newCoast)
+            return true
+        } else { return false }
     }
     
     func deleteDromModel(at index: Int ){
@@ -156,16 +119,15 @@ class CoastsData {
                     removeCoast(at: index)
                     
                 }catch let error as NSError { print("Core error save :\(error.localizedDescription)") }
-                
+    
             } else { print("Invalid index: \(index)") }
-            
             
         }catch let error as NSError { print("deleteDromModel Core error:\(error.localizedDescription)") }
     }
     
     // MARK: - Работас массивом
     
-    private func  addCoast(newCoast: Coast){
+    private func addCoast(newCoast: Coast){
     print("Add New Coast:\(newCoast.name) , \(newCoast.odometr), \(newCoast.price)")
     self.coasts.append(newCoast)
     }
@@ -177,7 +139,7 @@ class CoastsData {
         } else { print("Invalid index: \(index)") }
     }
     
-    private  func changeCurentCoast(at index: Int, newCoast: Coast) {
+    private func changeCurentCoast(at index: Int, newCoast: Coast) {
         if index <= getCountCoasts() - 1 {
             self.coasts[index] = newCoast
         } else { print("Invalid index: \(index)") }
@@ -187,22 +149,10 @@ class CoastsData {
     // MARK: - Работас с моделью
     
     private func getDataFromModel() {
-        print ("getDataFromModel")
-        
-        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest <CoreCoasts>(entityName: "CoreCoasts")
-
-        do{
-            let result  =  try context.fetch(fetchRequest)
-            for res in result {
-                print ("AddFromCoreToClass")
-                self.coasts.append(Coast(name: res.name!, odometr: res.odometr, price: res.price, userDescription: res.userDescription))
-            }
-            
-        }catch let error as NSError { print("getDataFromModel CoreData Error:\(error.localizedDescription)") }
+  
+    guard let coasts = phoneStorageManager.getDataFromModel() else { return }
+    self.coasts = coasts
     }
-    
 }
 private enum typeCoast: String {
     case repair = "Repair"

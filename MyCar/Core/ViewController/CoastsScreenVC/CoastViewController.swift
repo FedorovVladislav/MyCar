@@ -22,7 +22,7 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     // MARK: - переменные
     @IBOutlet weak var pricePerKilometr: UILabel!
     @IBOutlet weak var totalDistance: UILabel!    
-    var coastData = CoastsData.shared
+    let coastData = CoastsData.shared
     
 
     // MARK: - обработка действий с моделью
@@ -41,14 +41,24 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     
     func addNewItemIntoModel(exist coastFromView: Coast){
         
-        coastData.addNewCoast(newCoast: coastFromView)
-        tableView.reloadData()
+        if  coastData.addNewCoast(newCoast: coastFromView) {
+        alertSaveNewCoast(newCoast: coastFromView)
+            tableView.reloadData()
+            
+        } else {
+            alertSaveNewCoast(newCoast: nil)
+        }
     }
     
     func changeItemInModel(new coastFromView: Coast, index : Int){
 
-        coastData.changeExistCoast (at: index, newCoast: coastFromView)
-        tableView.reloadData()
+        if coastData.changeExistCoast (at: index, newCoast: coastFromView) {
+            alertSaveNewCoast(newCoast: coastFromView)
+            tableView.reloadData()
+        } else {
+            alertSaveNewCoast(newCoast: nil)
+        }
+        
     }
     
     
@@ -112,5 +122,16 @@ class CoastViewController: UITableViewController, coastDataDelegate {
             //coastData.removeCoast(at: indexPath.row)
             tableView.reloadData()
         }
+    }
+    func alertSaveNewCoast(newCoast: Coast?){
+        var alertView = UIAlertController()
+        if let newCoast = newCoast {
+            alertView = UIAlertController(title:"Add New Coast", message:"Name: \(newCoast.name)\n Odometr: \(newCoast.odometr)\n Price: \(newCoast.price)", preferredStyle: UIAlertController.Style.alert)
+        } else{
+            alertView = UIAlertController(title:"Error", message:"Repeat your action", preferredStyle: UIAlertController.Style.alert)
+        }
+            alertView.addAction(UIAlertAction(title: "Okey", style: UIAlertAction.Style.default, handler: { ACTION -> Void in
+            }))
+            self.present(alertView, animated: true, completion: nil)
     }
 }

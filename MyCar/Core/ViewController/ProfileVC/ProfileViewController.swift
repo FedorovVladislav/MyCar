@@ -18,10 +18,10 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func setThree(_ sender: UIButton) {
-        NetworkManager.setCarStateData(id: 1, value: 3)
+        //NetworkManager.setCarStateData(id: 1, value: 3)
     }
     @IBAction func setFive(_ sender: UIButton) {
-        NetworkManager.setCarStateData(id: 1, value: 5)
+        //NetworkManager.setCarStateData(id: 1, value: 5)
     }
     @IBAction func getRequest(_ sender: UIButton) {
 //        NetworkManager.getCarStateData {carData in
