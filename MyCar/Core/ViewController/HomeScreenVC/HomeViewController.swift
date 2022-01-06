@@ -52,7 +52,7 @@ class HomeViewController: UIViewController, changeStateCar {
     
     private var isStartEngien = false {
         didSet{
-            DispatchQueue.main.sync{
+            DispatchQueue.main.sync {
                 if isStartEngien {
                     
                     startEngien.backgroundColor =  .systemGreen
@@ -131,8 +131,7 @@ class HomeViewController: UIViewController, changeStateCar {
     @IBOutlet weak var OutsideTemperature: UILabel!
     
     @IBOutlet weak var rangeFuel: UILabel!
-    
-    
+
 }
 
 

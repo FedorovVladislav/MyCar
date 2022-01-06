@@ -10,12 +10,10 @@ import UIKit
 import CoreData
 
 class CoastsData {
-    // MARK: - Иницалзация
-    init(){
-        getDataFromModel()
-    }
+  
     
     // MARK: - Переменные
+    
     static let shared = CoastsData()
     private let phoneStorageManager = PhoneStorageManager()
     private var coasts : [Coast] = []
@@ -40,7 +38,7 @@ class CoastsData {
     }
     
     private var totalDistance : Int {
-        get{
+        get {
             var distance = Set <Double>()
             for coast in coasts { distance.insert(coast.odometr) }
             
@@ -86,72 +84,55 @@ class CoastsData {
     
     // MARK: - Сеттеры
     
-    func addNewCoast(newCoast coast: Coast) -> Bool {
-        if phoneStorageManager.addItemToStorage(newCoast: coast){
+    func addNewCoast(newCoast coast: Coast) throws {
+        
+        do {
+            try phoneStorageManager.addItemToStorage(newCoast: coast)
             addCoast(newCoast: coast)
-            return true
-        } else {
-            return false
-        }
+        } catch { throw error }
+            
     }
     
-    func changeExistCoast(at index : Int, newCoast: Coast) -> Bool {
-        if phoneStorageManager.changeExistCoast(at: index, newCoast: newCoast) {
+    func changeExistCoast(at index : Int, newCoast: Coast) throws {
+        do {
+            try phoneStorageManager.changeExistCoast(at: index, newCoast: newCoast)
             changeCurentCoast(at: index, newCoast: newCoast)
-            return true
-        } else { return false }
+        } catch { throw error }
     }
     
-    func deleteDromModel(at index: Int ){
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let  fetchRequest = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
-        do{
-            let results = try context.fetch(fetchRequest)
-            
-            if index <= results.count - 1 {
-                print("Remove coast at index: \(index)")
-                context.delete(results[index])
-                do{
-                    try context.save()
-                    removeCoast(at: index)
-                    
-                }catch let error as NSError { print("Core error save :\(error.localizedDescription)") }
-    
-            } else { print("Invalid index: \(index)") }
-            
-        }catch let error as NSError { print("deleteDromModel Core error:\(error.localizedDescription)") }
+    func deleteDromModel(at index: Int ) throws {
+        do {
+            try phoneStorageManager.deleteDromModel(at:  index)
+            removeCoast(at: index)
+        } catch { throw error }
     }
     
     // MARK: - Работас массивом
     
     private func addCoast(newCoast: Coast){
-    print("Add New Coast:\(newCoast.name) , \(newCoast.odometr), \(newCoast.price)")
-    self.coasts.append(newCoast)
+        print("Add New Coast:\(newCoast.name) , \(newCoast.odometr), \(newCoast.price)")
+        self.coasts.append(newCoast)
     }
     
     private func removeCoast(at index:Int) {
-        if index <= getCountCoasts() - 1 {
-            print("Remove coast at index: \(index)")
-            self.coasts.remove(at: index)
-        } else { print("Invalid index: \(index)") }
+        self.coasts.remove(at: index)
     }
     
     private func changeCurentCoast(at index: Int, newCoast: Coast) {
-        if index <= getCountCoasts() - 1 {
-            self.coasts[index] = newCoast
-        } else { print("Invalid index: \(index)") }
+        self.coasts[index] = newCoast
     }
     
     
     // MARK: - Работас с моделью
     
-    private func getDataFromModel() {
+    private func getDataFromModel() throws {
   
-    guard let coasts = phoneStorageManager.getDataFromModel() else { return }
-    self.coasts = coasts
+        do {
+            let coasts = try phoneStorageManager.getDataFromModel()
+            
+            self.coasts = coasts!
+            
+        } catch { throw error }
     }
 }
 private enum typeCoast: String {

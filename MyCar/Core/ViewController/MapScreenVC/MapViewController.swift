@@ -170,8 +170,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.MKMapView.showsUserLocation = true
         }
     }
-
-
 }
 
 extension MapViewController : CLLocationManagerDelegate {

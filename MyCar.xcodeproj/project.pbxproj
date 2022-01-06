@@ -13,7 +13,7 @@
 		4404343527368A5B007BFF42 /* AddNewCoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404343427368A5B007BFF42 /* AddNewCoastViewController.swift */; };
 		440434382739A79B007BFF42 /* Coast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440434372739A79B007BFF42 /* Coast.swift */; };
 		4404343A273AE427007BFF42 /* CoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44043439273AE427007BFF42 /* CoastViewController.swift */; };
-		4404343C273AE796007BFF42 /* CoastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404343B273AE796007BFF42 /* CoastModel.swift */; };
+		4404343C273AE796007BFF42 /* CoastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404343B273AE796007BFF42 /* CoastData.swift */; };
 		44103DEB27417E59008CD918 /* CoastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44103DEA27417E59008CD918 /* CoastTableViewCell.swift */; };
 		4446F48E2781E82A00D4ED91 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446F48D2781E82A00D4ED91 /* NetworkManager.swift */; };
 		4446F491278209E000D4ED91 /* CarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446F490278209E000D4ED91 /* CarData.swift */; };
@@ -40,7 +40,7 @@
 		4404343427368A5B007BFF42 /* AddNewCoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCoastViewController.swift; sourceTree = "<group>"; };
 		440434372739A79B007BFF42 /* Coast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coast.swift; sourceTree = "<group>"; };
 		44043439273AE427007BFF42 /* CoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastViewController.swift; sourceTree = "<group>"; };
-		4404343B273AE796007BFF42 /* CoastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastModel.swift; sourceTree = "<group>"; };
+		4404343B273AE796007BFF42 /* CoastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastData.swift; sourceTree = "<group>"; };
 		44103DEA27417E59008CD918 /* CoastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastTableViewCell.swift; sourceTree = "<group>"; };
 		4446F48D2781E82A00D4ED91 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4446F490278209E000D4ED91 /* CarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarData.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				440434372739A79B007BFF42 /* Coast.swift */,
-				4404343B273AE796007BFF42 /* CoastModel.swift */,
+				4404343B273AE796007BFF42 /* CoastData.swift */,
 				44103DEA27417E59008CD918 /* CoastTableViewCell.swift */,
 				446388D9278610A30068B0C9 /* PhoneStorageManager.swift */,
 			);
@@ -350,7 +350,7 @@
 				445D77E4272079DE00A7F565 /* SceneDelegate.swift in Sources */,
 				448D78CD2729C96900193E55 /* MapViewController.swift in Sources */,
 				4446F48E2781E82A00D4ED91 /* NetworkManager.swift in Sources */,
-				4404343C273AE796007BFF42 /* CoastModel.swift in Sources */,
+				4404343C273AE796007BFF42 /* CoastData.swift in Sources */,
 				444ADBD72764C53400B62E93 /* Speedometer.swift in Sources */,
 				446388DA278610A30068B0C9 /* PhoneStorageManager.swift in Sources */,
 				448D78D1272AEBC600193E55 /* ProfileViewController.swift in Sources */,

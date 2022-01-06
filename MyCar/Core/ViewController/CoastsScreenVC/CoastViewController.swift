@@ -28,37 +28,35 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     // MARK: - обработка действий с моделью
     func recidveCoast(new coastFromView: Coast, index : Int?) {
 
-        if let index = index{
+        if let index = index {
             changeItemInModel(new: coastFromView, index: index)
-        } else {
-            addNewItemIntoModel(exist: coastFromView)
-        }
-        //update Table
-        tableView.reloadData()
+        } else { addNewItemIntoModel(exist: coastFromView) }
         // update rashod 
         setDataLables()
     }
-    
+
     func addNewItemIntoModel(exist coastFromView: Coast){
-        
-        if  coastData.addNewCoast(newCoast: coastFromView) {
-        alertSaveNewCoast(newCoast: coastFromView)
+        do {
+            try coastData.addNewCoast(newCoast: coastFromView)
+            alertSaveNewCoast(newCoast: coastFromView)
             tableView.reloadData()
-            
-        } else {
-            alertSaveNewCoast(newCoast: nil)
-        }
+        } catch { alertSaveNewCoast(newCoast: nil) }
     }
     
     func changeItemInModel(new coastFromView: Coast, index : Int){
-
-        if coastData.changeExistCoast (at: index, newCoast: coastFromView) {
+        
+        do {
+            try  coastData.changeExistCoast (at: index, newCoast: coastFromView)
             alertSaveNewCoast(newCoast: coastFromView)
             tableView.reloadData()
-        } else {
-            alertSaveNewCoast(newCoast: nil)
-        }
-        
+        } catch { alertSaveNewCoast(newCoast: nil) }
+    }
+    
+    func deleteItemInModel(at index: Int){
+        do {
+            try coastData.deleteDromModel(at: index)
+            tableView.reloadData()
+        } catch { alertSaveNewCoast(newCoast: nil) }
     }
     
     
@@ -84,7 +82,7 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         if let addNewCoastViewController = mainStoryboard.instantiateViewController(withIdentifier: "yourVcName") as? AddNewCoastViewController {
             addNewCoastViewController.changeCoast = coastData.getCoast(at: index)
             addNewCoastViewController.coastIndex = index
-            addNewCoastViewController.delegatedata=self
+            addNewCoastViewController.delegatedata = self
             show(addNewCoastViewController, sender: nil)
         }
     }
@@ -100,7 +98,7 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellsIdenteficator", for: indexPath) as! CoastTableViewCell
         cell.accessoryType = .detailButton
         
-        guard let coast = coastData.getCoast(at: indexPath.row) else  {return cell}
+        guard let coast = coastData.getCoast(at: indexPath.row) else  { return cell }
         cell.NameUILable.text = coast.name
         cell.odometrUILable.text = "\(coast.odometr) km"
         cell.priceUILable.text = "\(coast.price) ₽"
@@ -114,15 +112,17 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         guard let currentCoast = coastData.getCoast(at: indexPath.row) else { return  print ("Invalid index")}
         edingCoastScreen(index: indexPath.row)
     }
+    
     // удаление записи
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            coastData.deleteDromModel(at: indexPath.row)
-            //coastData.removeCoast(at: indexPath.row)
-            tableView.reloadData()
+           deleteItemInModel(at: indexPath.row)
         }
     }
+    
+    
+    // MARK: - Alert
     func alertSaveNewCoast(newCoast: Coast?){
         var alertView = UIAlertController()
         if let newCoast = newCoast {
@@ -134,4 +134,5 @@ class CoastViewController: UITableViewController, coastDataDelegate {
             }))
             self.present(alertView, animated: true, completion: nil)
     }
+    
 }
