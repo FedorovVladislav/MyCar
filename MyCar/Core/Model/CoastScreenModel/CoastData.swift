@@ -10,7 +10,12 @@ import UIKit
 import CoreData
 
 class CoastsData {
-  
+    init (){
+        do { try getDataFromModel()
+        } catch {
+            print (error)
+        }
+    }
     
     // MARK: - Переменные
     
@@ -24,9 +29,11 @@ class CoastsData {
             var distance = Set <Double> ()
             var prices : Double = 0
         
-            for coast in coasts { distance.insert(coast.odometr) }
-            for coast in coasts { prices = prices + coast.price }
-            
+            for coast in coasts {
+                distance.insert(coast.odometr)
+                prices = prices + coast.price
+            }
+           
             guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
             
             let changeDistance = maxDistance - minDistance
