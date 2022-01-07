@@ -11,6 +11,16 @@ struct Coast {
     var name : String
     var odometr : Double
     var price : Double
+    var typeCoast : TypeCoast?
     var userDescription : String?
     
+}
+
+enum TypeCoast: String, CaseIterable {
+    
+    case repair = "Repair"
+    case tuning = "Tunning"
+    case to = "Technik inspection"
+    case paidRoad = "Paid Road"
+    case insurance = "Insurance"
 }

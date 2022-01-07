@@ -1,7 +1,7 @@
 import MapKit
 import CoreLocation
 
-class SpeedometrViewController: UIViewController, MKMapViewDelegate {
+class SpeedometrViewController: UIViewController {
         // MARK: -Variable
     let locationManager = CLLocationManager()
     var lastLocation : CLLocation?

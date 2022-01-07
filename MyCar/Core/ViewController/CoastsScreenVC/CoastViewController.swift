@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol coastDataDelegate{
+protocol CoastDataDelegate {
     func recidveCoast(new coastFromView: Coast, index: Int?)
 }
 
-class CoastViewController: UITableViewController, coastDataDelegate {
+class CoastViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +26,7 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     
 
     // MARK: - обработка действий с моделью
-    func recidveCoast(new coastFromView: Coast, index : Int?) {
-
-        if let index = index {
-            changeItemInModel(new: coastFromView, index: index)
-        } else { addNewItemIntoModel(exist: coastFromView) }
-        // update rashod 
-        setDataLables()
-    }
-
+    
     func addNewItemIntoModel(exist coastFromView: Coast){
         do {
             try coastData.addNewCoast(newCoast: coastFromView)
@@ -44,7 +36,6 @@ class CoastViewController: UITableViewController, coastDataDelegate {
     }
     
     func changeItemInModel(new coastFromView: Coast, index : Int){
-        
         do {
             try  coastData.changeExistCoast (at: index, newCoast: coastFromView)
             alertSaveNewCoast(newCoast: coastFromView)
@@ -99,9 +90,9 @@ class CoastViewController: UITableViewController, coastDataDelegate {
         cell.accessoryType = .detailButton
         
         guard let coast = coastData.getCoast(at: indexPath.row) else  { return cell }
-        cell.NameUILable.text = coast.name
-        cell.odometrUILable.text = "\(coast.odometr) km"
-        cell.priceUILable.text = "\(coast.price) ₽"
+       
+        cell.setDataCell(coast: coast)
+        
         return cell
     }
    
@@ -135,4 +126,15 @@ class CoastViewController: UITableViewController, coastDataDelegate {
             self.present(alertView, animated: true, completion: nil)
     }
     
+}
+
+extension CoastViewController : CoastDataDelegate {
+    func recidveCoast(new coastFromView: Coast, index : Int?) {
+
+        if let index = index {
+            changeItemInModel(new: coastFromView, index: index)
+        } else { addNewItemIntoModel(exist: coastFromView) }
+        // update rashod
+        setDataLables()
+    }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 
-class HomeViewController: UIViewController, changeStateCar {
+class HomeViewController: UIViewController {
    
 
     override func viewDidLoad() {
@@ -16,28 +16,8 @@ class HomeViewController: UIViewController, changeStateCar {
         stateCar.delegate = self
         getWheatherData()
         stateCar.getStateCar()
-        
     }
-    
-    // MARK: -  delegate
-    func stateCar(carData: [CarData]) {
-        isStartEngien = (Int(carData[0].param))!.boolValue
-        isLockCar = (Int(carData[1].param))!.boolValue
-        isFanCar = (Int(carData[2].param))!.boolValue
-        rangeFuelText = Int(carData[3].param)!
-    }
-    
-    func startStopCar(isStartEngien: Bool) {
-        self.isStartEngien = isStartEngien
-    }
-    
-    func lockUnlockCar(isLockCar: Bool) {
-        self.isLockCar = isLockCar
-    }
-    
-    func onOffFan(isFanCar: Bool) {
-        self.isFanCar = isFanCar
-    }
+
     
     // MARK: - method
     private func getWheatherData(){
@@ -134,4 +114,23 @@ class HomeViewController: UIViewController, changeStateCar {
 
 }
 
-
+extension HomeViewController : changeStateCar {
+    func stateCar(carData: [CarData]) {
+        isStartEngien = (Int(carData[0].param))!.boolValue
+        isLockCar = (Int(carData[1].param))!.boolValue
+        isFanCar = (Int(carData[2].param))!.boolValue
+        rangeFuelText = Int(carData[3].param)!
+    }
+    
+    func startStopCar(isStartEngien: Bool) {
+        self.isStartEngien = isStartEngien
+    }
+    
+    func lockUnlockCar(isLockCar: Bool) {
+        self.isLockCar = isLockCar
+    }
+    
+    func onOffFan(isFanCar: Bool) {
+        self.isFanCar = isFanCar
+    }
+}

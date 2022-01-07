@@ -23,7 +23,7 @@ class CoastsData {
     private let phoneStorageManager = PhoneStorageManager()
     private var coasts : [Coast] = []
     private var distanceTrip : Double = 0
-    private var fuelPrice : Double = 50
+    private let fuelPrice : Double = 50
     private var pricePerKilometr : Int  {
         get {
             var distance = Set <Double> ()
@@ -31,7 +31,7 @@ class CoastsData {
         
             for coast in coasts {
                 distance.insert(coast.odometr)
-                prices = prices + coast.price
+                prices += coast.price
             }
            
             guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
@@ -47,6 +47,7 @@ class CoastsData {
     private var totalDistance : Int {
         get {
             var distance = Set <Double>()
+            
             for coast in coasts { distance.insert(coast.odometr) }
             
             guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
@@ -66,11 +67,11 @@ class CoastsData {
     }
     
     func getTotalDistance()->Int{
-        return  self.totalDistance
+        return self.totalDistance
     }
     
     func getCoast(at index: Int) -> Coast? {
-        if index <= getCountCoasts() - 1 {
+        if index < getCountCoasts() {
             print("Return coast at index: \(index)")
             return coasts[index]
         } else {
@@ -142,10 +143,4 @@ class CoastsData {
         } catch { throw error }
     }
 }
-private enum typeCoast: String {
-    case repair = "Repair"
-    case tuning = "Tuning"
-    case to = "TO"
-    case paidRoad = "Paid Road"
-    case insurance = "Insurance"
-}
+

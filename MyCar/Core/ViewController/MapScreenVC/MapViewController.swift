@@ -3,7 +3,7 @@ import MapKit
 import CoreLocation
 
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.MKMapView.removeOverlay(route)
         // tabble route
         self.roadInformationUIStackView.isHidden = true
-        
     }
     
     func addRoadOnMap(){
@@ -150,13 +149,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
 
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
-        renderer.lineWidth = 5.0
-        return renderer
-    }
-
     func startLocationManager(){
         
         self.MKMapView.delegate = self
@@ -169,6 +161,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             locationManager.startUpdatingLocation()
             self.MKMapView.showsUserLocation = true
         }
+    }
+}
+
+extension  MapViewController : MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
+        renderer.lineWidth = 5.0
+        return renderer
     }
 }
 

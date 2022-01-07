@@ -7,32 +7,8 @@
 
 import UIKit
 
-class AddNewCoastViewController: UIViewController, UITextFieldDelegate {
+class AddNewCoastViewController: UIViewController  {
     
-    var delegatedata: coastDataDelegate?
-    var changeCoast : Coast?
-    var coastIndex: Int?
-    
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var odometrTextField: UITextField!
-    @IBOutlet weak var priceTextField: UITextField!
-    
-    @IBOutlet weak var scrolView: UIScrollView!
-    @IBOutlet weak var SaveButton: UIButton!
-    
-    @IBAction func saveCoast(_ sender: UIButton) {
-        
-        guard let name = nameTextField.text else {return}
-        guard let odometr = Double (odometrTextField.text!) else {return}
-        guard let price = Double (priceTextField.text!) else {return}
-        let newCoast = Coast(name: name, odometr: odometr, price: price)
-        self.navigationController?.popViewController(animated: true)
-        //send new coast to our model
-        delegatedata?.recidveCoast(new:newCoast, index: self.coastIndex)
-    }
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +20,7 @@ class AddNewCoastViewController: UIViewController, UITextFieldDelegate {
         }
         
         //Настраиваем кнопку
-        activeButton(activate: false)
+        activeButton()
         self.odometrTextField.keyboardType = .numberPad
         self.priceTextField.keyboardType = .decimalPad
         //появление клавиатуры
@@ -55,48 +31,96 @@ class AddNewCoastViewController: UIViewController, UITextFieldDelegate {
         nameTextField.delegate = self
         odometrTextField.delegate = self
         priceTextField.delegate = self
+        typeCoastUIPickerView.delegate = self
+        typeCoastUIPickerView.dataSource = self
     }
     
-    func activeButton(activate : Bool){
-        if activate {
-            SaveButton.backgroundColor = .green
-            SaveButton.isEnabled = true
-        } else {
-            SaveButton.backgroundColor = .gray
-            SaveButton.isEnabled = false
-        }
+    var delegatedata: CoastDataDelegate?
+    var changeCoast : Coast?
+    var coastIndex: Int?
+    var typeCoast: TypeCoast?
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var odometrTextField: UITextField!
+    @IBOutlet weak var priceTextField: UITextField!
+    
+    @IBOutlet weak var scrolView: UIScrollView!
+    @IBOutlet weak var SaveButton: UIButton!
+    
+    @IBOutlet weak var typeCoastUIPickerView: UIPickerView!
+    
+    @IBAction func saveCoast(_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+        //send new coast to our model
+        guard let newCoast  = addNewCoast() else { return }
+        delegatedata?.recidveCoast(new: newCoast , index: self.coastIndex)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if nameTextField.text != "" && odometrTextField.text != "" && priceTextField.text != ""  {
-           activeButton(activate: true)
-            
-        } else{ activeButton(activate: false)}
+    // MARK: - Help function
+    private func addNewCoast() -> Coast? {
+        guard let name = nameTextField.text else { return nil }
+        guard let odometr = Double(odometrTextField.text!) else { return nil }
+        guard let price = Double(priceTextField.text!) else { return nil }
+        guard let typeCoast = typeCoast else { return nil }
+         
+        return Coast(name: name, odometr: odometr, price: price, typeCoast: typeCoast)
     }
     
-    func initOpenkeyboard(){
+    private func activeButton(){
+        let activate = nameTextField.text != "" && odometrTextField.text != "" && priceTextField.text != ""
+        SaveButton.backgroundColor = activate ?  .green : .gray
+        SaveButton.isEnabled = activate ? true : false
+    }
+    
+    //MARK: - Open/Close  keyboard
+    private func initOpenkeyboard(){
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
 }
     
-    func initTapRecognisedForCloseKerboar(){
+    private func initTapRecognisedForCloseKerboar(){
         let tabScreen = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         tabScreen.cancelsTouchesInView = false
         view.addGestureRecognizer(tabScreen)
     }
     
-    @objc func showKeyboard(_ notification: Notification){
+    @objc private func showKeyboard(_ notification: Notification){
         let userInfo = notification.userInfo
         let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
     
         scrolView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
     }
     
-    @objc func closeKeyboard(sender: UITapGestureRecognizer){
+    @objc private func closeKeyboard(sender: UITapGestureRecognizer){
         view.endEditing(true)
         scrolView.contentOffset = CGPoint(x: 0, y: 0)
     }
 }
-
+extension AddNewCoastViewController: UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeButton()
+    }
+}
+    
+extension AddNewCoastViewController: UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return TypeCoast.allCases.count
+    }
+}
 
+extension AddNewCoastViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return TypeCoast.allCases[row].rawValue
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.typeCoast = TypeCoast.allCases[row]
+    }
+}
 

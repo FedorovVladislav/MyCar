@@ -153,9 +153,9 @@
             filePath = "MyCar/Core/ViewController/HomeScreenVC/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "startMotorUIButton(_:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "fanUIButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
