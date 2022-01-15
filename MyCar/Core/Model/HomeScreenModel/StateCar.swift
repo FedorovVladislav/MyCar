@@ -7,55 +7,30 @@
 
 import Foundation
 
+struct StateCar {
+    
+    var carData: [CarData]
+    
+    init (carData:[CarData]){
+        self.carData = carData
+    }
 
-class StateCar {
-    
-    var delegate: changeStateCar?
-    
-    // MARK: - methods
-    
-    func startEngienCar(mode : Bool){
-
-        NetworkManager.CarStateData(id: 1, value: mode.intValue) { carData in
-            self.delegate?.startStopCar(isStartEngien: (Int(carData[0].param))!.boolValue)
+    func getStateEquipment (at equipment: DataCarEquipment) -> Int {
+        switch equipment {
+        case .getState:
+            return 0
+        case .setEngien:
+            return Int(carData[0].param)!
+        case .setLockDoor:
+            return Int(carData[1].param)!
+        case .setFanSystem:
+            return Int(carData[2].param)!
+        case .getFuilLevle:
+            return Int(carData[3].param)!
         }
     }
     
-    func lockCar(mode : Bool){
-       
-        NetworkManager.CarStateData(id: 2, value: mode.intValue){ carData in
-            self.delegate?.lockUnlockCar(isLockCar: (Int(carData[1].param))!.boolValue)
-        }
-    }
-    
-    func fanCar(mode : Bool){
-        NetworkManager.CarStateData(id: 3, value: mode.intValue) { carData in
-            self.delegate?.onOffFan(isFanCar: (Int(carData[2].param))!.boolValue)
-        }
-    }
-    
-    func getStateCar(){
-        NetworkManager.CarStateData(id: nil, value: nil){ carData in
-            self.delegate?.stateCar(carData: carData)
-        }
-    }
-}
-
-protocol changeStateCar {
-    func startStopCar(isStartEngien: Bool)
-    func lockUnlockCar(isLockCar:Bool)
-    func onOffFan(isFanCar:Bool)
-    func stateCar(carData: [CarData])
-}
-
-extension Bool {
-    var intValue: Int {
-        return self ? 1 : 0
-    }
-}
-
-extension Int {
-    var boolValue: Bool {
-        return self != 0
+    mutating func setValues(carData : [CarData]) {
+        self.carData = carData
     }
 }

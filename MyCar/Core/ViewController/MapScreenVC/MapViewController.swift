@@ -2,8 +2,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
-
 class MapViewController: UIViewController {
+    
+    // MARK: - Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,7 +13,21 @@ class MapViewController: UIViewController {
         startLocationManager()
     }
     
-    // MARK: - кнопки
+    func startLocationManager(){
+        
+        self.MKMapView.delegate = self
+
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.pausesLocationUpdatesAutomatically  = false
+            locationManager.startUpdatingLocation()
+            self.MKMapView.showsUserLocation = true
+        }
+    }
+    
+    // MARK: - Storyboard element
 
     @IBAction func AddPoint(_ sender: UIBarButtonItem) {
         AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
@@ -21,8 +36,6 @@ class MapViewController: UIViewController {
     @IBAction func removeRote(_ sender: UIBarButtonItem) {
         removeRoute()
     }
-   
-    // MARK: - надписи
     
     @IBOutlet weak var distanceUILable: UILabel!
     
@@ -32,7 +45,10 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var roadInformationUIStackView: UIStackView!
     
+    @IBOutlet weak var MKMapView: MKMapView!
+    
     // MARK: -Variable
+    
     let locationManager = CLLocationManager()
     
     var annotationMap : [MKAnnotation]?
@@ -45,8 +61,7 @@ class MapViewController: UIViewController {
     
     var distansRoute : Double = 0 {
         didSet {
-             let rounded = Double(round(10*distansRoute)/10)
-             distanceUILable.text = "Distance: \(rounded)km"
+            distanceUILable.text = "Distance\n\(distansRoute.rounded0_X) km"
         }
     }
     
@@ -54,24 +69,22 @@ class MapViewController: UIViewController {
         didSet {
             let formate  = DateComponentsFormatter()
             formate.allowedUnits = [.hour, .minute]
-            //let rounded = Double(round(10*timeRoute)/10)
             guard let time = formate.string(from:  self.timeRoute) else { return }
-            timeRouteUILable.text = "Time: \(time)h"
+            timeRouteUILable.text = "Time\n\(time) h"
         }
     }
     
     var coastRoute : Double = 0 {
         didSet {
-            let rounded = Double(round(10*coastRoute)/10)
-            coastRoadUILale.text = "Coast: \(rounded)P"
+            coastRoadUILale.text = "Coast\n \(coastRoute.rounded0_X) P"
         }
     }
     
     var alertTextField: UITextField?
     
-    @IBOutlet weak var MKMapView: MKMapView!
+
     
-// MARK: -Function
+    // MARK: -Function
     
     func AlertWithTextFieldAnd2Button(titleAlert: String, messageAlert: String, titleButton: String){
         let alertView = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: UIAlertController.Style.alert)
@@ -149,20 +162,9 @@ class MapViewController: UIViewController {
         }
     }
 
-    func startLocationManager(){
-        
-        self.MKMapView.delegate = self
-
-        locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.pausesLocationUpdatesAutomatically  = false
-            locationManager.startUpdatingLocation()
-            self.MKMapView.showsUserLocation = true
-        }
-    }
+    
 }
+    // MARK: - Extention
 
 extension  MapViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

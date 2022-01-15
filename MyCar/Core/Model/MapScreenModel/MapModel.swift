@@ -10,6 +10,7 @@ import MapKit
 
 class mapModel {
     
+    // MARK: - Variable
     
     var adressToFind: String = ""
    
@@ -17,9 +18,7 @@ class mapModel {
     var destenation: CLLocationCoordinate2D?
     var mapRegion : MKCoordinateRegion? 
     
-
-        
-
+    
     func  findAdress(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
         
         guard let mapRegion = mapRegion else { return }

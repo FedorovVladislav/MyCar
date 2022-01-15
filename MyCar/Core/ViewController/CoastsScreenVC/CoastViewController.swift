@@ -1,17 +1,9 @@
-//
-//  CoastViewController.swift
-//  MyCar
-//
-//  Created by Елизавета Федорова on 09.11.2021.
-//
-
 import UIKit
 
-protocol CoastDataDelegate {
-    func recidveCoast(new coastFromView: Coast, index: Int?)
-}
 
 class CoastViewController: UITableViewController {
+    
+    // MARK: - Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +11,20 @@ class CoastViewController: UITableViewController {
         setDataLables()
     }
     
-    // MARK: - переменные
+    // MARK: - Storyboard element
+    
     @IBOutlet weak var pricePerKilometr: UILabel!
-    @IBOutlet weak var totalDistance: UILabel!    
+    @IBOutlet weak var totalDistance: UILabel!
+    @IBAction func addNewCoast(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        if let addNewCoastViewController = mainStoryboard.instantiateViewController(withIdentifier: "yourVcName") as? AddNewCoastViewController {
+            addNewCoastViewController.delegatedata = self
+            show(addNewCoastViewController, sender: nil)
+        }
+    }
+    
+    // MARK: - Variable
+    
     let coastData = CoastsData.shared
     
 
@@ -36,6 +39,7 @@ class CoastViewController: UITableViewController {
     }
     
     func changeItemInModel(new coastFromView: Coast, index : Int){
+        print ("changeItemStart")
         do {
             try  coastData.changeExistCoast (at: index, newCoast: coastFromView)
             alertSaveNewCoast(newCoast: coastFromView)
@@ -60,13 +64,7 @@ class CoastViewController: UITableViewController {
         pricePerKilometr.text = "\(valuepricePerKilometr) ₽/km"
     }
     
-    @IBAction func addNewCoast(_ sender: Any) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        if let addNewCoastViewController = mainStoryboard.instantiateViewController(withIdentifier: "yourVcName") as? AddNewCoastViewController {
-            addNewCoastViewController.delegatedata = self
-            show(addNewCoastViewController, sender: nil)
-        }
-    }
+
     
     func edingCoastScreen(index : Int) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -127,6 +125,7 @@ class CoastViewController: UITableViewController {
     }
     
 }
+    // MARK: - Extention
 
 extension CoastViewController : CoastDataDelegate {
     func recidveCoast(new coastFromView: Coast, index : Int?) {

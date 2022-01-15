@@ -1,10 +1,3 @@
-//
-//  PhoneStorageManager.swift
-//  MyCar
-//
-//  Created by Елизавета Федорова on 05.01.2022.
-//
-
 import Foundation
 import CoreData
 import UIKit
@@ -18,24 +11,17 @@ enum errorWorkWithCoreData : Error {
 }
 
 class PhoneStorageManager {
-    
+    // MARK: - Method
     
     func addItemToStorage(newCoast coast: Coast) throws {
         
-        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        let  context = getContex()
         
         guard let entity = NSEntityDescription.entity(forEntityName: "CoreCoasts", in: context) else { throw errorWorkWithCoreData.errorCoreDataEntity }
     
-        let taskOject = CoreCoasts (entity: entity, insertInto: context)
+        var taskOject = CoreCoasts (entity: entity, insertInto: context)
         
-        taskOject.name = coast.name
-        taskOject.price = coast.price
-        taskOject.odometr = coast.odometr
-        
-        if let userDescription = coast.userDescription {
-            taskOject.userDescription = userDescription
-        } else { taskOject.userDescription = "" }
+            taskOject = setEntity(newCoast: coast, taskOject: taskOject)
         
         do {
             try context.save()
@@ -50,37 +36,30 @@ class PhoneStorageManager {
        
         print ("changeExistCoast at \(index)")
         
-        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-        let context  = appDelegate.persistentContainer.viewContext
+        let  context = getContex()
         
         let fetcht = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
         
         do {
-            let results = try context.fetch(fetcht)
+            var results = try context.fetch(fetcht)
             
             guard  index <= results.count - 1 else { throw errorWorkWithCoreData.errorIndex }
             
-            results[index].name = newCoast.name
-            results[index].price = newCoast.price
-            results[index].odometr = newCoast.odometr
-        
-            if let userDescription = newCoast.userDescription {
-                results[index].userDescription = userDescription
-            } else { results[index].userDescription = "" }
-        
+            results[index] = setEntity(newCoast: newCoast, taskOject:   results[index])
+            
             do {
                 try context.save()
+                
             } catch { throw errorWorkWithCoreData.errorCoreDataSave }
             
         } catch { throw errorWorkWithCoreData.errorCoreDataFetch }
     }
     
     func deleteDromModel(at index: Int) throws {
+        
         print("Remove coast at index: \(index)")
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
+        let  context = getContex()
         let  fetchRequest = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
         
         do {
@@ -92,6 +71,7 @@ class PhoneStorageManager {
             
             do {
                 try context.save()
+                
             } catch { throw errorWorkWithCoreData.errorCoreDataSave }
         } catch { throw errorWorkWithCoreData.errorCoreDataFetch }
         
@@ -101,9 +81,7 @@ class PhoneStorageManager {
         
         print ("getDataFromModel")
         
-        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
+        let  context = getContex()
         let fetchRequest = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
 
         do {
@@ -111,11 +89,41 @@ class PhoneStorageManager {
             var coasts : [Coast] = []
             
             for res in result {
-                coasts.append(Coast(name: res.name!, odometr: res.odometr, price: res.price, userDescription: res.userDescription))
+                coasts.append(Coast(name: res.name!, odometr: res.odometr, price: res.price, typeCoast:getTypeCoast(string: res.typeCoast), userDescription: res.userDescription))
             }
             return coasts
             
         } catch { throw errorWorkWithCoreData.errorCoreDataFetch}
+    }
+    
+    func getTypeCoast(string: String? ) -> TypeCoast {
+        
+        if let string = string, let typeCoast = TypeCoast.init(rawValue: string) {
+            return typeCoast
+        } else {
+            return TypeCoast(rawValue: "Repair")!
+        }
+    }
+    
+    func setEntity(newCoast coast: Coast, taskOject: CoreCoasts ) -> CoreCoasts {
+        
+        taskOject.name = coast.name
+        taskOject.price = coast.price
+        taskOject.odometr = coast.odometr
+        taskOject.typeCoast = coast.typeCoast?.rawValue
+        
+        if let userDescription = coast.userDescription {
+            taskOject.userDescription = userDescription
+        } else {
+            taskOject.userDescription = ""
+        }
+        return taskOject
+    }
+    
+    func getContex() -> NSManagedObjectContext{
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
 }
 

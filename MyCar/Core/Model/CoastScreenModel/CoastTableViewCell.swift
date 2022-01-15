@@ -8,22 +8,24 @@
 import UIKit
 
 class CoastTableViewCell: UITableViewCell {
-
+    
+    // MARK: - Storyboard element
     @IBOutlet weak var NameUILable: UILabel!
     @IBOutlet weak var odometrUILable: UILabel!
     @IBOutlet weak var priceUILable: UILabel!
     @IBOutlet weak var typeCoastUIImageView: UIImageView!
     
+    // MARK: - Initialization
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
+    // MARK: - Method
     func  setDataCell(coast: Coast) {
         
         NameUILable.text = coast.name

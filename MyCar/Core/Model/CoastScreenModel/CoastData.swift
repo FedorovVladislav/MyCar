@@ -17,7 +17,7 @@ class CoastsData {
         }
     }
     
-    // MARK: - Переменные
+    // MARK: - Variable
     
     static let shared = CoastsData()
     private let phoneStorageManager = PhoneStorageManager()

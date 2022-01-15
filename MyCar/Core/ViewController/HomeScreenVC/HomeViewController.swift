@@ -1,26 +1,24 @@
-//
-//  ViewController.swift
-//  MyCar
-//
-//  Created by Елизавета Федорова on 20.10.2021.
-//
-
 import UIKit
 
-
 class HomeViewController: UIViewController {
-   
-
+    
+    // MARK: - Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
-        stateCar.delegate = self
+        
         getWheatherData()
-        stateCar.getStateCar()
+        stateCarModel.setStateCar(set:  DataCarEquipment.getState)
+        
+        stateCarModel.delegate = self
+        
+        setButton()
+        engienButtonUIView.delegate = self
+        lockCarButtonUIView.delegate =  self
+        fanCarButtonUIView.delegate = self
     }
-
     
-    // MARK: - method
     private func getWheatherData(){
+        
         NetworkManager.getWeatherData { wheatherOut, temperature in
             
             guard let temperature = temperature else {return }
@@ -28,109 +26,51 @@ class HomeViewController: UIViewController {
         }
     }
     
-    // MARK: -  Variable
-    
-    private var isStartEngien = false {
-        didSet{
-            DispatchQueue.main.sync {
-                if isStartEngien {
-                    
-                    startEngien.backgroundColor =  .systemGreen
-                    startEngien.setTitle("Start Eng", for: .normal)
-                } else {
-                    startEngien.backgroundColor = .lightGray
-                    startEngien.setTitle("Stop Eng", for: .normal)
-                }
-            }
-        }
+    private  func setButton(){
+        
+        engienButtonUIView.settingsState(tupeObjectName: "Engien", stateOnName: "Start", stateOffName: "Stop", iconOnName: "bolt.fill", iconOffName: "bolt.slash.fill", typeButton: .setEngien )
+        lockCarButtonUIView.settingsState(tupeObjectName: "Car door", stateOnName: "Lock", stateOffName: "Unlock", iconOnName: "lock.fill", iconOffName: "lock.open.fill", typeButton: .setLockDoor)
+        fanCarButtonUIView.settingsState(tupeObjectName: "Fan system", stateOnName: "Work", stateOffName: "Stop", iconOnName: "fanblades", iconOffName: "stop", typeButton: .setFanSystem)
     }
     
-    private var isLockCar = false {
-        didSet{
-            DispatchQueue.main.sync{
-                if isLockCar {
-                    lockCar.backgroundColor =  .systemGreen
-                    lockCar.setTitle("Locked", for: .normal)
-                } else {
-                    lockCar.backgroundColor = .lightGray
-                    lockCar.setTitle("Unlocked", for: .normal)
-                   
-                }
-            }
-        }
-    }
-   
-    private var isFanCar = false{
-        didSet{
-            DispatchQueue.main.sync{
-                if isFanCar {
-                    fanCar.backgroundColor =  .systemGreen
-                    fanCar.setTitle("Start Fan", for: .normal)
-                } else{
-                    fanCar.backgroundColor = .lightGray
-                    fanCar.setTitle("Stop Fan", for: .normal)
-                }
-            }
-        }
-    }
+    // MARK: - Variable
     
-    private var stateCar = StateCar()
+    private var stateCarModel = StateCarModel()
     
     private var outsideTemp = 0.0 {
-        didSet{
-            let roundedSpeed = Double(round(10 * outsideTemp)/10)
+        
+        didSet {
             DispatchQueue.main.async {
-                self.OutsideTemperature.text = "Outside: \(roundedSpeed) C "
-            }
-        }
-    }
-    
-    private var rangeFuelText: Int = 0 {
-        didSet{
-            DispatchQueue.main.async {
-                self.rangeFuel.text = "Range: \(self.rangeFuelText) km"
+                self.OutsideTemperature.text = "Outside: \(self.outsideTemp.rounded0_X) C "
             }
         }
     }
     
     // MARK: - Storyboard element
-    @IBOutlet weak var startEngien: UIButton!
-    @IBOutlet weak var fanCar: UIButton!
-    @IBOutlet weak var lockCar: UIButton!
-    
-    @IBAction func lockUIButton(_ sender: Any) {
-        stateCar.lockCar(mode: !isLockCar)
-    }
-    @IBAction func fanUIButton(_ sender: Any) {
-        stateCar.fanCar(mode: !isFanCar)
-    }
-    @IBAction func startMotorUIButton(_ sender: Any) {
-        stateCar.startEngienCar(mode: !isStartEngien)
-    }
     
     @IBOutlet weak var OutsideTemperature: UILabel!
-    
     @IBOutlet weak var rangeFuel: UILabel!
-
+    @IBOutlet weak var engienButtonUIView: ButtonSection!
+    @IBOutlet weak var lockCarButtonUIView: ButtonSection!
+    @IBOutlet weak var fanCarButtonUIView: ButtonSection!
 }
+    // MARK: - Extention
 
 extension HomeViewController : changeStateCar {
-    func stateCar(carData: [CarData]) {
-        isStartEngien = (Int(carData[0].param))!.boolValue
-        isLockCar = (Int(carData[1].param))!.boolValue
-        isFanCar = (Int(carData[2].param))!.boolValue
-        rangeFuelText = Int(carData[3].param)!
-    }
-    
-    func startStopCar(isStartEngien: Bool) {
-        self.isStartEngien = isStartEngien
-    }
-    
-    func lockUnlockCar(isLockCar: Bool) {
-        self.isLockCar = isLockCar
-    }
-    
-    func onOffFan(isFanCar: Bool) {
-        self.isFanCar = isFanCar
+    func stateCar(carState: StateCar) {
+        DispatchQueue.main.sync {
+            
+            engienButtonUIView.setButtonState(state: carState.getStateEquipment(at: DataCarEquipment.setEngien).boolValue)
+            lockCarButtonUIView.setButtonState(state: carState.getStateEquipment(at: DataCarEquipment.setLockDoor).boolValue)
+            fanCarButtonUIView.setButtonState(state: carState.getStateEquipment(at: DataCarEquipment.setFanSystem).boolValue)
+            self.rangeFuel.text = "Range: \(carState.getStateEquipment(at: DataCarEquipment.getFuilLevle)) km"
+        }
     }
 }
+
+extension HomeViewController: ButtonDelegateData {
+    func buttonPressed(typeButton : DataCarEquipment) {
+        stateCarModel.setStateCar(set: typeButton)
+    }
+}
+

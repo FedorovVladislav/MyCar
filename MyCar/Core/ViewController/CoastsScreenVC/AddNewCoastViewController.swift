@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol CoastDataDelegate {
+    func recidveCoast(new coastFromView: Coast, index: Int?)
+}
+
 class AddNewCoastViewController: UIViewController  {
+    
+    // MARK: - Initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +23,7 @@ class AddNewCoastViewController: UIViewController  {
             nameTextField.text = changeCoastTemp.name
             odometrTextField.text = String(changeCoastTemp.odometr)
             priceTextField.text = String(changeCoastTemp.price)
+            typeCoast = changeCoastTemp.typeCoast
         }
         
         //Настраиваем кнопку
@@ -34,21 +41,21 @@ class AddNewCoastViewController: UIViewController  {
         typeCoastUIPickerView.delegate = self
         typeCoastUIPickerView.dataSource = self
     }
+    // MARK: - Variable
     
     var delegatedata: CoastDataDelegate?
     var changeCoast : Coast?
     var coastIndex: Int?
     var typeCoast: TypeCoast?
     
+    // MARK: - Storyboard element
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var odometrTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
-    
     @IBOutlet weak var scrolView: UIScrollView!
     @IBOutlet weak var SaveButton: UIButton!
-    
     @IBOutlet weak var typeCoastUIPickerView: UIPickerView!
-    
     @IBAction func saveCoast(_ sender: UIButton) {
         
         self.navigationController?.popViewController(animated: true)
@@ -59,6 +66,7 @@ class AddNewCoastViewController: UIViewController  {
     
     // MARK: - Help function
     private func addNewCoast() -> Coast? {
+        
         guard let name = nameTextField.text else { return nil }
         guard let odometr = Double(odometrTextField.text!) else { return nil }
         guard let price = Double(priceTextField.text!) else { return nil }
@@ -96,6 +104,8 @@ class AddNewCoastViewController: UIViewController  {
         scrolView.contentOffset = CGPoint(x: 0, y: 0)
     }
 }
+    // MARK: - Extention
+
 extension AddNewCoastViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {

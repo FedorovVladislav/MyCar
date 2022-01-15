@@ -2,19 +2,23 @@ import UIKit
 
 
 class Speedometer: UIView {
-    // MARK: -Variable
+    
+    // MARK: - Variable
     
     var currentSpeed : Double = 0 {
-        didSet{
-            if currentSpeed >=  0 {
-                if currentSpeed < 10 {
-                    let roundedSpeed = Double(round(10 * currentSpeed)/10)
-                    speedTittle.text = "\(roundedSpeed)"
-                } else {
-                    let roundedSpeed = Int(round(currentSpeed))
-                    speedTittle.text = "\(roundedSpeed)"
-                }
-            }else {
+        didSet {
+
+            if currentSpeed > 10 {
+                
+                speedTittle.text = "\(currentSpeed.rounded0_X)"
+                
+            } else if currentSpeed > 0 {
+                
+                let roundedSpeed = Int(round(currentSpeed))
+                speedTittle.text = "\(roundedSpeed)"
+            
+            } else {
+                
                 speedTittle.text = "0"
             }
             
@@ -23,15 +27,13 @@ class Speedometer: UIView {
         }
     }
     
-    
-    // MARK: -Private Variable
+    // MARK: - Private Variable
     
     private let progressCircle = CAShapeLayer()
     private let speedTittle = UILabel()
     private let speedUnit = UILabel()
     
-   
-    // MARK: -Constructor
+    // MARK: - Initialization
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -42,9 +44,6 @@ class Speedometer: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    // MARK: -SetUp Function
     
     private func setupSpeedCurcle(){
         
@@ -71,7 +70,7 @@ class Speedometer: UIView {
         self.layer.addSublayer(borderCircle)
         self.layer.addSublayer(progressCircle)
     }
-    
+       
     private func setupSpeedTittle(){
     
         // Text

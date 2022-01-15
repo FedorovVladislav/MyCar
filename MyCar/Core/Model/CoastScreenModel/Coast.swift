@@ -8,6 +8,7 @@
 import Foundation
 
 struct Coast {
+    
     var name : String
     var odometr : Double
     var price : Double
@@ -23,4 +24,5 @@ enum TypeCoast: String, CaseIterable {
     case to = "Technik inspection"
     case paidRoad = "Paid Road"
     case insurance = "Insurance"
+    
 }
