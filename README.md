@@ -1,3 +1,8 @@
 # MyCar
-Приложение, которое отображает состояне авто
-![Uploading Мой фильм.gif…]()
+Пет проект для изучения, в котором применялись следущие технологии:
+UIKit
+MapKit
+CoreLocation
+![Alt Text](https://yapx.ru/v/QJfIB)
+
+
