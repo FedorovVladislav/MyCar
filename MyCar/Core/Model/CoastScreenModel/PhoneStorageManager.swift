@@ -10,7 +10,7 @@ enum errorWorkWithCoreData : Error {
     case error
 }
 
-class PhoneStorageManager {
+struct PhoneStorageManager {
     // MARK: - Method
     
     func addItemToStorage(newCoast coast: Coast) throws {
@@ -26,13 +26,10 @@ class PhoneStorageManager {
         do {
             try context.save()
             
-        } catch let error as NSError {
-            print ("addNewCoast Core Error:\(error.localizedDescription)")
-            throw errorWorkWithCoreData.errorCoreDataSave
-        }
+        } catch  { throw errorWorkWithCoreData.errorCoreDataSave }
     }
     
-    func changeExistCoast(at index : Int, newCoast: Coast) throws {
+    func changeItemInStorage(at index : Int, newCoast: Coast) throws {
        
         print ("changeExistCoast at \(index)")
         
@@ -55,7 +52,7 @@ class PhoneStorageManager {
         } catch { throw errorWorkWithCoreData.errorCoreDataFetch }
     }
     
-    func deleteDromModel(at index: Int) throws {
+    func deleteItemFromStorage(at index: Int) throws {
         
         print("Remove coast at index: \(index)")
         
@@ -77,7 +74,7 @@ class PhoneStorageManager {
         
     }
     
-    func getDataFromModel() throws -> [Coast]? {
+    func getItemsFromStorage() throws -> [Coast]? {
         
         print ("getDataFromModel")
         
@@ -96,7 +93,7 @@ class PhoneStorageManager {
         } catch { throw errorWorkWithCoreData.errorCoreDataFetch}
     }
     
-    func getTypeCoast(string: String? ) -> TypeCoast {
+    private func getTypeCoast(string: String? ) -> TypeCoast {
         
         if let string = string, let typeCoast = TypeCoast.init(rawValue: string) {
             return typeCoast
@@ -105,26 +102,27 @@ class PhoneStorageManager {
         }
     }
     
-    func setEntity(newCoast coast: Coast, taskOject: CoreCoasts ) -> CoreCoasts {
-        
-        taskOject.name = coast.name
-        taskOject.price = coast.price
-        taskOject.odometr = coast.odometr
-        taskOject.typeCoast = coast.typeCoast?.rawValue
-        
-        if let userDescription = coast.userDescription {
-            taskOject.userDescription = userDescription
-        } else {
-            taskOject.userDescription = ""
+    private func setEntity(newCoast coast: Coast, taskOject: CoreCoasts ) -> CoreCoasts {
+            
+            taskOject.name = coast.name
+            taskOject.price = coast.price
+            taskOject.odometr = coast.odometr
+            taskOject.typeCoast = coast.typeCoast?.rawValue
+            
+            if let userDescription = coast.userDescription {
+                taskOject.userDescription = userDescription
+            } else {
+                taskOject.userDescription = ""
+            }
+            return taskOject
         }
-        return taskOject
-    }
     
-    func getContex() -> NSManagedObjectContext{
+    private func getContex() -> NSManagedObjectContext{
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
+    
 }
 
 

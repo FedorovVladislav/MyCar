@@ -103,14 +103,14 @@ class CoastsData {
     
     func changeExistCoast(at index : Int, newCoast: Coast) throws {
         do {
-            try phoneStorageManager.changeExistCoast(at: index, newCoast: newCoast)
+            try phoneStorageManager.changeItemInStorage(at: index, newCoast: newCoast)
             changeCurentCoast(at: index, newCoast: newCoast)
         } catch { throw error }
     }
     
     func deleteDromModel(at index: Int ) throws {
         do {
-            try phoneStorageManager.deleteDromModel(at:  index)
+            try phoneStorageManager.deleteItemFromStorage(at:  index)
             removeCoast(at: index)
         } catch { throw error }
     }
@@ -136,7 +136,7 @@ class CoastsData {
     private func getDataFromModel() throws {
   
         do {
-            let coasts = try phoneStorageManager.getDataFromModel()
+            let coasts = try phoneStorageManager.getItemsFromStorage()
             
             self.coasts = coasts!
             
