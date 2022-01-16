@@ -1,3 +1,3 @@
 # MyCar
 Приложение, которое отображает состояне авто
-https://youtu.be/4oqrWXW4fPk
+https://www.youtube.com/watch?v=4oqrWXW4fPk&feature=youtu.be
