@@ -31,16 +31,19 @@ class ButtonSection: UIView {
     
     // MARK:  - Method
     func setButtonState(state: Bool){
-       guard  let  stateView = stateView else {  return }
-        typeLable.text = stateView.tupeObjectName
+        DispatchQueue.main.async {
+            
+            guard  let  stateView = self.stateView else {  return }
+            self.typeLable.text = stateView.tupeObjectName
         if state {
-            stateLable.text  = stateView.stateOnName
-            ButtonUIButtonOutlet.setImage(UIImage(systemName: stateView.iconOnName), for: .normal)
-            ButtonUIButtonOutlet.tintColor = .systemRed
+            self.stateLable.text  = stateView.stateOnName
+            self.ButtonUIButtonOutlet.setImage(UIImage(systemName: stateView.iconOnName), for: .normal)
+            self.ButtonUIButtonOutlet.tintColor = .systemRed
         } else {
-            stateLable.text  = stateView.stateOffName
-            ButtonUIButtonOutlet.setImage(UIImage(systemName: stateView.iconOffName), for: .normal)
-            ButtonUIButtonOutlet.tintColor = .systemBlue
+            self.stateLable.text  = stateView.stateOffName
+            self.ButtonUIButtonOutlet.setImage(UIImage(systemName: stateView.iconOffName), for: .normal)
+            self.ButtonUIButtonOutlet.tintColor = .systemBlue
+        }
         }
     }
     

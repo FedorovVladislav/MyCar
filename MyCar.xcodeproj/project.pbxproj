@@ -29,6 +29,7 @@
 		44A04B36278DF70C002C267A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44A04B34278DF70C002C267A /* Main.storyboard */; };
 		44A04B3A278DF94B002C267A /* Round0_X.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A04B39278DF94B002C267A /* Round0_X.swift */; };
 		44A04B3E278DFABB002C267A /* StateCarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A04B3D278DFABB002C267A /* StateCarModel.swift */; };
+		44AA14A5279758F700A5E851 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44AA14A4279758F700A5E851 /* GoogleService-Info.plist */; };
 		44AE9F2C274AB31700BBA781 /* MyCarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44AE9F2A274AB31700BBA781 /* MyCarModel.xcdatamodeld */; };
 		44AE9F2E274C194400BBA781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE9F2D274C194400BBA781 /* AppDelegate.swift */; };
 		44DDA89327909EE3009640E6 /* ButtonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA89227909EE3009640E6 /* ButtonSection.swift */; };
@@ -62,6 +63,7 @@
 		44A04B35278DF70C002C267A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44A04B39278DF94B002C267A /* Round0_X.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round0_X.swift; sourceTree = "<group>"; };
 		44A04B3D278DFABB002C267A /* StateCarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateCarModel.swift; sourceTree = "<group>"; };
+		44AA14A4279758F700A5E851 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44AE9F2B274AB31700BBA781 /* MyCar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyCar.xcdatamodel; sourceTree = "<group>"; };
 		44AE9F2D274C194400BBA781 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44DDA89227909EE3009640E6 /* ButtonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSection.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				448D7884272403B500193E55 /* Resources */,
 				445D77EF272079E500A7F565 /* Info.plist */,
 				44AE9F2A274AB31700BBA781 /* MyCarModel.xcdatamodeld */,
+				44AA14A4279758F700A5E851 /* GoogleService-Info.plist */,
 			);
 			path = MyCar;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			files = (
 				44DDA8972790A49C009640E6 /* View.xib in Resources */,
 				44A04B36278DF70C002C267A /* Main.storyboard in Resources */,
+				44AA14A5279758F700A5E851 /* GoogleService-Info.plist in Resources */,
 				4446F4972782202800D4ED91 /* Assets.xcassets in Resources */,
 				4446F4952782201F00D4ED91 /* LaunchScreen.storyboard in Resources */,
 			);

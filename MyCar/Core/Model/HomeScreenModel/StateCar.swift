@@ -11,7 +11,7 @@ struct StateCar {
     
     var carData: [CarData]
     
-    init (carData:[CarData]){
+    init (carData:[CarData]) {
         self.carData = carData
     }
 

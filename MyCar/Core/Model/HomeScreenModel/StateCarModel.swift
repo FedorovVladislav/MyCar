@@ -15,6 +15,7 @@ class StateCarModel {
     
     var delegate: changeStateCar?
     var stateCar : StateCar?
+    var networkManager = NetworkManager()
     
     // MARK: - methods
     
@@ -22,17 +23,16 @@ class StateCarModel {
         if let stateCar = stateCar {
             
             let value =  stateCar.getStateEquipment(at: equipment).boolValue
-            NetworkManager.CarStateData(id: equipment.rawValue, value: (!value).intValue) { carData in
-                self.stateCar!.setValues(carData: carData)
+            
+            networkManager.fetchCarState(id: equipment.rawValue, value: (!value).intValue) { carData, error  in
+                self.stateCar!.setValues(carData: carData!)
                 self.delegate?.stateCar(carState: self.stateCar!)
             }
             
         } else {
-            NetworkManager.CarStateData(id: 0, value: 0) { carData in
-                
-                self.stateCar = StateCar(carData: carData)
+            networkManager.fetchCarState(id: 0, value: 0) { carData, error in
+                self.stateCar = StateCar(carData: carData!)
                 self.delegate?.stateCar(carState: self.stateCar!)
-                
             }
         }
     }

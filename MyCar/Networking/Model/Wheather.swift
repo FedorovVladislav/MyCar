@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Wheather : Decodable {
+struct Wheather : Codable {
         var coord: Coord?
         var weather: [Weather]?
         //var base: String?
@@ -24,14 +24,13 @@ struct Wheather : Decodable {
     
 }
 
-
-struct Coord: Decodable {
+struct Coord: Codable {
 
     var lon: Double?
     var lat: Double?
 }
 
-struct Weather: Decodable {
+struct Weather: Codable {
 
     var id: Int?
     var main: String?
@@ -39,20 +38,19 @@ struct Weather: Decodable {
     var icon: String?
 }
 
-struct Wind: Decodable {
+struct Wind: Codable {
 
     var speed: Double?
     var deg: Int?
     var gust: Double?
 }
 
-
-struct Clouds: Decodable {
+struct Clouds: Codable {
 
     var all: Int?
 }
 
-struct Sys: Decodable {
+struct Sys: Codable {
 
     var type: Int?
     var id: Int?
@@ -61,7 +59,8 @@ struct Sys: Decodable {
     var sunset: Int?
 
 }
-struct Main: Decodable {
+
+struct Main: Codable {
 
     var temp: Double?
     var feels_like: Double?
