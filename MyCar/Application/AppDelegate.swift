@@ -4,24 +4,43 @@
 //
 //  Created by Елизавета Федорова on 20.10.2021.
 //
-
+import GoogleSignIn
 import UIKit
 import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    
+    
+    
     var window: UIWindow?
     
     let notificationCenter = UNUserNotificationCenter.current()
+    
     
     
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        requestAutorisation()
-        return true
+        
+        GIDSignIn.sharedInstance.restorePreviousSignIn{ user, error in
+            
+            if error != nil || user == nil {
+              print ("Error")
+            } else {
+              print ("Sign in ")
+            }
+          }
+          return true
+        
+        
+        
+        
+        
+       // requestAutorisation()
+       // return true
     }
 
     // MARK: UISceneSession Lifecycle
@@ -43,6 +62,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             print("granded: \(granted)")
         }
+    }
+    
+    func application(
+      _ app: UIApplication,
+      open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+      var handled: Bool
+
+      handled = GIDSignIn.sharedInstance.handle(url)
+      if handled {
+        return true
+      }
+
+      // Handle other custom URL types.
+
+      // If not handled by this app, return false.
+      return false
     }
 
 

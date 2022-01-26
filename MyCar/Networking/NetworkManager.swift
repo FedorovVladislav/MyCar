@@ -111,7 +111,7 @@ class NetworkManager {
                 completionHandler(nil,ManagerErrors.invalidResponse)
                 return
             }
-            
+            //проверяем какой код нам пришел
             if httpResponse.statusCode >= 300 {
                 completionHandler(nil, ManagerErrors.invalidResponseCode)
                 return
@@ -121,17 +121,15 @@ class NetworkManager {
                 completionHandler(nil, ManagerErrors.invalidReciveData)
                 return
             }
-            
-            
+            //парсим данные
             if let decodedResponse = try? JSONDecoder().decode(T.self, from: data) {
                 DispatchQueue.main.async {
-                
-                    
-                           completionHandler(decodedResponse, nil)
+                    completionHandler(decodedResponse, nil)
                 }
-                   } else {
-                       completionHandler(nil,ManagerErrors.invalidParseJson)
+            } else {
+                completionHandler(nil,ManagerErrors.invalidParseJson)
             }
+            
         }.resume()
     }
     

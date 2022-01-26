@@ -14,6 +14,7 @@
 		4404343A273AE427007BFF42 /* CoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44043439273AE427007BFF42 /* CoastViewController.swift */; };
 		4404343C273AE796007BFF42 /* CoastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404343B273AE796007BFF42 /* CoastData.swift */; };
 		44103DEB27417E59008CD918 /* CoastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44103DEA27417E59008CD918 /* CoastTableViewCell.swift */; };
+		443EB44827A1DA09006ADDFD /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 443EB44727A1DA09006ADDFD /* credentials.plist */; };
 		4446F48E2781E82A00D4ED91 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446F48D2781E82A00D4ED91 /* NetworkManager.swift */; };
 		4446F491278209E000D4ED91 /* CarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446F490278209E000D4ED91 /* CarData.swift */; };
 		4446F4952782201F00D4ED91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445D77EC272079E500A7F565 /* LaunchScreen.storyboard */; };
@@ -29,13 +30,13 @@
 		44A04B36278DF70C002C267A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44A04B34278DF70C002C267A /* Main.storyboard */; };
 		44A04B3A278DF94B002C267A /* Round0_X.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A04B39278DF94B002C267A /* Round0_X.swift */; };
 		44A04B3E278DFABB002C267A /* StateCarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A04B3D278DFABB002C267A /* StateCarModel.swift */; };
-		44AA14A5279758F700A5E851 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44AA14A4279758F700A5E851 /* GoogleService-Info.plist */; };
 		44AE9F2C274AB31700BBA781 /* MyCarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44AE9F2A274AB31700BBA781 /* MyCarModel.xcdatamodeld */; };
 		44AE9F2E274C194400BBA781 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE9F2D274C194400BBA781 /* AppDelegate.swift */; };
 		44DDA89327909EE3009640E6 /* ButtonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA89227909EE3009640E6 /* ButtonSection.swift */; };
 		44DDA8972790A49C009640E6 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44DDA8962790A49C009640E6 /* View.xib */; };
 		44DDA89A2792C841009640E6 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA8992792C841009640E6 /* StateButton.swift */; };
 		44DDC3132767B2D1006D72A9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDC3122767B2D1006D72A9 /* Settings.swift */; };
+		FCF067DD7AFFCC38D9139F52 /* Pods_MyCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8868F0B16B727030641236 /* Pods_MyCar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		44043439273AE427007BFF42 /* CoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastViewController.swift; sourceTree = "<group>"; };
 		4404343B273AE796007BFF42 /* CoastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastData.swift; sourceTree = "<group>"; };
 		44103DEA27417E59008CD918 /* CoastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastTableViewCell.swift; sourceTree = "<group>"; };
+		443EB44727A1DA09006ADDFD /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		4446F48D2781E82A00D4ED91 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4446F490278209E000D4ED91 /* CarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarData.swift; sourceTree = "<group>"; };
 		4446F4A22782FACD00D4ED91 /* StateCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateCar.swift; sourceTree = "<group>"; };
@@ -63,13 +65,15 @@
 		44A04B35278DF70C002C267A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44A04B39278DF94B002C267A /* Round0_X.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round0_X.swift; sourceTree = "<group>"; };
 		44A04B3D278DFABB002C267A /* StateCarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateCarModel.swift; sourceTree = "<group>"; };
-		44AA14A4279758F700A5E851 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44AE9F2B274AB31700BBA781 /* MyCar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyCar.xcdatamodel; sourceTree = "<group>"; };
 		44AE9F2D274C194400BBA781 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44DDA89227909EE3009640E6 /* ButtonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSection.swift; sourceTree = "<group>"; };
 		44DDA8962790A49C009640E6 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		44DDA8992792C841009640E6 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		44DDC3122767B2D1006D72A9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		5F8868F0B16B727030641236 /* Pods_MyCar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyCar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95EE105BF38F8CFEDD767934 /* Pods-MyCar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCar.release.xcconfig"; path = "Target Support Files/Pods-MyCar/Pods-MyCar.release.xcconfig"; sourceTree = "<group>"; };
+		F957E6272CBBC8B094431DEB /* Pods-MyCar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCar.debug.xcconfig"; path = "Target Support Files/Pods-MyCar/Pods-MyCar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +81,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF067DD7AFFCC38D9139F52 /* Pods_MyCar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06F24647B1F5CD1AC57533E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F8868F0B16B727030641236 /* Pods_MyCar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		40653A5F4087BE10E0E95050 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F957E6272CBBC8B094431DEB /* Pods-MyCar.debug.xcconfig */,
+				95EE105BF38F8CFEDD767934 /* Pods-MyCar.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4404343127343F69007BFF42 /* HomeScreenModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +229,8 @@
 			children = (
 				445D77E0272079DE00A7F565 /* MyCar */,
 				445D77DF272079DE00A7F565 /* Products */,
+				40653A5F4087BE10E0E95050 /* Pods */,
+				06F24647B1F5CD1AC57533E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,8 +251,8 @@
 				4446F48C2781E7EA00D4ED91 /* Networking */,
 				448D7884272403B500193E55 /* Resources */,
 				445D77EF272079E500A7F565 /* Info.plist */,
+				443EB44727A1DA09006ADDFD /* credentials.plist */,
 				44AE9F2A274AB31700BBA781 /* MyCarModel.xcdatamodeld */,
-				44AA14A4279758F700A5E851 /* GoogleService-Info.plist */,
 			);
 			path = MyCar;
 			sourceTree = "<group>";
@@ -303,9 +327,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 445D77F2272079E500A7F565 /* Build configuration list for PBXNativeTarget "MyCar" */;
 			buildPhases = (
+				E938BFED642077B7AA03460B /* [CP] Check Pods Manifest.lock */,
 				445D77DA272079DE00A7F565 /* Sources */,
 				445D77DB272079DE00A7F565 /* Frameworks */,
 				445D77DC272079DE00A7F565 /* Resources */,
+				6C216D7C24D985CD258E8747 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -356,13 +382,55 @@
 			files = (
 				44DDA8972790A49C009640E6 /* View.xib in Resources */,
 				44A04B36278DF70C002C267A /* Main.storyboard in Resources */,
-				44AA14A5279758F700A5E851 /* GoogleService-Info.plist in Resources */,
+				443EB44827A1DA09006ADDFD /* credentials.plist in Resources */,
 				4446F4972782202800D4ED91 /* Assets.xcassets in Resources */,
 				4446F4952782201F00D4ED91 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6C216D7C24D985CD258E8747 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCar/Pods-MyCar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyCar/Pods-MyCar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCar/Pods-MyCar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E938BFED642077B7AA03460B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyCar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		445D77DA272079DE00A7F565 /* Sources */ = {
@@ -536,6 +604,7 @@
 		};
 		445D77F3272079E500A7F565 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F957E6272CBBC8B094431DEB /* Pods-MyCar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -544,6 +613,7 @@
 				DEVELOPMENT_TEAM = MJ2664L7FT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyCar/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need your Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -564,6 +634,7 @@
 		};
 		445D77F4272079E500A7F565 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95EE105BF38F8CFEDD767934 /* Pods-MyCar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -572,6 +643,7 @@
 				DEVELOPMENT_TEAM = MJ2664L7FT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyCar/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need your Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
