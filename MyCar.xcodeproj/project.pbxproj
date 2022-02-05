@@ -35,7 +35,6 @@
 		44C6B4B227ADA8AC00405F5A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B4B127ADA8AC00405F5A /* SignInVC.swift */; };
 		44C6B4B427ADAE5C00405F5A /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B4B327ADAE5C00405F5A /* MainTabBarViewController.swift */; };
 		44C6B4B627AEA0CF00405F5A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B4B527AEA0CE00405F5A /* Token.swift */; };
-		44C6B4B827AEA96B00405F5A /* .gitignore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B4B727AEA96B00405F5A /* .gitignore.xib */; };
 		44CD98AD27AEAB3F006FC682 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 44CD98AC27AEAB3F006FC682 /* .gitignore */; };
 		44DDA89327909EE3009640E6 /* ButtonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA89227909EE3009640E6 /* ButtonSection.swift */; };
 		44DDA8972790A49C009640E6 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44DDA8962790A49C009640E6 /* View.xib */; };
@@ -75,7 +74,6 @@
 		44C6B4B127ADA8AC00405F5A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		44C6B4B327ADAE5C00405F5A /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		44C6B4B527AEA0CE00405F5A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		44C6B4B727AEA96B00405F5A /* .gitignore.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = .gitignore.xib; sourceTree = "<group>"; };
 		44CD98AC27AEAB3F006FC682 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		44DDA89227909EE3009640E6 /* ButtonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSection.swift; sourceTree = "<group>"; };
 		44DDA8962790A49C009640E6 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				44CD98AC27AEAB3F006FC682 /* .gitignore */,
-				44C6B4B727AEA96B00405F5A /* .gitignore.xib */,
 				445D77E0272079DE00A7F565 /* MyCar */,
 				445D77DF272079DE00A7F565 /* Products */,
 				40653A5F4087BE10E0E95050 /* Pods */,
@@ -399,7 +396,6 @@
 				44CD98AD27AEAB3F006FC682 /* .gitignore in Resources */,
 				44A04B36278DF70C002C267A /* Main.storyboard in Resources */,
 				443EB44827A1DA09006ADDFD /* credentials.plist in Resources */,
-				44C6B4B827AEA96B00405F5A /* .gitignore.xib in Resources */,
 				4446F4972782202800D4ED91 /* Assets.xcassets in Resources */,
 				4446F4952782201F00D4ED91 /* LaunchScreen.storyboard in Resources */,
 			);
