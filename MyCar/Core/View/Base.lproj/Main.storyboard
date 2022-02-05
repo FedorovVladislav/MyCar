@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2S0-v6-X0z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cuv-yu-Xxj">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -8,10 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="SI0-7U-ehW">
             <objects>
-                <tabBarController id="2S0-v6-X0z" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabBarVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2S0-v6-X0z" customClass="MainTabBarViewController" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zXZ-N3-K9g"/>
                     <tabBar key="tabBar" tag="-1" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TqZ-7O-IxG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -31,6 +32,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3w-v4-jOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-404" y="-605"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="QQh-cH-DWB">
+            <objects>
+                <viewController storyboardIdentifier="signInVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cuv-yu-Xxj" customClass="SignInVC" customModule="MyCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lY5-hr-3Oi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Car" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N84-jA-N5e">
+                                <rect key="frame" x="121.00000000000001" y="167" width="172.33333333333337" height="71.666666666666686"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Fedorov V.S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be5-tK-aQH">
+                                <rect key="frame" x="150" y="246" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jp-b0-loT">
+                                <rect key="frame" x="78.666666666666686" y="475" width="257" height="52"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="257" id="VY4-jt-CyR"/>
+                                    <constraint firstAttribute="height" constant="52" id="WNg-ZM-w1h"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInUIButton:" destination="cuv-yu-Xxj" eventType="touchUpInside" id="1IV-Qw-AQK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wpw-oM-hD2"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3Jp-b0-loT" firstAttribute="centerX" secondItem="lY5-hr-3Oi" secondAttribute="centerX" id="6Ix-jS-0YH"/>
+                            <constraint firstItem="be5-tK-aQH" firstAttribute="top" secondItem="N84-jA-N5e" secondAttribute="bottom" constant="7.3300000000000001" id="91m-hI-1U1"/>
+                            <constraint firstItem="N84-jA-N5e" firstAttribute="top" secondItem="Wpw-oM-hD2" secondAttribute="top" constant="167" id="FTF-3g-GHF"/>
+                            <constraint firstItem="3Jp-b0-loT" firstAttribute="top" secondItem="be5-tK-aQH" secondAttribute="bottom" constant="208" id="PXK-A8-ZYw"/>
+                            <constraint firstItem="N84-jA-N5e" firstAttribute="centerX" secondItem="lY5-hr-3Oi" secondAttribute="centerX" id="dTy-yF-ZsD"/>
+                            <constraint firstItem="be5-tK-aQH" firstAttribute="centerX" secondItem="lY5-hr-3Oi" secondAttribute="centerX" id="kRf-jo-jYH"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="ywg-Jf-xDf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jSu-qK-Uhg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2533" y="124"/>
         </scene>
         <!--Home-->
         <scene sceneID="ouM-Mo-6Uk">
@@ -160,7 +214,7 @@
         <scene sceneID="nCa-Lj-O4R">
             <objects>
                 <navigationController id="fnh-zL-RDV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="dBP-n6-8Rs"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="dBP-n6-8Rs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b2X-fN-5L6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -681,6 +735,7 @@
         <image name="car" catalog="system" width="128" height="93"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="link.circle" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="point.topleft.down.curvedto.point.bottomright.up.fill" catalog="system" width="121" height="128"/>
         <image name="speedometer" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="121" height="128"/>

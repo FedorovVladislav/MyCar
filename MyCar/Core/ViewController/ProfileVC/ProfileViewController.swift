@@ -4,10 +4,8 @@ import MapKit
 import GoogleSignIn
 
 
-
 class ProfileViewController: UIViewController {
-    
- 
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,11 +13,16 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func SignIn(_ sender: UIButton) {
-//
-//        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
-//           guard error == nil else { return }
-
-           // If sign in succeeded, display the app's main content View.
-         //}
+        
+        GIDSignIn.sharedInstance.signOut()
+    
+        let storyboard = UIStoryboard (name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "signInVC") as? SignInVC else {
+            return
+        }
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
+            return
+        }
+        sceneDelegate.changeRootVC(vc, animated: true)
     }
 }

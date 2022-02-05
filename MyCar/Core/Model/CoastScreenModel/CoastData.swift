@@ -1,17 +1,10 @@
-//
-//  CoastModel.swift
-//  MyCar
-//
-//  Created by Елизавета Федорова on 09.11.2021.
-//
-
 import Foundation
-import UIKit
-import CoreData
+
 
 class CoastsData {
     init (){
-        do { try getDataFromModel()
+        do {
+            try getDataFromModel()
         } catch {
             print (error)
         }
@@ -20,10 +13,14 @@ class CoastsData {
     // MARK: - Variable
     
     static let shared = CoastsData()
+    // CoreData manager
     private let phoneStorageManager = PhoneStorageManager()
+    private let fuelPrice : Double = 50
+    
     private var coasts : [Coast] = []
     private var distanceTrip : Double = 0
-    private let fuelPrice : Double = 50
+    
+    // Вычисляемые данные
     private var pricePerKilometr : Int  {
         get {
             var distance = Set <Double> ()
@@ -48,7 +45,9 @@ class CoastsData {
         get {
             var distance = Set <Double>()
             
-            for coast in coasts { distance.insert(coast.odometr) }
+            for coast in coasts {
+                distance.insert(coast.odometr)
+            }
             
             guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
             
@@ -56,9 +55,9 @@ class CoastsData {
         }
     }
     private var priceTrip : Double {
+        
         return self.distanceTrip * Double(self.pricePerKilometr) + self.distanceTrip/100*7*fuelPrice
     }
-    
     
     
     // MARK: - Геттеры
@@ -66,7 +65,7 @@ class CoastsData {
         return self.coasts.count
     }
     
-    func getTotalDistance()->Int{
+    func getTotalDistance()->Int {
         return self.totalDistance
     }
     
@@ -89,35 +88,50 @@ class CoastsData {
         return priceTrip
     }
     
+    private func getDataFromModel() throws {
+  
+        do {
+            let coasts = try phoneStorageManager.getItemsFromStorage()
+            self.coasts = coasts!
+            
+        } catch {
+            throw error
+        }
+    }
     
     // MARK: - Сеттеры
     
     func addNewCoast(newCoast coast: Coast) throws {
-        
+        // сохраняем в память телефона
         do {
             try phoneStorageManager.addItemToStorage(newCoast: coast)
             addCoast(newCoast: coast)
-        } catch { throw error }
-            
+        } catch {
+            throw error
+        }
     }
-    
+    // редактируем в памяти телефона
     func changeExistCoast(at index : Int, newCoast: Coast) throws {
         do {
             try phoneStorageManager.changeItemInStorage(at: index, newCoast: newCoast)
             changeCurentCoast(at: index, newCoast: newCoast)
-        } catch { throw error }
+        } catch {
+            throw error
+        }
     }
-    
-    func deleteDromModel(at index: Int ) throws {
+    // удаляем данные
+    func deleteFromModel(at index: Int ) throws {
         do {
             try phoneStorageManager.deleteItemFromStorage(at:  index)
             removeCoast(at: index)
-        } catch { throw error }
+        } catch {
+            throw error
+        }
     }
     
     // MARK: - Работас массивом
     
-    private func addCoast(newCoast: Coast){
+    private func addCoast(newCoast: Coast) {
         print("Add New Coast:\(newCoast.name) , \(newCoast.odometr), \(newCoast.price)")
         self.coasts.append(newCoast)
     }
@@ -128,19 +142,6 @@ class CoastsData {
     
     private func changeCurentCoast(at index: Int, newCoast: Coast) {
         self.coasts[index] = newCoast
-    }
-    
-    
-    // MARK: - Работас с моделью
-    
-    private func getDataFromModel() throws {
-  
-        do {
-            let coasts = try phoneStorageManager.getItemsFromStorage()
-            
-            self.coasts = coasts!
-            
-        } catch { throw error }
     }
 }
 

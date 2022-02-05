@@ -183,7 +183,7 @@ extension NetworkManager {
     func fetchweatherData (completion: @escaping weatherCompletionClosure) {
         
         // составляем URL
-        let urlString  =  String("https://api.openweathermap.org/data/2.5/weather?id=498817&appid=33e5bc177aca3cceb5a1840f598f73b7")
+        let urlString  =  String("https://api.openweathermap.org/data/2.5/weather?id=498817&appid=\(weatherToken)")
         
         guard  let url = URL(string: urlString) else {
             completion(nil, ManagerErrors.invalidUrl)

@@ -30,42 +30,48 @@ class CoastViewController: UITableViewController {
 
     // MARK: - обработка действий с моделью
     
-    func addNewItemIntoModel(exist coastFromView: Coast){
+    func addNewItemIntoModel(exist coastFromView: Coast) {
         do {
             try coastData.addNewCoast(newCoast: coastFromView)
             alertSaveNewCoast(newCoast: coastFromView)
             tableView.reloadData()
-        } catch { alertSaveNewCoast(newCoast: nil) }
+        } catch {
+            alertSaveNewCoast(newCoast: nil)
+        }
     }
     
-    func changeItemInModel(new coastFromView: Coast, index : Int){
+    func changeItemInModel(new coastFromView: Coast, index : Int) {
         print ("changeItemStart")
         do {
             try  coastData.changeExistCoast (at: index, newCoast: coastFromView)
             alertSaveNewCoast(newCoast: coastFromView)
             tableView.reloadData()
-        } catch { alertSaveNewCoast(newCoast: nil) }
+        } catch {
+            alertSaveNewCoast(newCoast: nil)
+        }
     }
     
-    func deleteItemInModel(at index: Int){
+    func deleteItemInModel(at index: Int) {
         do {
-            try coastData.deleteDromModel(at: index)
+            try coastData.deleteFromModel(at: index)
             tableView.reloadData()
-        } catch { alertSaveNewCoast(newCoast: nil) }
+        } catch {
+            alertSaveNewCoast(newCoast: nil)
+        }
     }
     
     
     // MARK: - Работа с экраном
     //задаем надписи с расходом и пробегом
-    func setDataLables(){
+    func setDataLables() {
         let totalDistance = coastData.getTotalDistance()
         self.totalDistance.text = "Distance: \(totalDistance)km"
+        
         let valuepricePerKilometr = coastData.getPricePerKilometrs()
         pricePerKilometr.text = "\(valuepricePerKilometr) ₽/km"
     }
     
-
-    
+    // редактируем существующую запись на новом экране
     func edingCoastScreen(index : Int) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let addNewCoastViewController = mainStoryboard.instantiateViewController(withIdentifier: "yourVcName") as? AddNewCoastViewController {
@@ -82,6 +88,7 @@ class CoastViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return coastData.getCountCoasts()
     }
+    
     //подготовка ячейки
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellsIdenteficator", for: indexPath) as! CoastTableViewCell
@@ -98,7 +105,7 @@ class CoastViewController: UITableViewController {
     
     // окно для редактрования текущего расхода
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        guard let currentCoast = coastData.getCoast(at: indexPath.row) else { return  print ("Invalid index")}
+        guard let currentCoast = coastData.getCoast(at: indexPath.row) else { return }
         edingCoastScreen(index: indexPath.row)
     }
     
@@ -110,20 +117,19 @@ class CoastViewController: UITableViewController {
         }
     }
     
-    
     // MARK: - Alert
-    func alertSaveNewCoast(newCoast: Coast?){
+    func alertSaveNewCoast(newCoast: Coast?) {
+        
         var alertView = UIAlertController()
         if let newCoast = newCoast {
             alertView = UIAlertController(title:"Add New Coast", message:"Name: \(newCoast.name)\n Odometr: \(newCoast.odometr)\n Price: \(newCoast.price)", preferredStyle: UIAlertController.Style.alert)
-        } else{
+        } else {
             alertView = UIAlertController(title:"Error", message:"Repeat your action", preferredStyle: UIAlertController.Style.alert)
         }
             alertView.addAction(UIAlertAction(title: "Okey", style: UIAlertAction.Style.default, handler: { ACTION -> Void in
             }))
             self.present(alertView, animated: true, completion: nil)
     }
-    
 }
     // MARK: - Extention
 
@@ -132,7 +138,9 @@ extension CoastViewController : CoastDataDelegate {
 
         if let index = index {
             changeItemInModel(new: coastFromView, index: index)
-        } else { addNewItemIntoModel(exist: coastFromView) }
+        } else {
+            addNewItemIntoModel(exist: coastFromView)
+        }
         // update rashod
         setDataLables()
     }
