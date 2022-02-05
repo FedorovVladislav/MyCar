@@ -36,6 +36,7 @@
 		44C6B4B427ADAE5C00405F5A /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B4B327ADAE5C00405F5A /* MainTabBarViewController.swift */; };
 		44C6B4B627AEA0CF00405F5A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B4B527AEA0CE00405F5A /* Token.swift */; };
 		44CD98AD27AEAB3F006FC682 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 44CD98AC27AEAB3F006FC682 /* .gitignore */; };
+		44CD98AF27AECC92006FC682 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CD98AE27AECC91006FC682 /* LocalNotificationManager.swift */; };
 		44DDA89327909EE3009640E6 /* ButtonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA89227909EE3009640E6 /* ButtonSection.swift */; };
 		44DDA8972790A49C009640E6 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44DDA8962790A49C009640E6 /* View.xib */; };
 		44DDA89A2792C841009640E6 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA8992792C841009640E6 /* StateButton.swift */; };
@@ -75,6 +76,7 @@
 		44C6B4B327ADAE5C00405F5A /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		44C6B4B527AEA0CE00405F5A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		44CD98AC27AEAB3F006FC682 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		44CD98AE27AECC91006FC682 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		44DDA89227909EE3009640E6 /* ButtonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSection.swift; sourceTree = "<group>"; };
 		44DDA8962790A49C009640E6 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		44DDA8992792C841009640E6 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				44C6B4B127ADA8AC00405F5A /* SignInVC.swift */,
 				44C6B4B327ADAE5C00405F5A /* MainTabBarViewController.swift */,
 				44C6B4B527AEA0CE00405F5A /* Token.swift */,
+				44CD98AE27AECC91006FC682 /* LocalNotificationManager.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				4404343027331E11007BFF42 /* Wheather.swift in Sources */,
 				44AE9F2E274C194400BBA781 /* AppDelegate.swift in Sources */,
 				445D77E4272079DE00A7F565 /* SceneDelegate.swift in Sources */,
+				44CD98AF27AECC92006FC682 /* LocalNotificationManager.swift in Sources */,
 				448D78CD2729C96900193E55 /* MapViewController.swift in Sources */,
 				4446F48E2781E82A00D4ED91 /* NetworkManager.swift in Sources */,
 				4404343C273AE796007BFF42 /* CoastData.swift in Sources */,

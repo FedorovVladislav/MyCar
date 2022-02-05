@@ -36,6 +36,12 @@ class HomeViewController: UIViewController {
         lockCarButtonUIView.delegate =  self
         fanCarButtonUIView.delegate = self
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Method Work")
+        LocalNotificationManager.share.deleteBagetCount()
+        
+    }
     
     private func getWheatherData() {
         networkManager.fetchweatherData() { weather, error in
@@ -71,6 +77,8 @@ extension HomeViewController : changeStateCar {
             lockCarButtonUIView.setButtonState(state: carState.getStateEquipment(at: DataCarEquipment.setLockDoor).boolValue)
             fanCarButtonUIView.setButtonState(state: carState.getStateEquipment(at: DataCarEquipment.setFanSystem).boolValue)
             fuelRange = carState.getStateEquipment(at: DataCarEquipment.getFuilLevle)
+        
+        LocalNotificationManager.share.getNotification(state: "Lol")
     }
 }
 

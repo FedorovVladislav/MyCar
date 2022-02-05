@@ -1,27 +1,17 @@
-//
-//  AppDelegate.swift
-//  MyCar
-//
-//  Created by Елизавета Федорова on 20.10.2021.
-//
 import GoogleSignIn
 import UIKit
 import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    
 
     var window: UIWindow?
     
-    let notificationCenter = UNUserNotificationCenter.current()
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-          return true
+        // запрос авторизаци уведомлений
+        LocalNotificationManager.share.requestAutorisation()
         
-        requestAutorisation()
         return true
     }
 
@@ -33,14 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func requestAutorisation(){
-        
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            
-            print("granded: \(granted)")
-        }
-    }
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
       
         var handled: Bool
@@ -52,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       return false
     }
-
+    
 // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
     
