@@ -1,14 +1,16 @@
-import Foundation
 import UserNotifications
 import UIKit
 
-class LocalNotificationManager{
+class LocalNotificationManager: NSObject {
     
     static let share = LocalNotificationManager()
     
     let notificationCenter = UNUserNotificationCenter.current()
     
+    // запрос разрешения на работу уведомлений
     func requestAutorisation(){
+        
+        notificationCenter.delegate = self
         
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             
@@ -17,13 +19,7 @@ class LocalNotificationManager{
             self.getNotificationSettings()
         }
     }
-    
-    private func getNotificationSettings(){
-        notificationCenter.getNotificationSettings(completionHandler: { settings  in
-            print ("State settings:\(settings)")
-        })
-    }
-    
+    // выполнить уведомление
     func getNotification(state: String){
         
         let content = UNMutableNotificationContent()
@@ -41,12 +37,28 @@ class LocalNotificationManager{
                                             trigger: trigger)
         
         notificationCenter.add(request, withCompletionHandler: { error in
-            print (error)
+            print (error?.localizedDescription)
         })
     }
-    
+    //очиищаем все уведомления
     func deleteBagetCount(){
+        // очищаем все уведомления
         UIApplication.shared.applicationIconBadgeNumber = 0
+        notificationCenter.removeAllPendingNotificationRequests()
+        notificationCenter.removeAllDeliveredNotifications()
+    }
+    
+    private func getNotificationSettings(){
+        notificationCenter.getNotificationSettings(completionHandler: { settings  in
+            print ("State settings:\(settings)")
+        })
     }
 }
     
+extension LocalNotificationManager: UNUserNotificationCenterDelegate {
+    // делагат, чтобы уведомления могли приходть на открытом приложени
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.banner, .sound])
+    }
+}

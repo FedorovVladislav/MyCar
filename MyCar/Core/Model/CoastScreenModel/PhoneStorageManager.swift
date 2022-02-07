@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 import UIKit
 
-enum errorWorkWithCoreData : Error {
+enum errorWorkWithCoreData: Error {
     case errorCoreDataEntity
     case errorCoreDataSave
     case errorCoreDataFetch
@@ -12,29 +12,21 @@ enum errorWorkWithCoreData : Error {
 
 struct PhoneStorageManager {
     // MARK: - Method
-    
     func addItemToStorage(newCoast coast: Coast) throws {
-        
         let  context = getContex()
         
         guard let entity = NSEntityDescription.entity(forEntityName: "CoreCoasts", in: context) else { throw errorWorkWithCoreData.errorCoreDataEntity }
     
         var taskOject = CoreCoasts (entity: entity, insertInto: context)
-        
             taskOject = setEntity(newCoast: coast, taskOject: taskOject)
         
         do {
             try context.save()
-            
         } catch  { throw errorWorkWithCoreData.errorCoreDataSave }
     }
     
-    func changeItemInStorage(at index : Int, newCoast: Coast) throws {
-       
-        print ("changeExistCoast at \(index)")
-        
-        let  context = getContex()
-        
+    func changeItemInStorage(at index: Int, newCoast: Coast) throws {
+        let context = getContex()
         let fetcht = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
         
         do {
@@ -46,16 +38,11 @@ struct PhoneStorageManager {
             
             do {
                 try context.save()
-                
             } catch { throw errorWorkWithCoreData.errorCoreDataSave }
-            
         } catch { throw errorWorkWithCoreData.errorCoreDataFetch }
     }
     
     func deleteItemFromStorage(at index: Int) throws {
-        
-        print("Remove coast at index: \(index)")
-        
         let  context = getContex()
         let  fetchRequest = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
         
@@ -68,33 +55,27 @@ struct PhoneStorageManager {
             
             do {
                 try context.save()
-                
             } catch { throw errorWorkWithCoreData.errorCoreDataSave }
         } catch { throw errorWorkWithCoreData.errorCoreDataFetch }
-        
     }
     
     func getItemsFromStorage() throws -> [Coast]? {
-        
-        print ("getDataFromModel")
-        
-        let  context = getContex()
+        let context = getContex()
         let fetchRequest = NSFetchRequest <CoreCoasts> (entityName: "CoreCoasts")
 
         do {
-            let result  =  try context.fetch(fetchRequest)
-            var coasts : [Coast] = []
+            let result = try context.fetch(fetchRequest)
+            var coasts: [Coast] = []
             
             for res in result {
                 coasts.append(Coast(name: res.name!, odometr: res.odometr, price: res.price, typeCoast:getTypeCoast(string: res.typeCoast), userDescription: res.userDescription))
             }
             return coasts
-            
         } catch { throw errorWorkWithCoreData.errorCoreDataFetch}
     }
     
-    private func getTypeCoast(string: String? ) -> TypeCoast {
-        
+    // MARK: - Private Method
+    private func getTypeCoast(string: String?) -> TypeCoast {
         if let string = string, let typeCoast = TypeCoast.init(rawValue: string) {
             return typeCoast
         } else {
@@ -102,8 +83,7 @@ struct PhoneStorageManager {
         }
     }
     
-    private func setEntity(newCoast coast: Coast, taskOject: CoreCoasts ) -> CoreCoasts {
-            
+    private func setEntity(newCoast coast: Coast, taskOject: CoreCoasts) -> CoreCoasts {
             taskOject.name = coast.name
             taskOject.price = coast.price
             taskOject.odometr = coast.odometr
@@ -117,12 +97,10 @@ struct PhoneStorageManager {
             return taskOject
         }
     
-    private func getContex() -> NSManagedObjectContext{
-        
+    private func getContex() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
-    
 }
 
 

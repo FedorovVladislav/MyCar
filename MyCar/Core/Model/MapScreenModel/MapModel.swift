@@ -8,19 +8,16 @@
 import Foundation
 import MapKit
 
-class mapModel {
+class MapModel {
     
     // MARK: - Variable
-    
     var adressToFind: String = ""
    
     var source: CLLocationCoordinate2D?
     var destenation: CLLocationCoordinate2D?
     var mapRegion : MKCoordinateRegion? 
     
-    
-    func  findAdress(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
-        
+    func findAdress(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
         guard let mapRegion = mapRegion else { return }
 
         let searchRequest = MKLocalSearch.Request()
@@ -48,13 +45,12 @@ class mapModel {
             }
         }
     
-    
-    func findRoad (completion : @escaping (MKRoute?, Double?, TimeInterval?) -> Void ){
+    func findRoad(completion: @escaping (MKRoute?, Double?, TimeInterval?) -> Void) {
    
-    guard let source = self.source, let destenation = self.destenation  else { return }
+    guard let source = self.source, let destenation = self.destenation else { return }
 
     let directionRequest = MKDirections.Request()
-    directionRequest.source = MKMapItem(placemark: MKPlacemark(coordinate:source))
+    directionRequest.source = MKMapItem(placemark: MKPlacemark(coordinate: source))
     directionRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: destenation))
     directionRequest.transportType = .automobile
     
@@ -71,5 +67,3 @@ class mapModel {
         }
     }
 }
-
-

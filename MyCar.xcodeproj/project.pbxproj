@@ -37,6 +37,8 @@
 		44C6B4B627AEA0CF00405F5A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B4B527AEA0CE00405F5A /* Token.swift */; };
 		44CD98AD27AEAB3F006FC682 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 44CD98AC27AEAB3F006FC682 /* .gitignore */; };
 		44CD98AF27AECC92006FC682 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CD98AE27AECC91006FC682 /* LocalNotificationManager.swift */; };
+		44CD98B127AED3D1006FC682 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CD98B027AED3D1006FC682 /* Token.swift */; };
+		44CD98B627B00C8C006FC682 /* CoastsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CD98B527B00C8C006FC682 /* CoastsViewController.swift */; };
 		44DDA89327909EE3009640E6 /* ButtonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA89227909EE3009640E6 /* ButtonSection.swift */; };
 		44DDA8972790A49C009640E6 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44DDA8962790A49C009640E6 /* View.xib */; };
 		44DDA89A2792C841009640E6 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDA8992792C841009640E6 /* StateButton.swift */; };
@@ -77,6 +79,8 @@
 		44C6B4B527AEA0CE00405F5A /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		44CD98AC27AEAB3F006FC682 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		44CD98AE27AECC91006FC682 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		44CD98B027AED3D1006FC682 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		44CD98B527B00C8C006FC682 /* CoastsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastsViewController.swift; sourceTree = "<group>"; };
 		44DDA89227909EE3009640E6 /* ButtonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSection.swift; sourceTree = "<group>"; };
 		44DDA8962790A49C009640E6 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		44DDA8992792C841009640E6 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
@@ -129,7 +133,6 @@
 			children = (
 				440434372739A79B007BFF42 /* Coast.swift */,
 				4404343B273AE796007BFF42 /* CoastData.swift */,
-				44103DEA27417E59008CD918 /* CoastTableViewCell.swift */,
 				446388D9278610A30068B0C9 /* PhoneStorageManager.swift */,
 			);
 			path = CoastScreenModel;
@@ -140,6 +143,7 @@
 			children = (
 				44043439273AE427007BFF42 /* CoastViewController.swift */,
 				4404343427368A5B007BFF42 /* AddNewCoastViewController.swift */,
+				44CD98B527B00C8C006FC682 /* CoastsViewController.swift */,
 			);
 			path = CoastsScreenVC;
 			sourceTree = "<group>";
@@ -165,6 +169,7 @@
 		4446F49227820A9000D4ED91 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				44CD98B027AED3D1006FC682 /* Token.swift */,
 				44AE9F2D274C194400BBA781 /* AppDelegate.swift */,
 				445D77E3272079DE00A7F565 /* SceneDelegate.swift */,
 				44DDC3122767B2D1006D72A9 /* Settings.swift */,
@@ -238,6 +243,14 @@
 			path = HomeScreenVC;
 			sourceTree = "<group>";
 		};
+		4449420627B1C55100695246 /* CoastsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				44103DEA27417E59008CD918 /* CoastTableViewCell.swift */,
+			);
+			path = CoastsScreen;
+			sourceTree = "<group>";
+		};
 		445D77D5272079DE00A7F565 = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +309,7 @@
 		44A04B2E278DF644002C267A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4449420627B1C55100695246 /* CoastsScreen */,
 				44DDA8982792C805009640E6 /* HomeScreenView */,
 				44A04B34278DF70C002C267A /* Main.storyboard */,
 				44A04B31278DF69E002C267A /* Speedometer.swift */,
@@ -467,6 +481,7 @@
 				4404343027331E11007BFF42 /* Wheather.swift in Sources */,
 				44AE9F2E274C194400BBA781 /* AppDelegate.swift in Sources */,
 				445D77E4272079DE00A7F565 /* SceneDelegate.swift in Sources */,
+				44CD98B127AED3D1006FC682 /* Token.swift in Sources */,
 				44CD98AF27AECC92006FC682 /* LocalNotificationManager.swift in Sources */,
 				448D78CD2729C96900193E55 /* MapViewController.swift in Sources */,
 				4446F48E2781E82A00D4ED91 /* NetworkManager.swift in Sources */,
@@ -477,6 +492,7 @@
 				44AE9F2C274AB31700BBA781 /* MyCarModel.xcdatamodeld in Sources */,
 				44A04B3A278DF94B002C267A /* Round0_X.swift in Sources */,
 				4446F491278209E000D4ED91 /* CarData.swift in Sources */,
+				44CD98B627B00C8C006FC682 /* CoastsViewController.swift in Sources */,
 				4404343527368A5B007BFF42 /* AddNewCoastViewController.swift in Sources */,
 				4404343A273AE427007BFF42 /* CoastViewController.swift in Sources */,
 				44DDA89327909EE3009640E6 /* ButtonSection.swift in Sources */,

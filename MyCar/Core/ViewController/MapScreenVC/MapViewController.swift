@@ -5,7 +5,6 @@ import CoreLocation
 class MapViewController: UIViewController {
     
     // MARK: - Initialization
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,43 +27,29 @@ class MapViewController: UIViewController {
     }
     
     // MARK: - Storyboard element
-
     @IBAction func AddPoint(_ sender: UIBarButtonItem) {
         AlertWithTextFieldAnd2Button(titleAlert: "Add new point", messageAlert: "Write adress of new point", titleButton: "Add")
     }
-    
     @IBAction func removeRote(_ sender: UIBarButtonItem) {
         removeRoute()
     }
-    
     @IBOutlet weak var distanceUILable: UILabel!
-    
     @IBOutlet weak var timeRouteUILable: UILabel!
-    
     @IBOutlet weak var coastRoadUILale: UILabel!
-    
     @IBOutlet weak var roadInformationUIStackView: UIStackView!
-    
     @IBOutlet weak var MKMapView: MKMapView!
     
     // MARK: -Variable
-    
     let locationManager = CLLocationManager()
-    
     var annotationMap : [MKAnnotation]?
-    
     var route : MKOverlay?
-    
-    var MapModel = mapModel()
-    
+    var mapModel = MapModel()
     var coastData = CoastsData.shared
-    
     var distansRoute : Double = 0 {
         didSet {
             distanceUILable.text = "Distance\n\(distansRoute.rounded0_X) km"
         }
     }
-    
     var timeRoute : TimeInterval = 0 {
         didSet {
             let formate  = DateComponentsFormatter()
@@ -73,22 +58,17 @@ class MapViewController: UIViewController {
             timeRouteUILable.text = "Time\n\(time) h"
         }
     }
-    
     var coastRoute : Double = 0 {
         didSet {
             coastRoadUILale.text = "Coast\n \(coastRoute.rounded0_X) P"
         }
     }
-    
     var alertTextField: UITextField?
     
-
-    
     // MARK: -Function
-    
     func AlertWithTextFieldAnd2Button(titleAlert: String, messageAlert: String, titleButton: String){
-        let alertView = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: UIAlertController.Style.alert)
         
+        let alertView = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: UIAlertController.Style.alert)
         alertView.addTextField()
         alertView.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         alertView.addAction(UIAlertAction(title: titleButton, style: UIAlertAction.Style.default, handler: { ACTION -> Void in
@@ -100,7 +80,6 @@ class MapViewController: UIViewController {
     }
     
     func removeRoute(){
-        
         // delete annotation
         guard let annotationMap = annotationMap else { return }
         self.MKMapView.removeAnnotations(annotationMap)
@@ -112,25 +91,20 @@ class MapViewController: UIViewController {
     }
     
     func addRoadOnMap(){
-
         self.MapModel.findRoad { route, distance, time  in
             if let tempRoute = route {
 
                 self.distansRoute = distance!/1000
                 self.coastRoute =  self.coastData.getPriceTrip(distance: distance!/1000)
                 self.timeRoute = time!
-                print("ComplitionHanlde")
-               
                 self.MKMapView.addOverlay(tempRoute.polyline, level: .aboveRoads)
                 
                 let padding: CGFloat = 8
                 
                 self.MKMapView.setVisibleMapRect(
-                    self.MKMapView.visibleMapRect.union(
-                    tempRoute.polyline.boundingMapRect),
+                    self.MKMapView.visibleMapRect.union(tempRoute.polyline.boundingMapRect),
                     edgePadding: UIEdgeInsets(top: 0, left: padding, bottom: padding,right: padding),
-                animated: true
-                )
+                    animated: true)
                 
                 self.roadInformationUIStackView.isHidden = false
             }
@@ -141,7 +115,7 @@ class MapViewController: UIViewController {
 
         MapModel.adressToFind = adress
 
-        MapModel.findAdress{ MapPoint in
+        MapModel.findAdress { MapPoint in
             guard let tempMapPoint = MapPoint else { return }
 
             let annotation = MKPointAnnotation()
@@ -161,11 +135,8 @@ class MapViewController: UIViewController {
             }
         }
     }
-
-    
 }
-    // MARK: - Extention
-
+    // MARK: - MKMapViewDelegate
 extension  MapViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
@@ -175,8 +146,8 @@ extension  MapViewController : MKMapViewDelegate {
     }
 }
 
+    // MARK: - CLLocationManagerDelegate
 extension MapViewController : CLLocationManagerDelegate {
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard  let lastLocatin = locations.last else  { return }
         let region = MKCoordinateRegion.init(center: lastLocatin.coordinate, latitudinalMeters: 4000, longitudinalMeters: 4000)

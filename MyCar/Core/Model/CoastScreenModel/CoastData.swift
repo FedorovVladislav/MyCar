@@ -11,54 +11,49 @@ class CoastsData {
     }
     
     // MARK: - Variable
-    
     static let shared = CoastsData()
     // CoreData manager
     private let phoneStorageManager = PhoneStorageManager()
-    private let fuelPrice : Double = 50
     
-    private var coasts : [Coast] = []
-    private var distanceTrip : Double = 0
+    private let fuelPrice: Double = 50
+    private var coasts: [Coast] = []
+    private var distanceTrip: Double = 0
     
     // Вычисляемые данные
-    private var pricePerKilometr : Int  {
-        get {
-            var distance = Set <Double> ()
-            var prices : Double = 0
-        
-            for coast in coasts {
-                distance.insert(coast.odometr)
-                prices += coast.price
-            }
-           
-            guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
-            
-            let changeDistance = maxDistance - minDistance
-        
-            if changeDistance > 0 {
-                return (Int((prices / changeDistance).rounded()))
-            } else { return 0 }
+    private var pricePerKilometr: Double  {
+        var prices: Double = 0
+        // Считаем сумму
+        for coast in coasts {
+            prices += coast.price
+        }
+    
+        if totalDistance > 0 {
+            return prices / Double(totalDistance)
+        } else {
+            return 0
         }
     }
     
-    private var totalDistance : Int {
-        get {
-            var distance = Set <Double>()
+    private var totalDistance: Int {
+        var distance = Set <Double>()
             
-            for coast in coasts {
-                distance.insert(coast.odometr)
-            }
+        for coast in coasts {
+            distance.insert(coast.odometr)
+        }
             
-            guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
-            
-            return Int((maxDistance - minDistance).rounded())
+        guard let maxDistance = distance.max(), let minDistance = distance.min() else { return 0 }
+        
+        let changeDistance = maxDistance - minDistance
+        
+        if changeDistance > 0 {
+            return Int(changeDistance.rounded())
+        } else {
+            return 0
         }
     }
-    private var priceTrip : Double {
-        
+    private var priceTrip: Double {
         return self.distanceTrip * Double(self.pricePerKilometr) + self.distanceTrip/100*7*fuelPrice
     }
-    
     
     // MARK: - Геттеры
     func getCountCoasts() -> Int {
@@ -79,69 +74,51 @@ class CoastsData {
         }
     }
     
-    func getPricePerKilometrs()-> Int {
+    func getPricePerKilometrs() -> Double {
         return self.pricePerKilometr
     }
     
-    func getPriceTrip(distance: Double) ->Double {
+    func getPriceTrip(distance: Double) -> Double {
         self.distanceTrip = distance
         return priceTrip
     }
     
     private func getDataFromModel() throws {
-  
         do {
             let coasts = try phoneStorageManager.getItemsFromStorage()
             self.coasts = coasts!
-            
         } catch {
             throw error
         }
     }
     
     // MARK: - Сеттеры
-    
     func addNewCoast(newCoast coast: Coast) throws {
         // сохраняем в память телефона
         do {
             try phoneStorageManager.addItemToStorage(newCoast: coast)
-            addCoast(newCoast: coast)
+            self.coasts.append(coast)
         } catch {
             throw error
         }
     }
     // редактируем в памяти телефона
-    func changeExistCoast(at index : Int, newCoast: Coast) throws {
+    func changeExistCoast(at index : Int, newCoast coast: Coast) throws {
         do {
-            try phoneStorageManager.changeItemInStorage(at: index, newCoast: newCoast)
-            changeCurentCoast(at: index, newCoast: newCoast)
+            try phoneStorageManager.changeItemInStorage(at: index, newCoast: coast)
+            self.coasts[index] = coast
         } catch {
             throw error
         }
     }
     // удаляем данные
-    func deleteFromModel(at index: Int ) throws {
+    func deleteFromModel(at index: Int) throws {
         do {
-            try phoneStorageManager.deleteItemFromStorage(at:  index)
-            removeCoast(at: index)
+            try phoneStorageManager.deleteItemFromStorage(at: index)
+            self.coasts.remove(at: index)
         } catch {
             throw error
         }
-    }
-    
-    // MARK: - Работас массивом
-    
-    private func addCoast(newCoast: Coast) {
-        print("Add New Coast:\(newCoast.name) , \(newCoast.odometr), \(newCoast.price)")
-        self.coasts.append(newCoast)
-    }
-    
-    private func removeCoast(at index:Int) {
-        self.coasts.remove(at: index)
-    }
-    
-    private func changeCurentCoast(at index: Int, newCoast: Coast) {
-        self.coasts[index] = newCoast
     }
 }
 

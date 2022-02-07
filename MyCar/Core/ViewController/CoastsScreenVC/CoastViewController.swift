@@ -29,7 +29,6 @@ class CoastViewController: UITableViewController {
     
 
     // MARK: - обработка действий с моделью
-    
     func addNewItemIntoModel(exist coastFromView: Coast) {
         do {
             try coastData.addNewCoast(newCoast: coastFromView)

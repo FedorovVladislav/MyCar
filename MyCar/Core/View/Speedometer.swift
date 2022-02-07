@@ -4,21 +4,16 @@ import UIKit
 class Speedometer: UIView {
     
     // MARK: - Variable
-    
     var currentSpeed : Double = 0 {
         didSet {
-
             if currentSpeed > 10 {
-                
                 speedTittle.text = "\(currentSpeed.rounded0_X)"
-                
+
             } else if currentSpeed > 0 {
-                
                 let roundedSpeed = Int(round(currentSpeed))
                 speedTittle.text = "\(roundedSpeed)"
             
             } else {
-                
                 speedTittle.text = "0"
             }
             
@@ -28,14 +23,12 @@ class Speedometer: UIView {
     }
     
     // MARK: - Private Variable
-    
     private let progressCircle = CAShapeLayer()
     private let speedTittle = UILabel()
     private let speedUnit = UILabel()
     
     // MARK: - Initialization
-    
-    override init(frame: CGRect){
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setupSpeedCurcle()
         setupSpeedTittle()
@@ -45,12 +38,11 @@ class Speedometer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupSpeedCurcle(){
+    private func setupSpeedCurcle() {
         
         let centerPoint = CGPoint (x: self.bounds.width/2, y: self.bounds.width/2)
         let circleRadius : CGFloat = self.bounds.width/2
         let circleProgressPath = UIBezierPath( arcCenter: centerPoint, radius: circleRadius, startAngle: 3 * CGFloat.pi / 4, endAngle: CGFloat.pi / 4, clockwise: true)
-        
         
         progressCircle.path = circleProgressPath.cgPath
         progressCircle.strokeColor = UIColor.green.cgColor
@@ -71,7 +63,7 @@ class Speedometer: UIView {
         self.layer.addSublayer(progressCircle)
     }
        
-    private func setupSpeedTittle(){
+    private func setupSpeedTittle() {
     
         // Text
         speedTittle.text = "0"
@@ -102,6 +94,5 @@ class Speedometer: UIView {
         speedStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         speedStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
-
 }
 

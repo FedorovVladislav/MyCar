@@ -20,7 +20,7 @@ class SpeedometrViewController: UIViewController {
     }
         // MARK: -CoreLocation
         
-    func startLocationManager(){
+    func startLocationManager() {
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -32,17 +32,9 @@ class SpeedometrViewController: UIViewController {
 }
 
 extension SpeedometrViewController : CLLocationManagerDelegate {
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            
         guard  let newLocation = locations.last else  { return }
-        self.speedCurcleUIView.currentSpeed = newLocation.speed 
-            
-        guard let previerLocation = self.lastLocation else {
-            self.lastLocation = newLocation
-            return
-        }
-        //let fit = newLocation.distance(from: previerLocation)
+        self.speedCurcleUIView.currentSpeed = newLocation.speed
     }
 }
 
